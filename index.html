@@ -3,328 +3,400 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vlad Sedykh — Portfolio</title>
-
+  <title>Vlad Sedykh — Cinematic Portfolio</title>
   <style>
-    :root{
-      --bg:#0b0d12;
-      --panel:#111521;
-      --panel2:#0f1320;
-      --text:#eef1f6;
-      --muted:#a9b0c0;
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --radius:18px;
+    :root {
+      --bg: #05060a;
+      --panel: rgba(17, 21, 33, 0.78);
+      --text: #f4f6ff;
+      --muted: #aab3c9;
+      --line: rgba(255, 255, 255, 0.15);
+      --c1: #7aa7ff;
+      --c2: #ff68b2;
+      --c3: #6cf2d2;
+      --radius: 20px;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
 
-      /* animated background */
+    /* Cinematic moving backdrops */
+    .nebula,
+    .nebula::before,
+    .nebula::after {
+      position: fixed;
+      inset: -25%;
+      content: "";
+      pointer-events: none;
+      z-index: -3;
+      filter: blur(45px);
+      animation: drift 18s ease-in-out infinite alternate;
       background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(120,160,255,.18), transparent 55%),
-        radial-gradient(900px 500px at 90% 0%, rgba(255,90,190,.14), transparent 50%),
-        radial-gradient(900px 600px at 50% 110%, rgba(80,255,200,.10), transparent 50%),
-        var(--bg);
-      position:relative;
+        radial-gradient(45% 30% at 15% 20%, rgba(122, 167, 255, 0.28), transparent 60%),
+        radial-gradient(50% 32% at 75% 10%, rgba(255, 104, 178, 0.24), transparent 60%),
+        radial-gradient(45% 40% at 50% 85%, rgba(108, 242, 210, 0.17), transparent 65%);
     }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-40%;
-      pointer-events:none;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(120,160,255,.10), transparent 45%),
-        radial-gradient(circle at 70% 35%, rgba(255,90,190,.08), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(80,255,200,.06), transparent 45%);
-      filter: blur(30px);
-      opacity:.9;
-      animation: floatBg 12s ease-in-out infinite;
-      z-index:-1;
-    }
-    @keyframes floatBg{
-      0%{ transform: translate3d(-1%, -1%, 0) scale(1); }
-      50%{ transform: translate3d(1%, 1%, 0) scale(1.03); }
-      100%{ transform: translate3d(-1%, -1%, 0) scale(1); }
+    .nebula::before { animation-duration: 24s; transform: scale(1.1); opacity: 0.75; }
+    .nebula::after { animation-duration: 28s; transform: scale(1.25); opacity: 0.4; }
+
+    @keyframes drift {
+      0% { transform: translate3d(-1.5%, -1%, 0) scale(1.02); }
+      100% { transform: translate3d(2%, 1.3%, 0) scale(1.08); }
     }
 
-    a{color:inherit}
-    .container{max-width:1050px;margin:0 auto;padding:28px 18px 64px}
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.11;
+      background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.14) 0 1px, transparent 1px 3px);
+      animation: scan 9s linear infinite;
+    }
+    @keyframes scan {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(6px); }
+    }
 
-    /* Top bar */
-    .topbar{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter: blur(10px);
-      background: rgba(11,13,18,.65);
+    .floating-particle {
+      position: fixed;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      opacity: 0.45;
+      z-index: -1;
+      pointer-events: none;
+      box-shadow: 0 0 28px currentColor;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(11px);
+      background: rgba(6, 8, 14, 0.68);
       border-bottom: 1px solid var(--line);
     }
-    .topbar-inner{
-      max-width:1050px; margin:0 auto;
-      padding:14px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    .topbar-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none;
-      user-select:none;
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
     }
-    .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(135deg, rgba(120,160,255,1), rgba(255,90,190,1));
-      box-shadow: 0 0 0 6px rgba(255,255,255,.03);
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.05), 0 0 20px rgba(122,167,255,.45);
       animation: pulse 2.6s ease-in-out infinite;
     }
-    @keyframes pulse{
-      0%,100%{ transform: scale(1); filter: brightness(1); }
-      50%{ transform: scale(1.12); filter: brightness(1.1); }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
     }
-    .brand span{font-weight:700; letter-spacing:-.02em}
 
-    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    nav a{
-      text-decoration:none;
+    nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    nav a {
       color: var(--muted);
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-      transition: .18s ease;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 8px 12px;
+      transition: .2s ease;
     }
-    nav a:hover{
+    nav a:hover {
       color: var(--text);
       border-color: var(--line);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,0.06);
       transform: translateY(-1px);
     }
 
-    /* Hero */
-    .hero{padding:26px 0 10px}
-    .kicker{
-      color: var(--muted);
-      font-size:14px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-    h1{
-      margin:10px 0 8px;
-      font-size: clamp(36px, 5vw, 56px);
-      line-height:1.05;
-      letter-spacing:-.03em;
-    }
-    .subtitle{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 70ch;
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 18px 64px;
     }
 
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:11px 14px;
-      border-radius: 999px;
-      text-decoration:none;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      transition: .18s ease;
-      box-shadow: 0 8px 30px rgba(0,0,0,.25);
-      position:relative;
-      overflow:hidden;
-    }
-    .btn::after{
-      content:"";
-      position:absolute;
-      inset:-50% -60%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.18), transparent);
-      transform: translateX(-60%) rotate(12deg);
-      transition:.35s ease;
-      opacity:.0;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-    }
-    .btn:hover::after{
-      opacity:1;
-      transform: translateX(60%) rotate(12deg);
-    }
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(120,160,255,.95), rgba(255,90,190,.92));
-      color:#071018;
-      font-weight:800;
-    }
-
-    /* Sections */
-    section{margin-top:46px}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin: 0 0 14px;
-    }
-    .section-title h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.02em;
-      text-transform: uppercase;
-      color: rgba(238,241,246,.92);
-    }
-    .section-title p{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Cards + grids */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-    }
-    .card{
-      grid-column: span 6;
-      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 55%), var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px 16px 14px;
-      box-shadow: var(--shadow);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      position:relative;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background: radial-gradient(700px 220px at 15% 0%, rgba(120,160,255,.12), transparent 55%),
-                  radial-gradient(700px 220px at 85% 0%, rgba(255,90,190,.10), transparent 55%);
-      opacity:.0;
-      transition:.18s ease;
-      pointer-events:none;
-    }
-    .card:hover{
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), transparent 60%), var(--panel);
-    }
-    .card:hover::before{ opacity:1; }
-    .card h3{margin:2px 0 6px; font-size: 17px; letter-spacing:-.01em}
-    .meta{margin:0 0 10px; color: var(--muted); font-size: 13px}
-    .card ul{margin:0; padding-left:18px; color: rgba(238,241,246,.9)}
-    .card li{margin:6px 0}
-    .card a{
-      color: rgba(220,235,255,1);
-      text-decoration: none;
-      border-bottom:1px solid rgba(220,235,255,.25)
-    }
-    .card a:hover{border-bottom-color: rgba(220,235,255,.8)}
-
-    .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 60%), var(--panel2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .pillrow{display:flex; flex-wrap:wrap; gap:10px}
-    .pill{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-size: 13px;
-      transition: transform .16s ease, background .16s ease;
-    }
-    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.06);}
-
-    /* Game */
-    .gamewrap{display:grid; grid-template-columns: 1.5fr .8fr; gap:14px; align-items:start}
-    canvas{
-      width:100%;
-      height:auto;
-      background: rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      display:block;
-      box-shadow: var(--shadow);
-    }
-    .controls{display:flex; gap:10px; flex-wrap:wrap}
-    .controls button{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      cursor:pointer;
-      transition:.18s ease;
-    }
-    .controls button:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
-    .scoreline{color: var(--muted); margin: 10px 0 0; font-size: 14px}
-
-    /* Footer */
-    footer{
-      margin-top: 60px;
+    .hero {
       padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
+      display: grid;
+      gap: 18px;
     }
 
-    /* Reveal animations */
-    .reveal{
-      opacity:0;
-      transform: translateY(14px);
+    /* Big reserved photo area */
+    .photo-stage {
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      border-radius: 24px;
+      min-height: clamp(280px, 44vw, 420px);
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(120deg, rgba(122,167,255,.12), rgba(255,104,178,.1), rgba(108,242,210,.12)),
+        rgba(255,255,255,.03);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+      isolation: isolate;
+    }
+    .photo-stage::before,
+    .photo-stage::after {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        conic-gradient(from 20deg, transparent 0 25%, rgba(255,255,255,.2) 30%, transparent 40% 100%);
+      animation: rotate 11s linear infinite;
+      opacity: .25;
+    }
+    .photo-stage::after {
+      animation-duration: 17s;
+      animation-direction: reverse;
+      opacity: .2;
+      filter: blur(12px);
+    }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      z-index: 1;
+      background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,.45));
+    }
+    .photo-overlay h2 {
+      margin: 0;
+      font-size: clamp(26px, 4.2vw, 44px);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .photo-overlay p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 55ch;
+    }
+
+    .hero-card,
+    .panel,
+    .card,
+    canvas {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-card {
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: -160% -90%;
+      background: linear-gradient(115deg, transparent, rgba(255,255,255,.2), transparent);
+      transform: translateX(-40%) rotate(10deg);
+      animation: sweep 6s ease-in-out infinite;
+    }
+    @keyframes sweep {
+      0%,30% { transform: translateX(-45%) rotate(10deg); opacity: 0; }
+      40%,65% { transform: translateX(45%) rotate(10deg); opacity: .85; }
+      75%,100% { transform: translateX(50%) rotate(10deg); opacity: 0; }
+    }
+
+    .kicker {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: 13px;
+    }
+    h1 {
+      margin: 8px 0;
+      font-size: clamp(34px, 6vw, 60px);
+      line-height: 1.03;
+      letter-spacing: -.02em;
+    }
+    .subtitle {
+      margin: 0;
+      max-width: 70ch;
+      color: var(--muted);
+    }
+
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 20px;
+      background: rgba(255,255,255,.03);
+    }
+    .marquee {
+      display: flex;
+      gap: 28px;
+      width: max-content;
+      padding: 10px 0;
+      animation: marquee 20s linear infinite;
+      color: rgba(244,246,255,.9);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .marquee span { white-space: nowrap; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .btn {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,.04);
+      transition: .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.08); }
+    .btn.primary {
+      font-weight: 700;
+      color: #09111e;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+    }
+
+    section { margin-top: 44px; }
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .section-title p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card {
+      grid-column: span 6;
+      padding: 16px;
+      transition: .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, rgba(122,167,255,.12), transparent 50%, rgba(255,104,178,.12));
+      opacity: 0;
+      transition: .2s ease;
+      pointer-events: none;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card:hover::before { opacity: 1; }
+
+    .panel { padding: 18px; }
+    .pillrow { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pill {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 8px 10px;
+      font-size: 13px;
+      background: rgba(255,255,255,.04);
+      animation: bob 4.5s ease-in-out infinite;
+    }
+    .pill:nth-child(odd) { animation-delay: .2s; }
+    .pill:nth-child(3n) { animation-delay: .6s; }
+    @keyframes bob {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .gamewrap { display: grid; grid-template-columns: 1.5fr .8fr; gap: 14px; align-items: start; }
+    canvas { width: 100%; height: auto; display: block; }
+
+    .controls { display: flex; flex-wrap: wrap; gap: 9px; }
+    .controls button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      padding: 9px 12px;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .controls button:hover { transform: translateY(-1px); background: rgba(255,255,255,.08); }
+
+    footer {
+      margin-top: 58px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
       filter: blur(2px);
       transition: opacity .7s ease, transform .7s ease, filter .7s ease;
     }
-    .reveal.show{
-      opacity:1;
+    .reveal.show {
+      opacity: 1;
       transform: translateY(0);
       filter: blur(0);
     }
-    .stagger > *{
-      opacity:0;
-      transform: translateY(12px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .stagger.show > *{
-      opacity:1;
-      transform: translateY(0);
-    }
-    .stagger.show > *:nth-child(1){ transition-delay: .05s; }
-    .stagger.show > *:nth-child(2){ transition-delay: .10s; }
-    .stagger.show > *:nth-child(3){ transition-delay: .15s; }
-    .stagger.show > *:nth-child(4){ transition-delay: .20s; }
-    .stagger.show > *:nth-child(5){ transition-delay: .25s; }
-    .stagger.show > *:nth-child(6){ transition-delay: .30s; }
 
-    @media (max-width: 860px){
-      .card{grid-column: span 12}
-      .gamewrap{grid-template-columns: 1fr}
-      nav{justify-content:flex-start}
+    @media (max-width: 900px) {
+      .card { grid-column: span 12; }
+      .gamewrap { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
+  <div class="nebula"></div>
+  <div class="scanlines"></div>
+
   <div class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#home">
-        <span class="dot"></span>
-        <span>Vlad Sedykh</span>
-      </a>
+      <a class="brand" href="#home"><span class="brand-dot"></span>Vlad Sedykh</a>
       <nav>
         <a href="#home">Home</a>
         <a href="#work">Work</a>
@@ -336,171 +408,84 @@
   </div>
 
   <div class="container">
-
     <section id="home" class="hero reveal">
-      <div class="kicker">Producer • Editor • Social-first storytelling</div>
-      <h1>Vlad Sedykh</h1>
-      <p class="subtitle">
-        Producer / Video Editor — Social & Marketing. I make high-volume campaigns feel premium,
-        from concept and shoots to post and delivery.
-      </p>
+      <div class="photo-stage" aria-label="Photo placeholder">
+        <div class="photo-overlay">
+          <div>
+            <h2>Your Hero Photo Goes Here</h2>
+            <p>Drop your portrait or cinematic still into this top frame. Keep this area for your signature visual.</p>
+          </div>
+        </div>
+      </div>
 
-      <div class="actions stagger">
-        <!-- Replace # links with your real links -->
-        <a class="btn primary" href="#" target="_blank" rel="noreferrer">Watch Reel</a>
-        <a class="btn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="mailto:youremail@email.com">Email</a>
+      <div class="hero-card">
+        <div class="kicker">Producer • Editor • Social-first storytelling</div>
+        <h1>Cinematic portfolio, built to move.</h1>
+        <p class="subtitle">I produce and edit social campaigns that feel premium at scale—from concept and on-set execution to post, versioning, and delivery.</p>
+        <div class="actions">
+          <a class="btn primary" href="#" target="_blank" rel="noreferrer">Watch Reel</a>
+          <a class="btn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="mailto:youremail@email.com">Email</a>
+        </div>
+      </div>
+
+      <div class="marquee-wrap" aria-hidden="true">
+        <div class="marquee">
+          <span>• SOCIAL CAMPAIGNS •</span><span>PREMIERE • AFTER EFFECTS • STORY-DRIVEN EDITS •</span>
+          <span>VERSIONING • CREATIVE OPERATIONS • HIGH-VOLUME DELIVERY •</span>
+          <span>• SOCIAL CAMPAIGNS •</span><span>PREMIERE • AFTER EFFECTS • STORY-DRIVEN EDITS •</span>
+          <span>VERSIONING • CREATIVE OPERATIONS • HIGH-VOLUME DELIVERY •</span>
+        </div>
       </div>
     </section>
 
     <section id="work" class="reveal">
-      <div class="section-title">
-        <h2>Featured Work</h2>
-        <p>Swap in your real projects + links</p>
-      </div>
-
-      <div class="grid stagger">
-        <article class="card">
-          <h3>Homes.com — Social Campaign Series</h3>
-          <p class="meta">Role: Producer/Editor • Tools: Premiere, After Effects • Format: 9:16 + 16:9</p>
-          <ul>
-            <li>Produced and edited a repeatable series with fast turnarounds.</li>
-            <li>Built templates + versioning to speed delivery across platforms.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Podcast Clips — Multi-platform Cutdowns</h3>
-          <p class="meta">Role: Editor • Tools: Premiere • Output: Shorts/Reels/TikTok</p>
-          <ul>
-            <li>Crafted hook-first pacing and captions optimized for retention.</li>
-            <li>Delivered batches with consistent style and quick iteration.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Brand Explainer — Motion + Editorial</h3>
-          <p class="meta">Role: Producer/Editor • Tools: AE + Premiere</p>
-          <ul>
-            <li>Blended live-action with motion graphics for clarity and energy.</li>
-            <li>Created modular assets for reuse across future campaigns.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>On-Set Shoot — Fast Social Deliverables</h3>
-          <p class="meta">Role: Producer • Tools: DSLR/Mobile + Post Pipeline</p>
-          <ul>
-            <li>Planned shot list, ran set, and delivered same-week edits.</li>
-            <li>Standardized naming + organization to reduce search time.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
-          </ul>
-        </article>
+      <div class="section-title"><h2>Featured Work</h2><p>Swap in your real projects + links</p></div>
+      <div class="grid">
+        <article class="card"><h3>Homes.com — Social Campaign Series</h3><p>Produced and edited repeatable campaign formats with fast social turnarounds.</p></article>
+        <article class="card"><h3>Podcast Clips — Multi-platform Cutdowns</h3><p>Hook-first pacing, captions, and delivery packs tuned for retention.</p></article>
+        <article class="card"><h3>Brand Explainer — Motion + Editorial</h3><p>Blended live action + motion to turn complex ideas into clear stories.</p></article>
+        <article class="card"><h3>On-Set Shoot — Fast Social Deliverables</h3><p>Ran shoot logistics and delivered polished edits within the same week.</p></article>
       </div>
     </section>
 
     <section class="reveal">
-      <div class="section-title">
-        <h2>Skills</h2>
-        <p>End-to-end production + post</p>
-      </div>
-
-      <div class="panel">
-        <div class="pillrow">
-          <span class="pill">Producing</span>
-          <span class="pill">Editing</span>
-          <span class="pill">Motion Graphics</span>
-          <span class="pill">Social Formats</span>
-          <span class="pill">Captioning</span>
-          <span class="pill">Asset Management</span>
-          <span class="pill">AI-Assisted Workflows</span>
-          <span class="pill">On-Set Production</span>
-          <span class="pill">Cross-Functional Collaboration</span>
-        </div>
-      </div>
+      <div class="section-title"><h2>Skills</h2><p>End-to-end production + post</p></div>
+      <div class="panel"><div class="pillrow">
+        <span class="pill">Producing</span><span class="pill">Editing</span><span class="pill">Motion Graphics</span>
+        <span class="pill">Social Formats</span><span class="pill">Captioning</span><span class="pill">Asset Management</span>
+        <span class="pill">AI-Assisted Workflows</span><span class="pill">On-Set Production</span><span class="pill">Cross-Functional Collaboration</span>
+      </div></div>
     </section>
 
     <section id="realestate" class="reveal">
-      <div class="section-title">
-        <h2>Real Estate Work</h2>
-        <p>Photos + videos — add your links/assets</p>
-      </div>
-
-      <div class="grid stagger">
-        <article class="card">
-          <h3>Luxury Condo Tour</h3>
-          <p class="meta">Format: 9:16 + 16:9 • Deliverables: Tour + cutdowns</p>
-          <ul>
-            <li>Shot for flow + light; edited for clarity and pacing.</li>
-            <li>Delivered multiple aspect ratios with consistent look.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">Watch</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Modern Home Showcase</h3>
-          <p class="meta">Format: 16:9 • Deliverables: Walkthrough + hero edit</p>
-          <ul>
-            <li>Storytelling focused on lifestyle and key features.</li>
-            <li>Polished color + sound for “premium” feel.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">Watch</a></li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="panel" style="margin-top:14px">
-        <p style="margin:0;color:var(--muted)">
-          Tip: if you want, we can split this into <strong>real-estate.html</strong> later and add a photo grid + video gallery.
-        </p>
+      <div class="section-title"><h2>Real Estate Work</h2><p>Photos + videos — add your links/assets</p></div>
+      <div class="grid">
+        <article class="card"><h3>Luxury Condo Tour</h3><p>Flow-first walkthrough edit with premium grading and social cutdowns.</p></article>
+        <article class="card"><h3>Modern Home Showcase</h3><p>Lifestyle-driven hero reel designed for both listings and social distribution.</p></article>
       </div>
     </section>
 
     <section id="game" class="reveal">
-      <div class="section-title">
-        <h2>Dodge the Deadlines</h2>
-        <p>Bonus: tiny arcade game in vanilla JS</p>
-      </div>
-
+      <div class="section-title"><h2>Dodge the Deadlines</h2><p>Bonus mini game in vanilla JS</p></div>
       <div class="gamewrap">
-        <div>
-          <canvas id="gameCanvas" width="800" height="450"></canvas>
-        </div>
-
+        <canvas id="gameCanvas" width="800" height="450"></canvas>
         <div class="panel">
-          <p style="margin-top:0;color:var(--muted)">
-            Controls: ← → or A/D • Pause: P
-          </p>
-
+          <p style="margin-top:0;color:var(--muted)">Controls: ← → or A/D • Pause: P</p>
           <div class="controls">
-            <button id="leftBtn">Left</button>
-            <button id="rightBtn">Right</button>
-            <button id="pauseBtn">Pause</button>
-            <button id="restartBtn">Restart</button>
+            <button id="leftBtn">Left</button><button id="rightBtn">Right</button><button id="pauseBtn">Pause</button><button id="restartBtn">Restart</button>
           </div>
-
-          <p class="scoreline">Score: <span id="score">0</span></p>
-          <p class="scoreline">High score: <span id="highScore">0</span></p>
-
-          <p class="scoreline" style="margin-top:14px">
-            Pro tip: this is a fun “creative flex.” Keep your reel and projects as the main focus.
-          </p>
+          <p style="color:var(--muted)">Score: <span id="score">0</span></p>
+          <p style="color:var(--muted)">High score: <span id="highScore">0</span></p>
         </div>
       </div>
     </section>
 
     <section id="contact" class="reveal">
-      <div class="section-title">
-        <h2>Contact</h2>
-        <p>Let’s build something</p>
-      </div>
+      <div class="section-title"><h2>Contact</h2><p>Let’s build something</p></div>
       <div class="panel">
-        <p style="margin:0">
-          Email: <a href="mailto:youremail@email.com">youremail@email.com</a><br />
-          LinkedIn: <a href="#" target="_blank" rel="noreferrer">linkedin.com/in/yourprofile</a>
-        </p>
+        Email: <a href="mailto:youremail@email.com">youremail@email.com</a><br>
+        LinkedIn: <a href="#" target="_blank" rel="noreferrer">linkedin.com/in/yourprofile</a>
       </div>
     </section>
 
@@ -511,396 +496,249 @@
   </div>
 
   <script>
-    // --------- Reveal animations (sections fade in on scroll) ----------
-    const revealEls = document.querySelectorAll(".reveal, .stagger");
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) e.target.classList.add("show");
+    // Floating particles for extra cinematic motion
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('span');
+      p.className = 'floating-particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.top = Math.random() * 100 + 'vh';
+      p.style.color = ['#7aa7ff', '#ff68b2', '#6cf2d2'][i % 3];
+      p.style.animation = `floatParticle ${8 + Math.random() * 14}s linear infinite`;
+      p.style.animationDelay = `${Math.random() * -12}s`;
+      document.body.appendChild(p);
+    }
+
+    const floatStyle = document.createElement('style');
+    floatStyle.textContent = `
+      @keyframes floatParticle {
+        0% { transform: translate3d(0, 0, 0) scale(.7); opacity: .1; }
+        25% { opacity: .55; }
+        50% { transform: translate3d(40px, -70px, 0) scale(1); opacity: .35; }
+        100% { transform: translate3d(-15px, -140px, 0) scale(.65); opacity: .08; }
       }
-    }, { threshold: 0.12 });
+    `;
+    document.head.appendChild(floatStyle);
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.1 });
     revealEls.forEach(el => io.observe(el));
 
-    document.getElementById("yr").textContent = new Date().getFullYear();
+    document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // --------------------------- GAME ---------------------------
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
+    // ----- Game logic -----
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const highEl = document.getElementById('highScore');
 
-    const scoreEl = document.getElementById("score");
-    const highEl = document.getElementById("highScore");
-
-    // Responsive draw scale (keeps internal resolution)
-    function fitCanvas() {
-      // keep internal pixel size for sharpness; CSS scales via width:100%
-      // (no action needed unless you want dynamic pixel sizing)
-    }
-    window.addEventListener("resize", fitCanvas);
-    fitCanvas();
-
-    // Controls
-    const keys = { left:false, right:false };
+    const keys = { left: false, right: false };
     let isPaused = false;
-
-    const leftBtn = document.getElementById("leftBtn");
-    const rightBtn = document.getElementById("rightBtn");
-    const pauseBtn = document.getElementById("pauseBtn");
-    const restartBtn = document.getElementById("restartBtn");
-
-    function bindHold(btn, onDown, onUp){
-      btn.addEventListener("mousedown", onDown);
-      btn.addEventListener("mouseup", onUp);
-      btn.addEventListener("mouseleave", onUp);
-      btn.addEventListener("touchstart", (e)=>{ e.preventDefault(); onDown(); }, {passive:false});
-      btn.addEventListener("touchend", onUp);
-    }
-
-    bindHold(leftBtn, ()=>keys.left=true, ()=>keys.left=false);
-    bindHold(rightBtn, ()=>keys.right=true, ()=>keys.right=false);
-
-    pauseBtn.addEventListener("click", ()=>{
-      isPaused = !isPaused;
-      pauseBtn.textContent = isPaused ? "Resume" : "Pause";
-    });
-
-    restartBtn.addEventListener("click", resetGame);
-
-    document.addEventListener("keydown", (e)=>{
-      if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") keys.left = true;
-      if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") keys.right = true;
-      if (e.key.toLowerCase() === "p") {
-        isPaused = !isPaused;
-        pauseBtn.textContent = isPaused ? "Resume" : "Pause";
-      }
-      if (e.key.toLowerCase() === "r") resetGame();
-    });
-
-    document.addEventListener("keyup", (e)=>{
-      if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") keys.left = false;
-      if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") keys.right = false;
-    });
-
-    // Game state
-    const W = canvas.width, H = canvas.height;
-
-    const player = {
-      x: W * 0.5,
-      y: H * 0.80,
-      w: 48,
-      h: 62,
-      speed: 520, // px/sec
-    };
-
-    let deadlines = [];
     let score = 0;
-    let highScore = Number(localStorage.getItem("deadlineHighScore") || "0");
+    let highScore = Number(localStorage.getItem('deadlineHighScore') || '0');
     highEl.textContent = String(highScore);
 
-    let gameOver = false;
-    let started = false;
-
+    const player = { x: 400, y: 360, w: 46, h: 62, speed: 520 };
+    const W = canvas.width;
+    const H = canvas.height;
+    let deadlines = [];
     let spawnTimer = 0;
-    let spawnEvery = 0.85; // seconds (gets lower with difficulty)
-    let fallSpeed = 220;   // px/sec (gets higher with difficulty)
+    let spawnEvery = 0.85;
+    let fallSpeed = 220;
+    let gameOver = false;
 
-    let lastT = performance.now();
-
-    function resetGame(){
-      deadlines = [];
+    function resetGame() {
       score = 0;
-      gameOver = false;
-      started = true;
-      isPaused = false;
-      pauseBtn.textContent = "Pause";
+      scoreEl.textContent = '0';
+      deadlines = [];
       spawnTimer = 0;
       spawnEvery = 0.85;
       fallSpeed = 220;
-      player.x = W * 0.5;
-      scoreEl.textContent = "0";
+      isPaused = false;
+      gameOver = false;
+      player.x = 400;
+      document.getElementById('pauseBtn').textContent = 'Pause';
     }
 
-    // Start automatically so it feels alive; user can just play
-    resetGame();
-
-    function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
-
-    function spawnDeadline(){
-      const w = 86;
-      const h = 34;
-      const pad = 14;
-      const x = Math.random() * (W - w - pad*2) + pad;
-      deadlines.push({
-        x, y: -h - 10, w, h,
-        rot: (Math.random()*0.18 - 0.09),   // slight tilt
-        wobble: Math.random()*Math.PI*2,
-        stamp: Math.random() > 0.5 ? "DEADLINE" : "DUE",
-      });
+    function bindHold(btn, down, up) {
+      btn.addEventListener('mousedown', down);
+      btn.addEventListener('mouseup', up);
+      btn.addEventListener('mouseleave', up);
+      btn.addEventListener('touchstart', e => { e.preventDefault(); down(); }, { passive: false });
+      btn.addEventListener('touchend', up);
     }
 
-    function aabb(ax, ay, aw, ah, bx, by, bw, bh){
+    bindHold(document.getElementById('leftBtn'), () => keys.left = true, () => keys.left = false);
+    bindHold(document.getElementById('rightBtn'), () => keys.right = true, () => keys.right = false);
+
+    document.getElementById('pauseBtn').addEventListener('click', () => {
+      isPaused = !isPaused;
+      document.getElementById('pauseBtn').textContent = isPaused ? 'Resume' : 'Pause';
+    });
+    document.getElementById('restartBtn').addEventListener('click', resetGame);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') keys.left = true;
+      if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') keys.right = true;
+      if (e.key.toLowerCase() === 'p') {
+        isPaused = !isPaused;
+        document.getElementById('pauseBtn').textContent = isPaused ? 'Resume' : 'Pause';
+      }
+      if (e.key.toLowerCase() === 'r') resetGame();
+    });
+    document.addEventListener('keyup', e => {
+      if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') keys.left = false;
+      if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') keys.right = false;
+    });
+
+    function clamp(v, a, b) { return Math.max(a, Math.min(v, b)); }
+    function aabb(ax, ay, aw, ah, bx, by, bw, bh) {
       return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
     }
 
-    function drawBackground(t){
-      // subtle moving grid
-      ctx.save();
-      ctx.globalAlpha = 0.14;
-      ctx.strokeStyle = "rgba(255,255,255,0.10)";
+    function spawnDeadline() {
+      const w = 88;
+      const h = 34;
+      deadlines.push({
+        x: Math.random() * (W - w - 30) + 15,
+        y: -h,
+        w, h,
+        rot: Math.random() * 0.2 - 0.1,
+        wobble: Math.random() * Math.PI * 2
+      });
+    }
+
+    function roundRect(x, y, w, h, r, fill = true) {
+      const rr = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + rr, y);
+      ctx.arcTo(x + w, y, x + w, y + h, rr);
+      ctx.arcTo(x + w, y + h, x, y + h, rr);
+      ctx.arcTo(x, y + h, x, y, rr);
+      ctx.arcTo(x, y, x + w, y, rr);
+      ctx.closePath();
+      fill ? ctx.fill() : ctx.stroke();
+    }
+
+    function drawScene(t) {
+      ctx.fillStyle = '#0d111a';
+      ctx.fillRect(0, 0, W, H);
+
+      // moving grid
+      ctx.strokeStyle = 'rgba(255,255,255,0.09)';
       ctx.lineWidth = 1;
-
-      const grid = 42;
-      const ox = (t*0.015) % grid;
-      const oy = (t*0.01) % grid;
-
-      for (let x = -grid; x < W + grid; x += grid){
+      const gap = 42;
+      const ox = (t * 0.016) % gap;
+      for (let x = -gap; x < W + gap; x += gap) {
         ctx.beginPath();
         ctx.moveTo(x + ox, 0);
         ctx.lineTo(x + ox, H);
         ctx.stroke();
       }
-      for (let y = -grid; y < H + grid; y += grid){
-        ctx.beginPath();
-        ctx.moveTo(0, y + oy);
-        ctx.lineTo(W, y + oy);
-        ctx.stroke();
+
+      deadlines.forEach(d => {
+        ctx.save();
+        ctx.translate(d.x + d.w / 2, d.y + d.h / 2);
+        ctx.rotate(d.rot + Math.sin(t * 0.01 + d.wobble) * 0.05);
+        ctx.fillStyle = 'rgba(255, 104, 178, 0.18)';
+        roundRect(-d.w / 2 - 4, -d.h / 2 - 4, d.w + 8, d.h + 8, 10);
+        ctx.fillStyle = 'rgba(244, 246, 255, 0.95)';
+        roundRect(-d.w / 2, -d.h / 2, d.w, d.h, 9);
+        ctx.fillStyle = 'rgba(255, 104, 178, 0.9)';
+        roundRect(-d.w / 2, -d.h / 2, d.w, 9, 9);
+        ctx.fillStyle = 'rgba(255, 104, 178, 0.95)';
+        ctx.font = '700 11px ui-sans-serif';
+        ctx.fillText('DEADLINE', -d.w / 2 + 10, 6);
+        ctx.restore();
+      });
+
+      const bounce = Math.sin(t * 0.008) * 2;
+      ctx.save();
+      ctx.translate(player.x, player.y + bounce);
+      ctx.fillStyle = 'rgba(0,0,0,.28)';
+      ctx.beginPath();
+      ctx.ellipse(0, player.h + 8, 25, 7, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(244,246,255,.95)';
+      roundRect(-player.w / 2, 0, player.w, player.h, 12);
+      ctx.fillStyle = 'rgba(122,167,255,.6)';
+      roundRect(-6, 12, 12, player.h - 20, 6);
+      ctx.beginPath();
+      ctx.fillStyle = '#f4f6ff';
+      ctx.arc(0, -10, 16, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#080b12';
+      ctx.beginPath();
+      ctx.arc(-6, -12, 2.2, 0, Math.PI * 2);
+      ctx.arc(6, -12, 2.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#ff68b2';
+      roundRect(-16, -34, 32, 16, 8);
+      roundRect(-27, -22, 54, 10, 10);
+      ctx.restore();
+
+      ctx.fillStyle = 'rgba(244,246,255,.95)';
+      ctx.font = '700 14px ui-sans-serif';
+      ctx.fillText('DODGE THE DEADLINES', 16, 24);
+
+      if (gameOver || isPaused) {
+        ctx.fillStyle = 'rgba(0,0,0,.56)';
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#f4f6ff';
+        ctx.font = '800 32px ui-sans-serif';
+        ctx.fillText(gameOver ? 'Game Over' : 'Paused', 36, 80);
       }
-      ctx.restore();
-
-      // vignette
-      const g = ctx.createRadialGradient(W/2, H/2, 60, W/2, H/2, Math.max(W,H)*0.7);
-      g.addColorStop(0, "rgba(0,0,0,0)");
-      g.addColorStop(1, "rgba(0,0,0,0.55)");
-      ctx.fillStyle = g;
-      ctx.fillRect(0,0,W,H);
     }
 
-    function drawPlayer(t){
-      // Idle bounce animation
-      const bounce = Math.sin(t*0.008) * 2.2;
-      const x = player.x;
-      const y = player.y + bounce;
+    let last = performance.now();
+    function tick(now) {
+      const dt = Math.min(0.033, (now - last) / 1000);
+      last = now;
 
-      ctx.save();
-      ctx.translate(x, y);
+      if (!isPaused && !gameOver) {
+        const dir = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
+        player.x = clamp(player.x + dir * player.speed * dt, player.w / 2 + 8, W - player.w / 2 - 8);
 
-      // shadow
-      ctx.globalAlpha = 0.25;
-      ctx.fillStyle = "#000";
-      ctx.beginPath();
-      ctx.ellipse(0, player.h + 8, 26, 8, 0, 0, Math.PI*2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-
-      // body (rounded rect)
-      const bw = player.w, bh = player.h;
-      const r = 12;
-      ctx.fillStyle = "rgba(238,241,246,0.92)";
-      roundRect(-bw/2, 0, bw, bh, r, true);
-
-      // tie/stripe
-      ctx.fillStyle = "rgba(120,160,255,0.55)";
-      roundRect(-6, 12, 12, bh-20, 6, true);
-
-      // head
-      ctx.fillStyle = "rgba(238,241,246,0.98)";
-      ctx.beginPath();
-      ctx.arc(0, -10, 16, 0, Math.PI*2);
-      ctx.fill();
-
-      // eyes
-      ctx.fillStyle = "rgba(10,12,18,0.95)";
-      ctx.beginPath();
-      ctx.arc(-6, -12, 2.2, 0, Math.PI*2);
-      ctx.arc( 6, -12, 2.2, 0, Math.PI*2);
-      ctx.fill();
-
-      // hat (top + brim) – makes it clearly “guy in a hat”
-      ctx.fillStyle = "rgba(255,90,190,0.95)";
-      roundRect(-16, -34, 32, 16, 8, true);     // top
-      ctx.fillStyle = "rgba(255,90,190,0.88)";
-      roundRect(-28, -22, 56, 10, 10, true);    // brim
-
-      // feet
-      ctx.fillStyle = "rgba(238,241,246,0.8)";
-      roundRect(-18, bh-6, 16, 10, 6, true);
-      roundRect(  2, bh-6, 16, 10, 6, true);
-
-      ctx.restore();
-    }
-
-    function drawDeadline(d, t){
-      // Paper sheet with border + stamp
-      const wob = Math.sin(t*0.01 + d.wobble) * 0.06;
-      const rot = d.rot + wob;
-
-      ctx.save();
-      ctx.translate(d.x + d.w/2, d.y + d.h/2);
-      ctx.rotate(rot);
-
-      // glow
-      ctx.globalAlpha = 0.20;
-      ctx.fillStyle = "rgba(255,90,190,1)";
-      roundRect(-d.w/2-6, -d.h/2-6, d.w+12, d.h+12, 10, true);
-      ctx.globalAlpha = 1;
-
-      // paper
-      ctx.fillStyle = "rgba(238,241,246,0.95)";
-      roundRect(-d.w/2, -d.h/2, d.w, d.h, 10, true);
-
-      // top bar
-      ctx.fillStyle = "rgba(255,90,190,0.92)";
-      roundRect(-d.w/2, -d.h/2, d.w, 10, 10, true);
-
-      // stamp
-      ctx.strokeStyle = "rgba(255,90,190,0.95)";
-      ctx.lineWidth = 2;
-      roundRect(d.w/2 - 36, d.h/2 - 22, 30, 14, 6, false);
-      ctx.font = "bold 10px ui-sans-serif, system-ui";
-      ctx.fillStyle = "rgba(255,90,190,0.95)";
-      ctx.fillText(d.stamp, -d.w/2 + 10, 6);
-
-      ctx.restore();
-    }
-
-    function roundRect(x,y,w,h,r,fill){
-      const rr = Math.min(r, w/2, h/2);
-      ctx.beginPath();
-      ctx.moveTo(x+rr, y);
-      ctx.arcTo(x+w, y, x+w, y+h, rr);
-      ctx.arcTo(x+w, y+h, x, y+h, rr);
-      ctx.arcTo(x, y+h, x, y, rr);
-      ctx.arcTo(x, y, x+w, y, rr);
-      ctx.closePath();
-      if (fill) ctx.fill(); else ctx.stroke();
-    }
-
-    function drawTextOverlay(title, subtitle){
-      ctx.save();
-      ctx.fillStyle = "rgba(0,0,0,0.55)";
-      ctx.fillRect(0,0,W,H);
-
-      ctx.fillStyle = "rgba(238,241,246,0.96)";
-      ctx.font = "800 34px ui-sans-serif, system-ui";
-      ctx.fillText(title, 34, 86);
-
-      ctx.fillStyle = "rgba(169,176,192,0.95)";
-      ctx.font = "500 16px ui-sans-serif, system-ui";
-      wrapText(subtitle, 34, 116, W-68, 22);
-
-      ctx.restore();
-    }
-
-    function wrapText(text, x, y, maxWidth, lineHeight){
-      const words = text.split(" ");
-      let line = "";
-      for (let i=0;i<words.length;i++){
-        const test = line + words[i] + " ";
-        const w = ctx.measureText(test).width;
-        if (w > maxWidth && i > 0){
-          ctx.fillText(line, x, y);
-          line = words[i] + " ";
-          y += lineHeight;
-        } else {
-          line = test;
+        spawnTimer += dt;
+        if (spawnTimer >= spawnEvery) {
+          spawnTimer = 0;
+          spawnDeadline();
+          fallSpeed += 6;
+          spawnEvery = Math.max(0.35, spawnEvery - 0.006);
         }
-      }
-      ctx.fillText(line, x, y);
-    }
 
-    function update(dt){
-      if (!started || gameOver || isPaused) return;
+        deadlines.forEach(d => d.y += fallSpeed * dt);
+        deadlines = deadlines.filter(d => d.y < H + 90);
 
-      // movement
-      const dir = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
-      player.x += dir * player.speed * dt;
-      player.x = clamp(player.x, player.w/2 + 8, W - player.w/2 - 8);
-
-      // spawn
-      spawnTimer += dt;
-      if (spawnTimer >= spawnEvery){
-        spawnTimer = 0;
-        spawnDeadline();
-
-        // difficulty ramps slowly
-        fallSpeed += 6;
-        spawnEvery = Math.max(0.35, spawnEvery - 0.006);
-      }
-
-      // deadlines fall
-      for (const d of deadlines){
-        d.y += fallSpeed * dt;
-      }
-      deadlines = deadlines.filter(d => d.y < H + 80);
-
-      // collision
-      // Player hitbox a little forgiving
-      const px = player.x - player.w*0.40;
-      const py = player.y + 6;
-      const pw = player.w*0.80;
-      const ph = player.h - 8;
-
-      for (const d of deadlines){
-        if (aabb(px, py, pw, ph, d.x+8, d.y+6, d.w-16, d.h-12)){
-          gameOver = true;
-          if (score > highScore){
-            highScore = score;
-            localStorage.setItem("deadlineHighScore", String(highScore));
-            highEl.textContent = String(highScore);
+        const px = player.x - player.w * 0.4;
+        const py = player.y + 6;
+        const pw = player.w * 0.8;
+        const ph = player.h - 8;
+        for (const d of deadlines) {
+          if (aabb(px, py, pw, ph, d.x + 8, d.y + 6, d.w - 16, d.h - 12)) {
+            gameOver = true;
+            if (score > highScore) {
+              highScore = score;
+              localStorage.setItem('deadlineHighScore', String(highScore));
+              highEl.textContent = String(highScore);
+            }
+            break;
           }
-          break;
         }
+
+        score += Math.floor(dt * 100);
+        scoreEl.textContent = String(score);
       }
 
-      // score
-      score += Math.floor(dt * 100);
-      scoreEl.textContent = String(score);
+      drawScene(now);
+      requestAnimationFrame(tick);
     }
 
-    function render(t){
-      ctx.clearRect(0,0,W,H);
-
-      // base fill
-      ctx.fillStyle = "rgba(15,17,24,1)";
-      ctx.fillRect(0,0,W,H);
-
-      drawBackground(t);
-
-      // deadlines
-      for (const d of deadlines){
-        drawDeadline(d, t);
-      }
-
-      drawPlayer(t);
-
-      // HUD
-      ctx.save();
-      ctx.fillStyle = "rgba(238,241,246,0.92)";
-      ctx.font = "700 14px ui-sans-serif, system-ui";
-      ctx.fillText("DODGE THE DEADLINES", 16, 22);
-
-      ctx.fillStyle = "rgba(169,176,192,0.92)";
-      ctx.font = "600 13px ui-sans-serif, system-ui";
-      ctx.fillText(isPaused ? "Paused (P)" : "Move: ← → / A D • Pause: P • Restart: R", 16, 42);
-      ctx.restore();
-
-      if (!started){
-        drawTextOverlay("Dodge the Deadlines", "Press Restart to begin. Use ← → or A/D. Avoid the falling deadlines.");
-      } else if (gameOver){
-        drawTextOverlay("Game Over", "Hit Restart (or press R) to try again. Pro tip: keep the center lane — deadlines cluster on the edges.");
-      } else if (isPaused){
-        drawTextOverlay("Paused", "Press P or click Resume.");
-      }
-    }
-
-    function loop(now){
-      const dt = Math.min(0.033, (now - lastT) / 1000); // cap dt for stability
-      lastT = now;
-
-      update(dt);
-      render(now);
-
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
+    resetGame();
+    requestAnimationFrame(tick);
   </script>
 </body>
 </html>
