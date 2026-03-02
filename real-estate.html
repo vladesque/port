@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Real Estate Portfolio — Vlad Sedykh</title>
+  <style>
+    :root{--text:#ffe8c7;--muted:#ddb888;--line:rgba(255,205,148,.3);--panel:rgba(46,28,17,.78)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui;color:var(--text);background:linear-gradient(180deg,#2a170d,#100804)}
+    .wrap{max-width:1000px;margin:0 auto;padding:20px 18px 64px}
+    .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px}
+    a{color:inherit}
+    .btn{padding:8px 12px;border-radius:999px;border:1px solid var(--line);text-decoration:none}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{grid-column:span 6;border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px}
+    @media(max-width:860px){.card{grid-column:span 12}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <strong>Real Estate Portfolio</strong>
+      <div>
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="ai-video-editing.html">AI Video Editing</a>
+        <a class="btn" href="social-media.html">Social Media</a>
+      </div>
+    </div>
+
+    <h1 style="font-size:clamp(34px,5vw,56px)">Real Estate Works</h1>
+    <p style="color:var(--muted)">Property storytelling with warm cinematic color and sales-focused pacing.</p>
+
+    <section class="grid">
+      <article class="card"><h3>Luxury Condo Tour</h3><p style="color:var(--muted)">Vertical + widescreen edits with fluid room-to-room transitions.</p></article>
+      <article class="card"><h3>Modern Home Showcase</h3><p style="color:var(--muted)">Feature-first structure that highlights lifestyle moments.</p></article>
+      <article class="card"><h3>Agent Launch Packages</h3><p style="color:var(--muted)">Same-day teaser clips, listing reels, and social cutdowns.</p></article>
+      <article class="card"><h3>Neighborhood Vibes</h3><p style="color:var(--muted)">Context edits for nearby amenities and local atmosphere.</p></article>
+    </section>
+  </main>
+</body>
+</html>
