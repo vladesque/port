@@ -3,263 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vlad Sedykh — Cinematic Portfolio</title>
-  <style>
-    :root{
-      --bg:#1a1109;
-      --bg-deep:#130c07;
-      --sand:#f9d8a3;
-      --text:#ffe8c6;
-      --muted:#d8b688;
-      --orange:#ff8c3a;
-      --burnt:#d35f1f;
-      --line:rgba(255,206,150,.24);
-      --panel:rgba(43,27,17,.68);
-      --panel-strong:rgba(35,21,13,.9);
-      --radius:20px;
-      --shadow:0 20px 70px rgba(0,0,0,.5);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
-      background: linear-gradient(180deg, #2a190e 0%, #1c120b 48%, #100904 100%);
-      overflow-x:hidden;
-      position:relative;
-      min-height:100vh;
-    }
-
-    .dust, .dust::before, .dust::after{
-      content:"";
-      position:fixed;
-      inset:-20%;
-      pointer-events:none;
-      background-image: radial-gradient(circle, rgba(255,220,170,.17) 0 2px, transparent 3px);
-      background-size: 160px 160px;
-      animation: drift 30s linear infinite;
-      z-index:-3;
-    }
-    .dust::before{animation-duration:48s; opacity:.55; transform:scale(1.1)}
-    .dust::after{animation-duration:65s; opacity:.35; transform:scale(1.22)}
-
-    .sun-glow{
-      position:fixed;
-      top:-140px;
-      left:50%;
-      width:900px;
-      height:500px;
-      transform:translateX(-50%);
-      background: radial-gradient(circle at 50% 45%, rgba(255,165,78,.42), rgba(239,109,37,.15) 45%, transparent 74%);
-      filter: blur(12px);
-      animation: breathe 9s ease-in-out infinite;
-      pointer-events:none;
-      z-index:-2;
-    }
-
-    .horizon{
-      position:fixed;
-      bottom:-120px;
-      left:-10%;
-      width:120%;
-      height:360px;
-      background: radial-gradient(1200px 260px at 30% 80%, rgba(113,57,24,.5), transparent 60%),
-                  radial-gradient(900px 260px at 70% 90%, rgba(182,87,31,.4), transparent 65%);
-      filter: blur(12px);
-      z-index:-2;
-      animation: sway 12s ease-in-out infinite;
-    }
-
-    @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-120px,180px,0)}}
-    @keyframes breathe{0%,100%{opacity:.8;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
-    @keyframes sway{0%,100%{transform:translateX(0)}50%{transform:translateX(-2%)}}
-
-    a{color:inherit}
-    .container{max-width:1100px;margin:0 auto;padding:24px 18px 80px}
-
-    .topbar{
-      position:sticky;top:0;z-index:15;
-      backdrop-filter: blur(8px);
-      background: rgba(24,13,7,.76);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.01em}
-    .brand-dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--sand),var(--orange));box-shadow:0 0 20px rgba(255,156,73,.8);animation: pulse 2.4s ease-in-out infinite}
-    @keyframes pulse{50%{transform:scale(1.15)}}
-    nav{display:flex;gap:8px;flex-wrap:wrap}
-    nav a{padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--muted);border:1px solid transparent;transition:.2s}
-    nav a:hover{color:var(--text);border-color:var(--line);background:rgba(255,173,91,.12)}
-
-    .hero{padding:36px 0 20px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
-    .hero-copy,.hero-photo{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,193,121,.1), transparent 45%),var(--panel);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-copy{padding:24px}
-    .kicker{letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-size:12px}
-    h1{font-size:clamp(38px,6vw,66px);line-height:1;margin:.4rem 0 .7rem;letter-spacing:-.03em}
-    .subtitle{margin:0;color:#f5cca0;max-width:58ch}
-
-    .hero-photo{min-height:340px;display:flex;align-items:end;justify-content:center;padding:20px}
-    .photo-placeholder{
-      width:min(310px,84%);
-      aspect-ratio:3/4;
-      border-radius:18px;
-      border:1px dashed rgba(255,218,174,.65);
-      background:linear-gradient(180deg, rgba(255,146,60,.4), rgba(89,48,24,.72));
-      display:grid;
-      place-content:center;
-      text-align:center;
-      font-weight:600;
-      color:#fff0d6;
-      box-shadow: inset 0 0 0 1px rgba(255,210,150,.25);
-    }
-    .photo-note{font-size:13px;opacity:.9;padding:0 16px 8px;text-align:center;color:var(--muted)}
-
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .btn{padding:11px 16px;border-radius:999px;border:1px solid var(--line);text-decoration:none;background:rgba(255,203,140,.08);transition:.2s}
-    .btn:hover{transform:translateY(-2px);background:rgba(255,179,105,.2)}
-    .btn.primary{background:linear-gradient(135deg,var(--orange),#ffb061);color:#381c0e;font-weight:800;border-color:transparent}
-
-    section{margin-top:48px}
-    .section-title{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:14px}
-    .section-title h2{margin:0;font-size:18px;text-transform:uppercase;letter-spacing:.04em}
-    .section-title p{margin:0;color:var(--muted);font-size:14px}
-
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .card{grid-column:span 6;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--panel);position:relative;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
-    .card::after{content:"";position:absolute;inset:auto -30% -140px;height:180px;background:radial-gradient(circle, rgba(255,145,67,.3), transparent 65%);animation:cardGlow 7s linear infinite}
-    @keyframes cardGlow{50%{transform:translateX(-10%)}}
-    .card:hover{transform:translateY(-4px);background:rgba(51,31,18,.88)}
-    .card h3{margin:.2rem 0 .4rem}
-    .meta{margin:0 0 .65rem;color:var(--muted);font-size:13px}
-    .card ul{margin:0;padding-left:18px}
-
-    .panel{padding:18px;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel-strong);box-shadow:var(--shadow)}
-
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-
-    footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px}
-
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
-
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
-      .card{grid-column:span 12}
-      .split{grid-template-columns:1fr}
-    }
-  </style>
+  <title>Vlad Sedykh — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="dust"></div>
-  <div class="sun-glow"></div>
-  <div class="horizon"></div>
-
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#home"><span class="brand-dot"></span><span>Vlad Sedykh</span></a>
+      <a class="brand" href="index.html"><span class="dot"></span><span>Vlad Sedykh</span></a>
       <nav>
-        <a href="#home">Home</a>
-        <a href="#work">Work</a>
-        <a href="#realestate">Real Estate</a>
-        <a href="ai-works.html">AI + Social Page</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="ai-video-editing.html">AI Video Editing</a>
+        <a href="real-estate.html">Real Estate</a>
+        <a href="social-media.html">Social Media</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section id="home" class="hero reveal">
-      <div class="hero-copy">
-        <div class="kicker">Cinematic creator • Joshua Tree tones • motion-forward</div>
-        <h1>A cinematic portfolio built for movement.</h1>
-        <p class="subtitle">I produce and edit social-first campaigns with an editorial style inspired by desert sunsets: warm, textured, and high-energy. The site is now designed with layered motion, glowing gradients, and immersive transitions.</p>
+    <section class="hero">
+      <article class="panel copy">
+        <div class="kicker">Cinematic portfolio • Joshua Tree palette</div>
+        <h1>One visual world. Three focused pages.</h1>
+        <p class="subtitle">The portfolio is now organized by specialty so clients can instantly jump to AI Video Editing, Real Estate, or Social Media work, while every page keeps the same warm orange motion-driven style.</p>
         <div class="actions">
-          <a class="btn primary" href="#work">View Projects</a>
-          <a class="btn" href="ai-works.html">AI Video Editing Works</a>
-          <a class="btn" href="mailto:youremail@email.com">Email</a>
+          <a class="btn primary" href="ai-video-editing.html">AI Video Editing</a>
+          <a class="btn" href="real-estate.html">Real Estate</a>
+          <a class="btn" href="social-media.html">Social Media</a>
         </div>
-      </div>
-      <div class="hero-photo">
-        <div>
-          <div class="photo-placeholder">Your Photo Goes Here<br/>(replace this block with an image)</div>
-          <p class="photo-note">Top hero portrait slot ready for your headshot or on-set still.</p>
-        </div>
-      </div>
+      </article>
+      <article class="panel photo">
+        <div class="photo-slot">Your Photo Here<br />(top hero slot)</div>
+      </article>
     </section>
 
-    <section id="work" class="reveal">
-      <div class="section-title"><h2>Featured Video Work</h2><p>Fast, premium, and platform-native storytelling</p></div>
+    <section class="section">
+      <div class="section-title">
+        <h2>Navigate by Category</h2>
+        <p>Dedicated pages rebuilt in this PR</p>
+      </div>
       <div class="grid">
-        <article class="card">
-          <h3>Homes.com Social Launch</h3>
-          <p class="meta">Producer + Editor • Multi-cut campaign delivery</p>
-          <ul>
-            <li>Designed a repeatable edit system for shorts and widescreen versions.</li>
-            <li>Delivered high-volume campaign sets while keeping a cinematic feel.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Brand Mood Trailer</h3>
-          <p class="meta">Editorial + motion graphics</p>
-          <ul>
-            <li>Blended sound design, pacing, and movement graphics for stronger emotion.</li>
-            <li>Built modular templates to speed up future revisions.</li>
-          </ul>
-        </article>
+        <a class="panel card" href="ai-video-editing.html">
+          <h3>AI Video Editing</h3>
+          <p>Automation workflows, AI-assisted rough cuts, and polished creative finishing.</p>
+        </a>
+        <a class="panel card" href="real-estate.html">
+          <h3>Real Estate</h3>
+          <p>Property tours, premium listing edits, and agent-focused campaign assets.</p>
+        </a>
+        <a class="panel card" href="social-media.html">
+          <h3>Social Media</h3>
+          <p>Platform strategy, creator-style content, and profile destination links.</p>
+        </a>
       </div>
     </section>
 
-    <section id="realestate" class="reveal">
-      <div class="section-title"><h2>Real Estate Portfolio</h2><p>Your original real estate showcase stays front and center</p></div>
-      <div class="split">
-        <div class="panel">
-          <h3 style="margin-top:0">Luxury Home Tours</h3>
-          <p style="color:var(--muted)">Walkthrough edits with warm color grading and polished pacing for upscale listings.</p>
-        </div>
-        <div class="panel">
-          <h3 style="margin-top:0">Agent + Listing Social Assets</h3>
-          <p style="color:var(--muted)">Short-form cuts, feature spotlights, and launch-day teaser sequences.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal">
-      <div class="section-title"><h2>More</h2><p>New dedicated page for AI and social media work</p></div>
-      <div class="panel">
-        Explore the <a href="ai-works.html">AI Video Editing + Social Media page</a> for your AI-enhanced edits, experiments, and creator channels.
-      </div>
-    </section>
-
-    <section id="contact" class="reveal">
-      <div class="section-title"><h2>Contact</h2><p>Let’s create something cinematic</p></div>
-      <div class="panel">
-        Email: <a href="mailto:youremail@email.com">youremail@email.com</a><br/>
-        LinkedIn: <a href="#">linkedin.com/in/yourprofile</a>
-      </div>
-    </section>
-
-    <footer class="reveal">
-      <div>© <span id="yr"></span> Vlad Sedykh</div>
-      <div>Producer / Editor • Joshua Tree-inspired palette</div>
-    </footer>
+    <footer>© <span id="yr"></span> Vlad Sedykh</footer>
   </main>
 
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    const items = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach((e)=>{ if(e.isIntersecting) e.target.classList.add('show'); });
-    }, {threshold:.12});
-    items.forEach((el)=>io.observe(el));
-  </script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
