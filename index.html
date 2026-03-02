@@ -3,904 +3,263 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vlad Sedykh — Portfolio</title>
-
+  <title>Vlad Sedykh — Cinematic Portfolio</title>
   <style>
     :root{
-      --bg:#0b0d12;
-      --panel:#111521;
-      --panel2:#0f1320;
-      --text:#eef1f6;
-      --muted:#a9b0c0;
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --radius:18px;
+      --bg:#1a1109;
+      --bg-deep:#130c07;
+      --sand:#f9d8a3;
+      --text:#ffe8c6;
+      --muted:#d8b688;
+      --orange:#ff8c3a;
+      --burnt:#d35f1f;
+      --line:rgba(255,206,150,.24);
+      --panel:rgba(43,27,17,.68);
+      --panel-strong:rgba(35,21,13,.9);
+      --radius:20px;
+      --shadow:0 20px 70px rgba(0,0,0,.5);
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
-      line-height:1.6;
+      background: linear-gradient(180deg, #2a190e 0%, #1c120b 48%, #100904 100%);
       overflow-x:hidden;
-
-      /* animated background */
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(120,160,255,.18), transparent 55%),
-        radial-gradient(900px 500px at 90% 0%, rgba(255,90,190,.14), transparent 50%),
-        radial-gradient(900px 600px at 50% 110%, rgba(80,255,200,.10), transparent 50%),
-        var(--bg);
       position:relative;
+      min-height:100vh;
     }
-    body::before{
+
+    .dust, .dust::before, .dust::after{
       content:"";
       position:fixed;
-      inset:-40%;
+      inset:-20%;
       pointer-events:none;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(120,160,255,.10), transparent 45%),
-        radial-gradient(circle at 70% 35%, rgba(255,90,190,.08), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(80,255,200,.06), transparent 45%);
-      filter: blur(30px);
-      opacity:.9;
-      animation: floatBg 12s ease-in-out infinite;
-      z-index:-1;
+      background-image: radial-gradient(circle, rgba(255,220,170,.17) 0 2px, transparent 3px);
+      background-size: 160px 160px;
+      animation: drift 30s linear infinite;
+      z-index:-3;
     }
-    @keyframes floatBg{
-      0%{ transform: translate3d(-1%, -1%, 0) scale(1); }
-      50%{ transform: translate3d(1%, 1%, 0) scale(1.03); }
-      100%{ transform: translate3d(-1%, -1%, 0) scale(1); }
+    .dust::before{animation-duration:48s; opacity:.55; transform:scale(1.1)}
+    .dust::after{animation-duration:65s; opacity:.35; transform:scale(1.22)}
+
+    .sun-glow{
+      position:fixed;
+      top:-140px;
+      left:50%;
+      width:900px;
+      height:500px;
+      transform:translateX(-50%);
+      background: radial-gradient(circle at 50% 45%, rgba(255,165,78,.42), rgba(239,109,37,.15) 45%, transparent 74%);
+      filter: blur(12px);
+      animation: breathe 9s ease-in-out infinite;
+      pointer-events:none;
+      z-index:-2;
     }
+
+    .horizon{
+      position:fixed;
+      bottom:-120px;
+      left:-10%;
+      width:120%;
+      height:360px;
+      background: radial-gradient(1200px 260px at 30% 80%, rgba(113,57,24,.5), transparent 60%),
+                  radial-gradient(900px 260px at 70% 90%, rgba(182,87,31,.4), transparent 65%);
+      filter: blur(12px);
+      z-index:-2;
+      animation: sway 12s ease-in-out infinite;
+    }
+
+    @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-120px,180px,0)}}
+    @keyframes breathe{0%,100%{opacity:.8;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+    @keyframes sway{0%,100%{transform:translateX(0)}50%{transform:translateX(-2%)}}
 
     a{color:inherit}
-    .container{max-width:1050px;margin:0 auto;padding:28px 18px 64px}
+    .container{max-width:1100px;margin:0 auto;padding:24px 18px 80px}
 
-    /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter: blur(10px);
-      background: rgba(11,13,18,.65);
-      border-bottom: 1px solid var(--line);
+      position:sticky;top:0;z-index:15;
+      backdrop-filter: blur(8px);
+      background: rgba(24,13,7,.76);
+      border-bottom:1px solid var(--line);
     }
-    .topbar-inner{
-      max-width:1050px; margin:0 auto;
-      padding:14px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none;
-      user-select:none;
-    }
-    .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(135deg, rgba(120,160,255,1), rgba(255,90,190,1));
-      box-shadow: 0 0 0 6px rgba(255,255,255,.03);
-      animation: pulse 2.6s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{ transform: scale(1); filter: brightness(1); }
-      50%{ transform: scale(1.12); filter: brightness(1.1); }
-    }
-    .brand span{font-weight:700; letter-spacing:-.02em}
+    .topbar-inner{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.01em}
+    .brand-dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--sand),var(--orange));box-shadow:0 0 20px rgba(255,156,73,.8);animation: pulse 2.4s ease-in-out infinite}
+    @keyframes pulse{50%{transform:scale(1.15)}}
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    nav a{padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--muted);border:1px solid transparent;transition:.2s}
+    nav a:hover{color:var(--text);border-color:var(--line);background:rgba(255,173,91,.12)}
 
-    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    nav a{
-      text-decoration:none;
-      color: var(--muted);
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-      transition: .18s ease;
-    }
-    nav a:hover{
-      color: var(--text);
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
-      transform: translateY(-1px);
-    }
-
-    /* Hero */
-    .hero{padding:26px 0 10px}
-    .kicker{
-      color: var(--muted);
-      font-size:14px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-    h1{
-      margin:10px 0 8px;
-      font-size: clamp(36px, 5vw, 56px);
-      line-height:1.05;
-      letter-spacing:-.03em;
-    }
-    .subtitle{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 70ch;
-    }
-
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:11px 14px;
-      border-radius: 999px;
-      text-decoration:none;
+    .hero{padding:36px 0 20px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+    .hero-copy,.hero-photo{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      transition: .18s ease;
-      box-shadow: 0 8px 30px rgba(0,0,0,.25);
-      position:relative;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,193,121,.1), transparent 45%),var(--panel);
+      box-shadow:var(--shadow);
       overflow:hidden;
+      position:relative;
     }
-    .btn::after{
-      content:"";
-      position:absolute;
-      inset:-50% -60%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.18), transparent);
-      transform: translateX(-60%) rotate(12deg);
-      transition:.35s ease;
-      opacity:.0;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-    }
-    .btn:hover::after{
-      opacity:1;
-      transform: translateX(60%) rotate(12deg);
-    }
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(120,160,255,.95), rgba(255,90,190,.92));
-      color:#071018;
-      font-weight:800;
-    }
+    .hero-copy{padding:24px}
+    .kicker{letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-size:12px}
+    h1{font-size:clamp(38px,6vw,66px);line-height:1;margin:.4rem 0 .7rem;letter-spacing:-.03em}
+    .subtitle{margin:0;color:#f5cca0;max-width:58ch}
 
-    /* Sections */
-    section{margin-top:46px}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin: 0 0 14px;
-    }
-    .section-title h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.02em;
-      text-transform: uppercase;
-      color: rgba(238,241,246,.92);
-    }
-    .section-title p{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Cards + grids */
-    .grid{
+    .hero-photo{min-height:340px;display:flex;align-items:end;justify-content:center;padding:20px}
+    .photo-placeholder{
+      width:min(310px,84%);
+      aspect-ratio:3/4;
+      border-radius:18px;
+      border:1px dashed rgba(255,218,174,.65);
+      background:linear-gradient(180deg, rgba(255,146,60,.4), rgba(89,48,24,.72));
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      place-content:center;
+      text-align:center;
+      font-weight:600;
+      color:#fff0d6;
+      box-shadow: inset 0 0 0 1px rgba(255,210,150,.25);
     }
-    .card{
-      grid-column: span 6;
-      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 55%), var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px 16px 14px;
-      box-shadow: var(--shadow);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      position:relative;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background: radial-gradient(700px 220px at 15% 0%, rgba(120,160,255,.12), transparent 55%),
-                  radial-gradient(700px 220px at 85% 0%, rgba(255,90,190,.10), transparent 55%);
-      opacity:.0;
-      transition:.18s ease;
-      pointer-events:none;
-    }
-    .card:hover{
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), transparent 60%), var(--panel);
-    }
-    .card:hover::before{ opacity:1; }
-    .card h3{margin:2px 0 6px; font-size: 17px; letter-spacing:-.01em}
-    .meta{margin:0 0 10px; color: var(--muted); font-size: 13px}
-    .card ul{margin:0; padding-left:18px; color: rgba(238,241,246,.9)}
-    .card li{margin:6px 0}
-    .card a{
-      color: rgba(220,235,255,1);
-      text-decoration: none;
-      border-bottom:1px solid rgba(220,235,255,.25)
-    }
-    .card a:hover{border-bottom-color: rgba(220,235,255,.8)}
+    .photo-note{font-size:13px;opacity:.9;padding:0 16px 8px;text-align:center;color:var(--muted)}
 
-    .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 60%), var(--panel2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{padding:11px 16px;border-radius:999px;border:1px solid var(--line);text-decoration:none;background:rgba(255,203,140,.08);transition:.2s}
+    .btn:hover{transform:translateY(-2px);background:rgba(255,179,105,.2)}
+    .btn.primary{background:linear-gradient(135deg,var(--orange),#ffb061);color:#381c0e;font-weight:800;border-color:transparent}
 
-    .pillrow{display:flex; flex-wrap:wrap; gap:10px}
-    .pill{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-size: 13px;
-      transition: transform .16s ease, background .16s ease;
-    }
-    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.06);}
+    section{margin-top:48px}
+    .section-title{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:14px}
+    .section-title h2{margin:0;font-size:18px;text-transform:uppercase;letter-spacing:.04em}
+    .section-title p{margin:0;color:var(--muted);font-size:14px}
 
-    /* Game */
-    .gamewrap{display:grid; grid-template-columns: 1.5fr .8fr; gap:14px; align-items:start}
-    canvas{
-      width:100%;
-      height:auto;
-      background: rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      display:block;
-      box-shadow: var(--shadow);
-    }
-    .controls{display:flex; gap:10px; flex-wrap:wrap}
-    .controls button{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      cursor:pointer;
-      transition:.18s ease;
-    }
-    .controls button:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
-    .scoreline{color: var(--muted); margin: 10px 0 0; font-size: 14px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{grid-column:span 6;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--panel);position:relative;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
+    .card::after{content:"";position:absolute;inset:auto -30% -140px;height:180px;background:radial-gradient(circle, rgba(255,145,67,.3), transparent 65%);animation:cardGlow 7s linear infinite}
+    @keyframes cardGlow{50%{transform:translateX(-10%)}}
+    .card:hover{transform:translateY(-4px);background:rgba(51,31,18,.88)}
+    .card h3{margin:.2rem 0 .4rem}
+    .meta{margin:0 0 .65rem;color:var(--muted);font-size:13px}
+    .card ul{margin:0;padding-left:18px}
 
-    /* Footer */
-    footer{
-      margin-top: 60px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
-    }
+    .panel{padding:18px;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel-strong);box-shadow:var(--shadow)}
 
-    /* Reveal animations */
-    .reveal{
-      opacity:0;
-      transform: translateY(14px);
-      filter: blur(2px);
-      transition: opacity .7s ease, transform .7s ease, filter .7s ease;
-    }
-    .reveal.show{
-      opacity:1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-    .stagger > *{
-      opacity:0;
-      transform: translateY(12px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .stagger.show > *{
-      opacity:1;
-      transform: translateY(0);
-    }
-    .stagger.show > *:nth-child(1){ transition-delay: .05s; }
-    .stagger.show > *:nth-child(2){ transition-delay: .10s; }
-    .stagger.show > *:nth-child(3){ transition-delay: .15s; }
-    .stagger.show > *:nth-child(4){ transition-delay: .20s; }
-    .stagger.show > *:nth-child(5){ transition-delay: .25s; }
-    .stagger.show > *:nth-child(6){ transition-delay: .30s; }
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-    @media (max-width: 860px){
-      .card{grid-column: span 12}
-      .gamewrap{grid-template-columns: 1fr}
-      nav{justify-content:flex-start}
+    footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .card{grid-column:span 12}
+      .split{grid-template-columns:1fr}
     }
   </style>
 </head>
-
 <body>
-  <div class="topbar">
+  <div class="dust"></div>
+  <div class="sun-glow"></div>
+  <div class="horizon"></div>
+
+  <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#home">
-        <span class="dot"></span>
-        <span>Vlad Sedykh</span>
-      </a>
+      <a class="brand" href="#home"><span class="brand-dot"></span><span>Vlad Sedykh</span></a>
       <nav>
         <a href="#home">Home</a>
         <a href="#work">Work</a>
         <a href="#realestate">Real Estate</a>
-        <a href="#game">Game</a>
+        <a href="ai-works.html">AI + Social Page</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="container">
-
+  <main class="container">
     <section id="home" class="hero reveal">
-      <div class="kicker">Producer • Editor • Social-first storytelling</div>
-      <h1>Vlad Sedykh</h1>
-      <p class="subtitle">
-        Producer / Video Editor — Social & Marketing. I make high-volume campaigns feel premium,
-        from concept and shoots to post and delivery.
-      </p>
-
-      <div class="actions stagger">
-        <!-- Replace # links with your real links -->
-        <a class="btn primary" href="#" target="_blank" rel="noreferrer">Watch Reel</a>
-        <a class="btn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="mailto:youremail@email.com">Email</a>
+      <div class="hero-copy">
+        <div class="kicker">Cinematic creator • Joshua Tree tones • motion-forward</div>
+        <h1>A cinematic portfolio built for movement.</h1>
+        <p class="subtitle">I produce and edit social-first campaigns with an editorial style inspired by desert sunsets: warm, textured, and high-energy. The site is now designed with layered motion, glowing gradients, and immersive transitions.</p>
+        <div class="actions">
+          <a class="btn primary" href="#work">View Projects</a>
+          <a class="btn" href="ai-works.html">AI Video Editing Works</a>
+          <a class="btn" href="mailto:youremail@email.com">Email</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div>
+          <div class="photo-placeholder">Your Photo Goes Here<br/>(replace this block with an image)</div>
+          <p class="photo-note">Top hero portrait slot ready for your headshot or on-set still.</p>
+        </div>
       </div>
     </section>
 
     <section id="work" class="reveal">
-      <div class="section-title">
-        <h2>Featured Work</h2>
-        <p>Swap in your real projects + links</p>
-      </div>
-
-      <div class="grid stagger">
+      <div class="section-title"><h2>Featured Video Work</h2><p>Fast, premium, and platform-native storytelling</p></div>
+      <div class="grid">
         <article class="card">
-          <h3>Homes.com — Social Campaign Series</h3>
-          <p class="meta">Role: Producer/Editor • Tools: Premiere, After Effects • Format: 9:16 + 16:9</p>
+          <h3>Homes.com Social Launch</h3>
+          <p class="meta">Producer + Editor • Multi-cut campaign delivery</p>
           <ul>
-            <li>Produced and edited a repeatable series with fast turnarounds.</li>
-            <li>Built templates + versioning to speed delivery across platforms.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
+            <li>Designed a repeatable edit system for shorts and widescreen versions.</li>
+            <li>Delivered high-volume campaign sets while keeping a cinematic feel.</li>
           </ul>
         </article>
-
         <article class="card">
-          <h3>Podcast Clips — Multi-platform Cutdowns</h3>
-          <p class="meta">Role: Editor • Tools: Premiere • Output: Shorts/Reels/TikTok</p>
+          <h3>Brand Mood Trailer</h3>
+          <p class="meta">Editorial + motion graphics</p>
           <ul>
-            <li>Crafted hook-first pacing and captions optimized for retention.</li>
-            <li>Delivered batches with consistent style and quick iteration.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
+            <li>Blended sound design, pacing, and movement graphics for stronger emotion.</li>
+            <li>Built modular templates to speed up future revisions.</li>
           </ul>
         </article>
-
-        <article class="card">
-          <h3>Brand Explainer — Motion + Editorial</h3>
-          <p class="meta">Role: Producer/Editor • Tools: AE + Premiere</p>
-          <ul>
-            <li>Blended live-action with motion graphics for clarity and energy.</li>
-            <li>Created modular assets for reuse across future campaigns.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>On-Set Shoot — Fast Social Deliverables</h3>
-          <p class="meta">Role: Producer • Tools: DSLR/Mobile + Post Pipeline</p>
-          <ul>
-            <li>Planned shot list, ran set, and delivered same-week edits.</li>
-            <li>Standardized naming + organization to reduce search time.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">View</a></li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="reveal">
-      <div class="section-title">
-        <h2>Skills</h2>
-        <p>End-to-end production + post</p>
-      </div>
-
-      <div class="panel">
-        <div class="pillrow">
-          <span class="pill">Producing</span>
-          <span class="pill">Editing</span>
-          <span class="pill">Motion Graphics</span>
-          <span class="pill">Social Formats</span>
-          <span class="pill">Captioning</span>
-          <span class="pill">Asset Management</span>
-          <span class="pill">AI-Assisted Workflows</span>
-          <span class="pill">On-Set Production</span>
-          <span class="pill">Cross-Functional Collaboration</span>
-        </div>
       </div>
     </section>
 
     <section id="realestate" class="reveal">
-      <div class="section-title">
-        <h2>Real Estate Work</h2>
-        <p>Photos + videos — add your links/assets</p>
-      </div>
-
-      <div class="grid stagger">
-        <article class="card">
-          <h3>Luxury Condo Tour</h3>
-          <p class="meta">Format: 9:16 + 16:9 • Deliverables: Tour + cutdowns</p>
-          <ul>
-            <li>Shot for flow + light; edited for clarity and pacing.</li>
-            <li>Delivered multiple aspect ratios with consistent look.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">Watch</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Modern Home Showcase</h3>
-          <p class="meta">Format: 16:9 • Deliverables: Walkthrough + hero edit</p>
-          <ul>
-            <li>Storytelling focused on lifestyle and key features.</li>
-            <li>Polished color + sound for “premium” feel.</li>
-            <li><a href="#" target="_blank" rel="noreferrer">Watch</a></li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="panel" style="margin-top:14px">
-        <p style="margin:0;color:var(--muted)">
-          Tip: if you want, we can split this into <strong>real-estate.html</strong> later and add a photo grid + video gallery.
-        </p>
+      <div class="section-title"><h2>Real Estate Portfolio</h2><p>Your original real estate showcase stays front and center</p></div>
+      <div class="split">
+        <div class="panel">
+          <h3 style="margin-top:0">Luxury Home Tours</h3>
+          <p style="color:var(--muted)">Walkthrough edits with warm color grading and polished pacing for upscale listings.</p>
+        </div>
+        <div class="panel">
+          <h3 style="margin-top:0">Agent + Listing Social Assets</h3>
+          <p style="color:var(--muted)">Short-form cuts, feature spotlights, and launch-day teaser sequences.</p>
+        </div>
       </div>
     </section>
 
-    <section id="game" class="reveal">
-      <div class="section-title">
-        <h2>Dodge the Deadlines</h2>
-        <p>Bonus: tiny arcade game in vanilla JS</p>
-      </div>
-
-      <div class="gamewrap">
-        <div>
-          <canvas id="gameCanvas" width="800" height="450"></canvas>
-        </div>
-
-        <div class="panel">
-          <p style="margin-top:0;color:var(--muted)">
-            Controls: ← → or A/D • Pause: P
-          </p>
-
-          <div class="controls">
-            <button id="leftBtn">Left</button>
-            <button id="rightBtn">Right</button>
-            <button id="pauseBtn">Pause</button>
-            <button id="restartBtn">Restart</button>
-          </div>
-
-          <p class="scoreline">Score: <span id="score">0</span></p>
-          <p class="scoreline">High score: <span id="highScore">0</span></p>
-
-          <p class="scoreline" style="margin-top:14px">
-            Pro tip: this is a fun “creative flex.” Keep your reel and projects as the main focus.
-          </p>
-        </div>
+    <section class="reveal">
+      <div class="section-title"><h2>More</h2><p>New dedicated page for AI and social media work</p></div>
+      <div class="panel">
+        Explore the <a href="ai-works.html">AI Video Editing + Social Media page</a> for your AI-enhanced edits, experiments, and creator channels.
       </div>
     </section>
 
     <section id="contact" class="reveal">
-      <div class="section-title">
-        <h2>Contact</h2>
-        <p>Let’s build something</p>
-      </div>
+      <div class="section-title"><h2>Contact</h2><p>Let’s create something cinematic</p></div>
       <div class="panel">
-        <p style="margin:0">
-          Email: <a href="mailto:youremail@email.com">youremail@email.com</a><br />
-          LinkedIn: <a href="#" target="_blank" rel="noreferrer">linkedin.com/in/yourprofile</a>
-        </p>
+        Email: <a href="mailto:youremail@email.com">youremail@email.com</a><br/>
+        LinkedIn: <a href="#">linkedin.com/in/yourprofile</a>
       </div>
     </section>
 
     <footer class="reveal">
       <div>© <span id="yr"></span> Vlad Sedykh</div>
-      <div>Producer / Editor • Social & Marketing</div>
+      <div>Producer / Editor • Joshua Tree-inspired palette</div>
     </footer>
-  </div>
+  </main>
 
   <script>
-    // --------- Reveal animations (sections fade in on scroll) ----------
-    const revealEls = document.querySelectorAll(".reveal, .stagger");
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) e.target.classList.add("show");
-      }
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-
-    document.getElementById("yr").textContent = new Date().getFullYear();
-
-    // --------------------------- GAME ---------------------------
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
-
-    const scoreEl = document.getElementById("score");
-    const highEl = document.getElementById("highScore");
-
-    // Responsive draw scale (keeps internal resolution)
-    function fitCanvas() {
-      // keep internal pixel size for sharpness; CSS scales via width:100%
-      // (no action needed unless you want dynamic pixel sizing)
-    }
-    window.addEventListener("resize", fitCanvas);
-    fitCanvas();
-
-    // Controls
-    const keys = { left:false, right:false };
-    let isPaused = false;
-
-    const leftBtn = document.getElementById("leftBtn");
-    const rightBtn = document.getElementById("rightBtn");
-    const pauseBtn = document.getElementById("pauseBtn");
-    const restartBtn = document.getElementById("restartBtn");
-
-    function bindHold(btn, onDown, onUp){
-      btn.addEventListener("mousedown", onDown);
-      btn.addEventListener("mouseup", onUp);
-      btn.addEventListener("mouseleave", onUp);
-      btn.addEventListener("touchstart", (e)=>{ e.preventDefault(); onDown(); }, {passive:false});
-      btn.addEventListener("touchend", onUp);
-    }
-
-    bindHold(leftBtn, ()=>keys.left=true, ()=>keys.left=false);
-    bindHold(rightBtn, ()=>keys.right=true, ()=>keys.right=false);
-
-    pauseBtn.addEventListener("click", ()=>{
-      isPaused = !isPaused;
-      pauseBtn.textContent = isPaused ? "Resume" : "Pause";
-    });
-
-    restartBtn.addEventListener("click", resetGame);
-
-    document.addEventListener("keydown", (e)=>{
-      if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") keys.left = true;
-      if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") keys.right = true;
-      if (e.key.toLowerCase() === "p") {
-        isPaused = !isPaused;
-        pauseBtn.textContent = isPaused ? "Resume" : "Pause";
-      }
-      if (e.key.toLowerCase() === "r") resetGame();
-    });
-
-    document.addEventListener("keyup", (e)=>{
-      if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") keys.left = false;
-      if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") keys.right = false;
-    });
-
-    // Game state
-    const W = canvas.width, H = canvas.height;
-
-    const player = {
-      x: W * 0.5,
-      y: H * 0.80,
-      w: 48,
-      h: 62,
-      speed: 520, // px/sec
-    };
-
-    let deadlines = [];
-    let score = 0;
-    let highScore = Number(localStorage.getItem("deadlineHighScore") || "0");
-    highEl.textContent = String(highScore);
-
-    let gameOver = false;
-    let started = false;
-
-    let spawnTimer = 0;
-    let spawnEvery = 0.85; // seconds (gets lower with difficulty)
-    let fallSpeed = 220;   // px/sec (gets higher with difficulty)
-
-    let lastT = performance.now();
-
-    function resetGame(){
-      deadlines = [];
-      score = 0;
-      gameOver = false;
-      started = true;
-      isPaused = false;
-      pauseBtn.textContent = "Pause";
-      spawnTimer = 0;
-      spawnEvery = 0.85;
-      fallSpeed = 220;
-      player.x = W * 0.5;
-      scoreEl.textContent = "0";
-    }
-
-    // Start automatically so it feels alive; user can just play
-    resetGame();
-
-    function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
-
-    function spawnDeadline(){
-      const w = 86;
-      const h = 34;
-      const pad = 14;
-      const x = Math.random() * (W - w - pad*2) + pad;
-      deadlines.push({
-        x, y: -h - 10, w, h,
-        rot: (Math.random()*0.18 - 0.09),   // slight tilt
-        wobble: Math.random()*Math.PI*2,
-        stamp: Math.random() > 0.5 ? "DEADLINE" : "DUE",
-      });
-    }
-
-    function aabb(ax, ay, aw, ah, bx, by, bw, bh){
-      return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
-    }
-
-    function drawBackground(t){
-      // subtle moving grid
-      ctx.save();
-      ctx.globalAlpha = 0.14;
-      ctx.strokeStyle = "rgba(255,255,255,0.10)";
-      ctx.lineWidth = 1;
-
-      const grid = 42;
-      const ox = (t*0.015) % grid;
-      const oy = (t*0.01) % grid;
-
-      for (let x = -grid; x < W + grid; x += grid){
-        ctx.beginPath();
-        ctx.moveTo(x + ox, 0);
-        ctx.lineTo(x + ox, H);
-        ctx.stroke();
-      }
-      for (let y = -grid; y < H + grid; y += grid){
-        ctx.beginPath();
-        ctx.moveTo(0, y + oy);
-        ctx.lineTo(W, y + oy);
-        ctx.stroke();
-      }
-      ctx.restore();
-
-      // vignette
-      const g = ctx.createRadialGradient(W/2, H/2, 60, W/2, H/2, Math.max(W,H)*0.7);
-      g.addColorStop(0, "rgba(0,0,0,0)");
-      g.addColorStop(1, "rgba(0,0,0,0.55)");
-      ctx.fillStyle = g;
-      ctx.fillRect(0,0,W,H);
-    }
-
-    function drawPlayer(t){
-      // Idle bounce animation
-      const bounce = Math.sin(t*0.008) * 2.2;
-      const x = player.x;
-      const y = player.y + bounce;
-
-      ctx.save();
-      ctx.translate(x, y);
-
-      // shadow
-      ctx.globalAlpha = 0.25;
-      ctx.fillStyle = "#000";
-      ctx.beginPath();
-      ctx.ellipse(0, player.h + 8, 26, 8, 0, 0, Math.PI*2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-
-      // body (rounded rect)
-      const bw = player.w, bh = player.h;
-      const r = 12;
-      ctx.fillStyle = "rgba(238,241,246,0.92)";
-      roundRect(-bw/2, 0, bw, bh, r, true);
-
-      // tie/stripe
-      ctx.fillStyle = "rgba(120,160,255,0.55)";
-      roundRect(-6, 12, 12, bh-20, 6, true);
-
-      // head
-      ctx.fillStyle = "rgba(238,241,246,0.98)";
-      ctx.beginPath();
-      ctx.arc(0, -10, 16, 0, Math.PI*2);
-      ctx.fill();
-
-      // eyes
-      ctx.fillStyle = "rgba(10,12,18,0.95)";
-      ctx.beginPath();
-      ctx.arc(-6, -12, 2.2, 0, Math.PI*2);
-      ctx.arc( 6, -12, 2.2, 0, Math.PI*2);
-      ctx.fill();
-
-      // hat (top + brim) – makes it clearly “guy in a hat”
-      ctx.fillStyle = "rgba(255,90,190,0.95)";
-      roundRect(-16, -34, 32, 16, 8, true);     // top
-      ctx.fillStyle = "rgba(255,90,190,0.88)";
-      roundRect(-28, -22, 56, 10, 10, true);    // brim
-
-      // feet
-      ctx.fillStyle = "rgba(238,241,246,0.8)";
-      roundRect(-18, bh-6, 16, 10, 6, true);
-      roundRect(  2, bh-6, 16, 10, 6, true);
-
-      ctx.restore();
-    }
-
-    function drawDeadline(d, t){
-      // Paper sheet with border + stamp
-      const wob = Math.sin(t*0.01 + d.wobble) * 0.06;
-      const rot = d.rot + wob;
-
-      ctx.save();
-      ctx.translate(d.x + d.w/2, d.y + d.h/2);
-      ctx.rotate(rot);
-
-      // glow
-      ctx.globalAlpha = 0.20;
-      ctx.fillStyle = "rgba(255,90,190,1)";
-      roundRect(-d.w/2-6, -d.h/2-6, d.w+12, d.h+12, 10, true);
-      ctx.globalAlpha = 1;
-
-      // paper
-      ctx.fillStyle = "rgba(238,241,246,0.95)";
-      roundRect(-d.w/2, -d.h/2, d.w, d.h, 10, true);
-
-      // top bar
-      ctx.fillStyle = "rgba(255,90,190,0.92)";
-      roundRect(-d.w/2, -d.h/2, d.w, 10, 10, true);
-
-      // stamp
-      ctx.strokeStyle = "rgba(255,90,190,0.95)";
-      ctx.lineWidth = 2;
-      roundRect(d.w/2 - 36, d.h/2 - 22, 30, 14, 6, false);
-      ctx.font = "bold 10px ui-sans-serif, system-ui";
-      ctx.fillStyle = "rgba(255,90,190,0.95)";
-      ctx.fillText(d.stamp, -d.w/2 + 10, 6);
-
-      ctx.restore();
-    }
-
-    function roundRect(x,y,w,h,r,fill){
-      const rr = Math.min(r, w/2, h/2);
-      ctx.beginPath();
-      ctx.moveTo(x+rr, y);
-      ctx.arcTo(x+w, y, x+w, y+h, rr);
-      ctx.arcTo(x+w, y+h, x, y+h, rr);
-      ctx.arcTo(x, y+h, x, y, rr);
-      ctx.arcTo(x, y, x+w, y, rr);
-      ctx.closePath();
-      if (fill) ctx.fill(); else ctx.stroke();
-    }
-
-    function drawTextOverlay(title, subtitle){
-      ctx.save();
-      ctx.fillStyle = "rgba(0,0,0,0.55)";
-      ctx.fillRect(0,0,W,H);
-
-      ctx.fillStyle = "rgba(238,241,246,0.96)";
-      ctx.font = "800 34px ui-sans-serif, system-ui";
-      ctx.fillText(title, 34, 86);
-
-      ctx.fillStyle = "rgba(169,176,192,0.95)";
-      ctx.font = "500 16px ui-sans-serif, system-ui";
-      wrapText(subtitle, 34, 116, W-68, 22);
-
-      ctx.restore();
-    }
-
-    function wrapText(text, x, y, maxWidth, lineHeight){
-      const words = text.split(" ");
-      let line = "";
-      for (let i=0;i<words.length;i++){
-        const test = line + words[i] + " ";
-        const w = ctx.measureText(test).width;
-        if (w > maxWidth && i > 0){
-          ctx.fillText(line, x, y);
-          line = words[i] + " ";
-          y += lineHeight;
-        } else {
-          line = test;
-        }
-      }
-      ctx.fillText(line, x, y);
-    }
-
-    function update(dt){
-      if (!started || gameOver || isPaused) return;
-
-      // movement
-      const dir = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
-      player.x += dir * player.speed * dt;
-      player.x = clamp(player.x, player.w/2 + 8, W - player.w/2 - 8);
-
-      // spawn
-      spawnTimer += dt;
-      if (spawnTimer >= spawnEvery){
-        spawnTimer = 0;
-        spawnDeadline();
-
-        // difficulty ramps slowly
-        fallSpeed += 6;
-        spawnEvery = Math.max(0.35, spawnEvery - 0.006);
-      }
-
-      // deadlines fall
-      for (const d of deadlines){
-        d.y += fallSpeed * dt;
-      }
-      deadlines = deadlines.filter(d => d.y < H + 80);
-
-      // collision
-      // Player hitbox a little forgiving
-      const px = player.x - player.w*0.40;
-      const py = player.y + 6;
-      const pw = player.w*0.80;
-      const ph = player.h - 8;
-
-      for (const d of deadlines){
-        if (aabb(px, py, pw, ph, d.x+8, d.y+6, d.w-16, d.h-12)){
-          gameOver = true;
-          if (score > highScore){
-            highScore = score;
-            localStorage.setItem("deadlineHighScore", String(highScore));
-            highEl.textContent = String(highScore);
-          }
-          break;
-        }
-      }
-
-      // score
-      score += Math.floor(dt * 100);
-      scoreEl.textContent = String(score);
-    }
-
-    function render(t){
-      ctx.clearRect(0,0,W,H);
-
-      // base fill
-      ctx.fillStyle = "rgba(15,17,24,1)";
-      ctx.fillRect(0,0,W,H);
-
-      drawBackground(t);
-
-      // deadlines
-      for (const d of deadlines){
-        drawDeadline(d, t);
-      }
-
-      drawPlayer(t);
-
-      // HUD
-      ctx.save();
-      ctx.fillStyle = "rgba(238,241,246,0.92)";
-      ctx.font = "700 14px ui-sans-serif, system-ui";
-      ctx.fillText("DODGE THE DEADLINES", 16, 22);
-
-      ctx.fillStyle = "rgba(169,176,192,0.92)";
-      ctx.font = "600 13px ui-sans-serif, system-ui";
-      ctx.fillText(isPaused ? "Paused (P)" : "Move: ← → / A D • Pause: P • Restart: R", 16, 42);
-      ctx.restore();
-
-      if (!started){
-        drawTextOverlay("Dodge the Deadlines", "Press Restart to begin. Use ← → or A/D. Avoid the falling deadlines.");
-      } else if (gameOver){
-        drawTextOverlay("Game Over", "Hit Restart (or press R) to try again. Pro tip: keep the center lane — deadlines cluster on the edges.");
-      } else if (isPaused){
-        drawTextOverlay("Paused", "Press P or click Resume.");
-      }
-    }
-
-    function loop(now){
-      const dt = Math.min(0.033, (now - lastT) / 1000); // cap dt for stability
-      lastT = now;
-
-      update(dt);
-      render(now);
-
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const items = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+    }, {threshold:.12});
+    items.forEach((el)=>io.observe(el));
   </script>
 </body>
 </html>
