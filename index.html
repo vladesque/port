@@ -4,47 +4,59 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vlad Sedykh — Portfolio Hub</title>
-  <style>
-    :root{
-      --text:#ffe8c7;--muted:#ddb888;--orange:#ff8f3f;--line:rgba(255,205,148,.3);--panel:rgba(46,28,17,.75);
-    }
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui;color:var(--text);background:linear-gradient(180deg,#2d1b10,#130b06);overflow-x:hidden}
-    .dust,.dust:before,.dust:after{content:"";position:fixed;inset:-20%;pointer-events:none;background-image:radial-gradient(circle,rgba(255,220,170,.15) 0 2px,transparent 3px);background-size:140px 140px;animation:drift 36s linear infinite;z-index:-2}
-    .dust:before{animation-duration:55s;opacity:.5}.dust:after{animation-duration:70s;opacity:.33}
-    @keyframes drift{to{transform:translate3d(-140px,200px,0)}}
-    .sun{position:fixed;top:-180px;left:50%;transform:translateX(-50%);width:980px;height:580px;filter:blur(12px);background:radial-gradient(circle at 50% 45%,rgba(255,169,84,.44),transparent 72%);z-index:-1}
-    .top{position:sticky;top:0;background:rgba(24,13,7,.76);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-    .topin,.wrap{max-width:1100px;margin:0 auto;padding:14px 18px}.topin{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    nav{display:flex;gap:8px;flex-wrap:wrap} nav a{padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--muted)} nav a:hover{background:rgba(255,169,84,.15);color:var(--text)}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;padding-top:26px}
-    .panel{border:1px solid var(--line);background:var(--panel);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-    .copy{padding:24px}.kicker{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--muted)} h1{font-size:clamp(38px,6vw,66px);line-height:1.03;margin:.4rem 0 .7rem}
-    .photo{display:flex;align-items:end;justify-content:center;padding:20px;min-height:340px}.slot{width:min(300px,84%);aspect-ratio:3/4;display:grid;place-items:center;text-align:center;border-radius:16px;border:1px dashed rgba(255,218,174,.7);background:linear-gradient(180deg,rgba(255,146,60,.45),rgba(89,48,24,.72));font-weight:600}
-    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:42px}.card{grid-column:span 4;padding:18px;text-decoration:none;color:inherit}
-    .card:hover{transform:translateY(-4px)} .card h2{margin:.1rem 0 .5rem;font-size:20px} .card p{margin:0;color:var(--muted)}
-    footer{color:var(--muted);font-size:13px;padding:24px 0 14px}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.card{grid-column:span 12}}
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="dust"></div><div class="sun"></div>
-  <header class="top"><div class="topin"><strong>Vlad Sedykh</strong><nav><a href="index.html">Home</a><a href="ai-video-editing.html">AI Video Editing</a><a href="real-estate.html">Real Estate</a><a href="social-media.html">Social Media</a></nav></div></header>
-  <main class="wrap">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><span>Vlad Sedykh</span></a>
+      <nav>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="ai-video-editing.html">AI Video Editing</a>
+        <a href="real-estate.html">Real Estate</a>
+        <a href="social-media.html">Social Media</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
     <section class="hero">
       <article class="panel copy">
-        <div class="kicker">Cinematic / Joshua Tree colors / Motion-first</div>
-        <h1>Portfolio split into dedicated pages.</h1>
-        <p style="color:var(--muted)">Choose a focused section below: AI video editing, real estate portfolio, or social media work. The warm orange palette and moving elements stay consistent site-wide.</p>
+        <div class="kicker">Cinematic Portfolio • Joshua Tree Colors</div>
+        <h1>Three focused pages, one cinematic brand.</h1>
+        <p class="subtitle">Your portfolio is now split into dedicated pages for AI Video Editing, Real Estate, and Social Media, while keeping warm orange tones and animated motion across the experience.</p>
+        <div class="actions">
+          <a class="btn primary" href="ai-video-editing.html">AI Video Editing</a>
+          <a class="btn" href="real-estate.html">Real Estate</a>
+          <a class="btn" href="social-media.html">Social Media</a>
+        </div>
       </article>
-      <article class="panel photo"><div class="slot">Your Photo Here<br>(top hero slot)</div></article>
+
+      <article class="panel photo">
+        <div class="photo-slot">Your Photo Here<br/>(top hero slot)</div>
+      </article>
     </section>
-    <section class="cards">
-      <a class="panel card" href="ai-video-editing.html"><h2>AI Video Editing</h2><p>AI-assisted edits, automation, and experimental workflows.</p></a>
-      <a class="panel card" href="real-estate.html"><h2>Real Estate</h2><p>Property tours, listing edits, and agent marketing content.</p></a>
-      <a class="panel card" href="social-media.html"><h2>Social Media</h2><p>Platforms, growth content, and creator-facing campaign work.</p></a>
+
+    <section class="section">
+      <div class="grid">
+        <a class="panel card" href="ai-video-editing.html">
+          <h2>AI Video Editing</h2>
+          <p>AI-assisted workflows, transcript cuts, and creative finishing pipelines.</p>
+        </a>
+        <a class="panel card" href="real-estate.html">
+          <h2>Real Estate</h2>
+          <p>Property stories, listing edits, and premium tour reels.</p>
+        </a>
+        <a class="panel card" href="social-media.html">
+          <h2>Social Media</h2>
+          <p>Platform strategy, creator-style cuts, and profile hubs.</p>
+        </a>
+      </div>
     </section>
+
     <footer>© <span id="yr"></span> Vlad Sedykh</footer>
   </main>
-  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>

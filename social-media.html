@@ -1,48 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Social Media — Vlad Sedykh</title>
-  <style>
-    :root{--text:#ffe8c7;--muted:#ddb888;--line:rgba(255,205,148,.3);--panel:rgba(46,28,17,.78)}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui;color:var(--text);background:linear-gradient(180deg,#2a160c,#0f0704)}
-    .wrap{max-width:1000px;margin:0 auto;padding:20px 18px 64px}
-    .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px}
-    a{color:inherit}
-    .btn{padding:8px 12px;border-radius:999px;border:1px solid var(--line);text-decoration:none}
-    .panel{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px;margin-top:16px}
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="wrap">
-    <div class="top">
-      <strong>Social Media</strong>
-      <div>
-        <a class="btn" href="index.html">Home</a>
-        <a class="btn" href="ai-video-editing.html">AI Video Editing</a>
-        <a class="btn" href="real-estate.html">Real Estate</a>
-      </div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><span>Vlad Sedykh</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="ai-video-editing.html">AI Video Editing</a>
+        <a href="real-estate.html">Real Estate</a>
+        <a href="social-media.html" aria-current="page">Social Media</a>
+      </nav>
     </div>
+  </header>
 
-    <h1 style="font-size:clamp(34px,5vw,56px)">Social Media Presence</h1>
-    <p style="color:var(--muted)">Platform-specific content strategy and links in one place.</p>
-
-    <section class="panel">
-      <h3 style="margin-top:0">Profiles</h3>
-      <ul>
-        <li>Instagram: <a href="#">@yourhandle</a></li>
-        <li>TikTok: <a href="#">@yourhandle</a></li>
-        <li>YouTube: <a href="#">youtube.com/@yourchannel</a></li>
-        <li>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></li>
-      </ul>
+  <main class="container">
+    <section class="section">
+      <h1>Social Media</h1>
+      <p class="muted">A dedicated profile and platform page for your social channels and content strategy.</p>
     </section>
 
-    <section class="panel">
-      <h3 style="margin-top:0">Content Types</h3>
-      <p style="color:var(--muted)">Hooks, trend remixes, narrative mini-trailers, and campaign cutdowns optimized per platform.</p>
+    <section class="grid section">
+      <article class="panel card"><h3>Instagram</h3><p>@yourhandle — short cinematic reels and campaign snippets.</p></article>
+      <article class="panel card"><h3>TikTok</h3><p>@yourhandle — hook-first cuts, trends, and storytelling edits.</p></article>
+      <article class="panel card"><h3>YouTube + LinkedIn</h3><p>Longer edits, breakdowns, and professional case-study posts.</p></article>
     </section>
+
+    <footer>© <span id="yr"></span> Vlad Sedykh</footer>
   </main>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
