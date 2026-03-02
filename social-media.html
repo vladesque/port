@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Social Media — Vlad Sedykh</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><span>Vlad Sedykh</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="ai-video-editing.html">AI Video Editing</a>
+        <a href="real-estate.html">Real Estate</a>
+        <a href="social-media.html" aria-current="page">Social Media</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h1>Social Media</h1>
+      <p class="muted">A dedicated profile and platform page for your social channels and content strategy.</p>
+    </section>
+
+    <section class="grid section">
+      <article class="panel card"><h3>Instagram</h3><p>@yourhandle — short cinematic reels and campaign snippets.</p></article>
+      <article class="panel card"><h3>TikTok</h3><p>@yourhandle — hook-first cuts, trends, and storytelling edits.</p></article>
+      <article class="panel card"><h3>YouTube + LinkedIn</h3><p>Longer edits, breakdowns, and professional case-study posts.</p></article>
+    </section>
+
+    <footer>© <span id="yr"></span> Vlad Sedykh</footer>
+  </main>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
