@@ -28,7 +28,7 @@ body::before{
   pointer-events:none;
   background-image:radial-gradient(circle, rgba(255,220,172,.16) 0 2px, transparent 3px);
   background-size:145px 145px;
-  z-index:-3;
+  z-index:-2;
   animation:drift 50s linear infinite;
 }
 body::after{
@@ -40,34 +40,14 @@ body::after{
   width:980px;
   height:580px;
   pointer-events:none;
-  z-index:-2;
+  z-index:-1;
   background:radial-gradient(circle at 50% 45%, rgba(255,168,84,.45), rgba(236,106,35,.16) 48%, transparent 72%);
   filter:blur(11px);
   animation:breathe 8s ease-in-out infinite;
 }
-.motion-layer{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  overflow:hidden;
-}
-.motion-layer span{
-  position:absolute;
-  width:280px;height:280px;border-radius:50%;
-  background:radial-gradient(circle, rgba(255,152,67,.26), transparent 62%);
-  filter:blur(3px);
-  animation:orbit 18s ease-in-out infinite;
-}
-.motion-layer span:nth-child(1){top:12%;left:-80px}
-.motion-layer span:nth-child(2){top:48%;right:-100px;animation-duration:24s}
-.motion-layer span:nth-child(3){bottom:-90px;left:38%;animation-duration:20s}
-
 @keyframes drift{to{transform:translate3d(-120px,180px,0)}}
 @keyframes breathe{50%{transform:translateX(-50%) scale(1.04);opacity:.93}}
 @keyframes float{50%{transform:translateY(-6px)}}
-@keyframes orbit{50%{transform:translateY(-35px) scale(1.08);opacity:.72}}
-@keyframes shimmer{100%{transform:translateX(220%) skewX(-20deg)}}
 
 .container{max-width:1120px;margin:0 auto;padding:22px 18px 74px}
 a{color:inherit}
@@ -100,14 +80,10 @@ h1{font-size:clamp(38px,6vw,66px);line-height:1.02;letter-spacing:-.03em;margin:
 .section-title p{margin:0;color:var(--muted);font-size:14px}
 
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.card{grid-column:span 4;padding:16px;text-decoration:none;transition:.18s;position:relative;overflow:hidden}
-.card::after{content:"";position:absolute;top:0;left:-60%;width:30%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,225,188,.26),transparent);transform:skewX(-20deg);animation:shimmer 6s linear infinite}
+.card{grid-column:span 4;padding:16px;text-decoration:none;transition:.18s}
 .card h3{margin:.1rem 0 .45rem}
 .card p{margin:0;color:var(--muted)}
 .card:hover{transform:translateY(-4px)}
-
-.reel-box{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;padding:22px;border:1px dashed rgba(255,219,174,.6);border-radius:14px;background:linear-gradient(180deg,rgba(255,147,63,.25),rgba(87,46,23,.72))}
-.bio{line-height:1.75;color:#ffe0bc;white-space:pre-line}
 
 footer{margin-top:52px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 
