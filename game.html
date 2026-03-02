@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dodge the Deadlines</title>
+    <link rel="stylesheet" href="./game.css" />
+  </head>
+  <body>
+    <main class="game-wrap">
+      <header class="game-header">
+        <h1>Dodge the Deadlines</h1>
+        <a class="back-link" href="./index.html">&larr; Back to Portfolio</a>
+      </header>
+
+      <section class="hud" aria-live="polite">
+        <p>Score: <span id="score">0</span></p>
+        <p>High Score: <span id="high-score">0</span></p>
+        <p>Status: <span id="status">Start</span></p>
+      </section>
+
+      <canvas id="game-canvas" width="900" height="520" aria-label="Dodge the Deadlines game"></canvas>
+
+      <div class="controls" aria-label="Touch controls">
+        <button id="left-btn" type="button">⬅ Left</button>
+        <button id="right-btn" type="button">Right ➡</button>
+      </div>
+
+      <p class="instructions">
+        Controls: Arrow Left/Right or A/D. Press <strong>Space</strong> to start or restart, <strong>P</strong> to pause.
+      </p>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

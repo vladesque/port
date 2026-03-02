@@ -1,7 +1,120 @@
-<!doctype html>
-<html>
-  <body style="font-family:system-ui;padding:40px">
-    <h1>It works ✅</h1>
-    <p>GitHub Pages is publishing index.html correctly.</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vlad Sedykh | Producer / Video Editor</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="hero" id="top">
+      <div class="container hero__content">
+        <p class="eyebrow">Producer / Video Editor — Social &amp; Marketing</p>
+        <h1>Vlad Sedykh</h1>
+        <p class="lead">
+          I produce social-first campaigns and polished edits that help brands ship
+          quickly, stay consistent, and perform across platforms.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href="#featured-work">Watch Reel</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn--ghost" href="mailto:vlad@example.com">Email</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="featured-work">
+        <div class="container">
+          <h2>Featured Work</h2>
+          <div class="cards-grid">
+            <article class="card">
+              <h3>Launch Film — DTC Brand</h3>
+              <p>
+                30-second hero cut + social derivatives with clear product story and strong CTA.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Performance Ad Suite</h3>
+              <p>
+                Multi-format ad set for Meta and TikTok, optimized for hooks and retention.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Event Recap Campaign</h3>
+              <p>
+                Same-day recap edits and post-event narrative reel for sponsor and internal use.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Thought Leadership Shorts</h3>
+              <p>
+                Weekly vertical edits with captions, pacing optimization, and on-brand motion graphics.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--muted" id="skills">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="pill-wrap">
+            <span class="pill">Storyboarding</span>
+            <span class="pill">Creative Producing</span>
+            <span class="pill">Premiere Pro</span>
+            <span class="pill">After Effects</span>
+            <span class="pill">Color Correction</span>
+            <span class="pill">Sound Design</span>
+            <span class="pill">Motion Graphics</span>
+            <span class="pill">Social Strategy</span>
+            <span class="pill">Campaign Ops</span>
+            <span class="pill">Client Communication</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="real-estate">
+        <div class="container teaser">
+          <div>
+            <h2>Real Estate Content</h2>
+            <p>
+              Explore a dedicated gallery page for listing photography and cinematic property videos.
+            </p>
+          </div>
+          <a class="btn" href="./real-estate.html">Open Real Estate Gallery</a>
+        </div>
+      </section>
+
+      <section class="section section--muted" id="game">
+        <div class="container teaser">
+          <div>
+            <h2>Mini Game: Dodge the Deadlines</h2>
+            <p>
+              A quick browser game built with vanilla HTML, CSS, and JavaScript. Dodge incoming deadlines and beat your high score.
+            </p>
+          </div>
+          <a class="btn" href="./game.html">Play the Game</a>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container contact">
+          <h2>Contact</h2>
+          <p>Available for freelance projects and long-term collaborations.</p>
+          <a class="btn" href="mailto:vlad@example.com">vlad@example.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Vlad Sedykh. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

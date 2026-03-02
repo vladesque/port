@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Gallery | Vlad Sedykh</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .gallery-info {
+        background: #121923;
+        border: 1px solid #253041;
+        border-radius: 12px;
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+
+      .gallery-info code {
+        color: #93c5fd;
+      }
+
+      .media-grid {
+        margin-top: 1rem;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      }
+
+      figure {
+        margin: 0;
+        border: 1px solid #243041;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #111827;
+      }
+
+      .placeholder {
+        aspect-ratio: 4/3;
+        display: grid;
+        place-items: center;
+        color: #9ca3af;
+        background: linear-gradient(135deg, #1f2937, #111827);
+        font-weight: 700;
+      }
+
+      figcaption {
+        font-size: 0.85rem;
+        color: #9ca3af;
+        padding: 0.65rem 0.8rem;
+        border-top: 1px solid #243041;
+      }
+
+      .video-box {
+        aspect-ratio: 16/9;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Real Estate Work</p>
+        <h1>Photo + Video Gallery</h1>
+        <p class="lead">
+          This page is ready for your real estate project assets. Replace placeholders with final files from your asset folder.
+        </p>
+        <a class="btn btn--ghost" href="./index.html">&larr; Back to Portfolio</a>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <h2>Expected Asset Structure</h2>
+        <div class="gallery-info">
+          <p>
+            Store all files in <code>/assets/realestate/</code> using these names:
+          </p>
+          <ul>
+            <li>Photos: <code>photo-01.jpg</code> ... <code>photo-12.jpg</code></li>
+            <li>Videos: <code>video-01.mp4</code> ... <code>video-06.mp4</code></li>
+            <li>Video posters: <code>video-01.jpg</code> ... matching each video</li>
+          </ul>
+        </div>
+
+        <section class="section">
+          <h2>Photo Placeholders (12)</h2>
+          <div class="media-grid">
+            <figure><div class="placeholder">photo-01.jpg</div><figcaption>/assets/realestate/photo-01.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-02.jpg</div><figcaption>/assets/realestate/photo-02.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-03.jpg</div><figcaption>/assets/realestate/photo-03.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-04.jpg</div><figcaption>/assets/realestate/photo-04.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-05.jpg</div><figcaption>/assets/realestate/photo-05.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-06.jpg</div><figcaption>/assets/realestate/photo-06.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-07.jpg</div><figcaption>/assets/realestate/photo-07.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-08.jpg</div><figcaption>/assets/realestate/photo-08.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-09.jpg</div><figcaption>/assets/realestate/photo-09.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-10.jpg</div><figcaption>/assets/realestate/photo-10.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-11.jpg</div><figcaption>/assets/realestate/photo-11.jpg</figcaption></figure>
+            <figure><div class="placeholder">photo-12.jpg</div><figcaption>/assets/realestate/photo-12.jpg</figcaption></figure>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Video Placeholders (6)</h2>
+          <div class="media-grid">
+            <figure><div class="placeholder video-box">video-01.mp4</div><figcaption>Poster: /assets/realestate/video-01.jpg</figcaption></figure>
+            <figure><div class="placeholder video-box">video-02.mp4</div><figcaption>Poster: /assets/realestate/video-02.jpg</figcaption></figure>
+            <figure><div class="placeholder video-box">video-03.mp4</div><figcaption>Poster: /assets/realestate/video-03.jpg</figcaption></figure>
+            <figure><div class="placeholder video-box">video-04.mp4</div><figcaption>Poster: /assets/realestate/video-04.jpg</figcaption></figure>
+            <figure><div class="placeholder video-box">video-05.mp4</div><figcaption>Poster: /assets/realestate/video-05.jpg</figcaption></figure>
+            <figure><div class="placeholder video-box">video-06.mp4</div><figcaption>Poster: /assets/realestate/video-06.jpg</figcaption></figure>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
