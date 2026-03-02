@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="motion-layer"><span></span><span></span><span></span></div>
+  <div class="motion"><i></i><i></i><i></i></div>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="index.html"><span class="dot"></span><span>Vlad Sedykh</span></a>
@@ -23,15 +23,21 @@
   </header>
 
   <main class="container">
-    <section class="section panel" style="padding:18px">
-      <div class="section-title"><h2>Contact</h2><p>Let’s collaborate</p></div>
-      <p class="subtitle">Email: <a href="mailto:youremail@email.com">youremail@email.com</a></p>
-      <p class="subtitle">LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
-      <p class="subtitle">Instagram: <a href="#">@yourhandle</a></p>
+    <section class="section panel section-panel">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Let’s build your next project</p>
+      </div>
+      <p class="subtitle">
+        Email: <a href="mailto:youremail@email.com">youremail@email.com</a><br />
+        LinkedIn: <a href="#">linkedin.com/in/yourprofile</a><br />
+        Instagram: <a href="#">@yourhandle</a>
+      </p>
     </section>
 
     <footer>© <span id="yr"></span> Vlad Sedykh</footer>
   </main>
+
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
