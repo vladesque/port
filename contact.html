@@ -28,11 +28,37 @@
         <h2>Contact</h2>
         <p>Let’s build your next project</p>
       </div>
-      <p class="subtitle">
-        Email: <a href="mailto:youremail@email.com">youremail@email.com</a><br />
-        LinkedIn: <a href="#">linkedin.com/in/yourprofile</a><br />
-        Instagram: <a href="#">@yourhandle</a>
-      </p>
+      <p class="subtitle">Reach out directly, connect on LinkedIn, or use the contact form below.</p>
+
+      <div class="contact-list">
+        <p><strong>Email:</strong> <a href="mailto:vladislavsedykh@gmail.com">vladislavsedykh@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vladsedykh/" target="_blank" rel="noopener noreferrer">linkedin.com/in/vladsedykh</a></p>
+      </div>
+    </section>
+
+    <section class="section panel section-panel">
+      <div class="section-title">
+        <h2>Send a Message</h2>
+        <p>Email form</p>
+      </div>
+
+      <form class="contact-form" action="mailto:vladislavsedykh@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Name</label>
+        <input id="name" name="Name" type="text" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email" required />
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="Subject" type="text" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="Message" rows="6" required></textarea>
+
+        <button class="btn primary" type="submit">Send Message</button>
+      </form>
+
+      <p class="form-note">This form uses your default email app to send the message to Vlad.</p>
     </section>
 
     <footer>© <span id="yr"></span> Vlad Sedykh</footer>
