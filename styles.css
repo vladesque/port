@@ -1,12 +1,12 @@
 :root {
-  --bg: #120a06;
-  --bg-top: #342012;
-  --text: #ffe8c7;
-  --muted: #ddb786;
-  --orange: #ff9442;
-  --sand: #ffc982;
-  --line: rgba(255, 205, 147, 0.28);
-  --panel: rgba(45, 28, 17, 0.78);
+  --bg: #050b1d;
+  --bg-top: #0b1738;
+  --text: #e6eeff;
+  --muted: #9cb2e0;
+  --orange: #4b7dff;
+  --sand: #76a9ff;
+  --line: rgba(137, 171, 255, 0.3);
+  --panel: rgba(8, 20, 52, 0.8);
   --radius: 18px;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
@@ -18,7 +18,7 @@ body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color: var(--text);
-  background: linear-gradient(180deg, var(--bg-top) 0%, #1a1008 46%, var(--bg) 100%);
+  background: linear-gradient(180deg, var(--bg-top) 0%, #08122c 46%, var(--bg) 100%);
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
@@ -34,7 +34,7 @@ body::after {
 
 body::before {
   inset: -25%;
-  background-image: radial-gradient(circle, rgba(255, 220, 171, 0.16) 0 2px, transparent 3px);
+  background-image: radial-gradient(circle, rgba(175, 205, 255, 0.14) 0 2px, transparent 3px);
   background-size: 150px 150px;
   animation: dust 48s linear infinite;
 }
@@ -45,7 +45,7 @@ body::after {
   transform: translateX(-50%);
   width: 980px;
   height: 580px;
-  background: radial-gradient(circle at 50% 45%, rgba(255, 168, 84, 0.46), rgba(235, 103, 35, 0.15) 48%, transparent 72%);
+  background: radial-gradient(circle at 50% 45%, rgba(104, 146, 255, 0.42), rgba(57, 95, 197, 0.16) 48%, transparent 72%);
   filter: blur(11px);
   animation: breathe 9s ease-in-out infinite;
 }
@@ -63,7 +63,7 @@ body::after {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 147, 62, 0.25), transparent 62%);
+  background: radial-gradient(circle, rgba(92, 132, 245, 0.28), transparent 62%);
   animation: float 20s ease-in-out infinite;
 }
 
@@ -88,7 +88,7 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(24, 13, 7, 0.78);
+  background: rgba(6, 15, 40, 0.8);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
@@ -117,7 +117,7 @@ a { color: inherit; }
   height: 10px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--sand), var(--orange));
-  box-shadow: 0 0 16px rgba(255, 149, 62, 0.85);
+  box-shadow: 0 0 16px rgba(88, 134, 255, 0.85);
 }
 
 nav {
@@ -139,7 +139,7 @@ nav a:hover,
 nav a[aria-current="page"] {
   color: var(--text);
   border-color: var(--line);
-  background: rgba(255, 168, 84, 0.16);
+  background: rgba(94, 139, 255, 0.18);
 }
 
 .panel {
@@ -178,7 +178,7 @@ h1 {
 
 .subtitle {
   margin: 0;
-  color: #f4c89a;
+  color: #c5d6ff;
   max-width: 62ch;
   line-height: 1.7;
 }
@@ -196,13 +196,13 @@ h1 {
   border-radius: 999px;
   border: 1px solid var(--line);
   text-decoration: none;
-  background: rgba(255, 191, 121, 0.1);
+  background: rgba(98, 143, 255, 0.14);
 }
 
 .btn.primary {
   font-weight: 800;
   border-color: transparent;
-  color: #3f1f0d;
+  color: #06122f;
   background: linear-gradient(135deg, var(--orange), var(--sand));
 }
 
@@ -218,11 +218,11 @@ h1 {
   width: min(310px, 84%);
   aspect-ratio: 3 / 4;
   border-radius: 16px;
-  border: 1px dashed rgba(255, 216, 168, 0.72);
+  border: 1px dashed rgba(167, 193, 255, 0.72);
   display: grid;
   place-items: center;
   text-align: center;
-  background: linear-gradient(180deg, rgba(255, 149, 64, 0.43), rgba(94, 48, 24, 0.74));
+  background: linear-gradient(180deg, rgba(96, 142, 255, 0.4), rgba(21, 41, 93, 0.78));
   font-weight: 600;
 }
 
@@ -270,7 +270,7 @@ h1 {
   top: 0;
   width: 26%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255, 225, 187, 0.24), transparent);
+  background: linear-gradient(120deg, transparent, rgba(183, 208, 255, 0.28), transparent);
   transform: skewX(-20deg);
   animation: shine 6s linear infinite;
 }
@@ -280,10 +280,10 @@ h1 {
 
 .reel {
   width: 100%;
-  border: 1px dashed rgba(255, 216, 167, 0.65);
+  border: 1px dashed rgba(170, 196, 255, 0.65);
   border-radius: 14px;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 145, 61, 0.24), rgba(87, 45, 22, 0.72));
+  background: linear-gradient(180deg, rgba(87, 132, 245, 0.26), rgba(14, 32, 77, 0.75));
 }
 
 
@@ -304,7 +304,7 @@ h1 {
 .bio {
   white-space: pre-line;
   line-height: 1.75;
-  color: #ffe1bc;
+  color: #d7e4ff;
 }
 
 footer {
