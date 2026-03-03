@@ -215,7 +215,8 @@ h1 {
 }
 
 .hero-photo {
-  width: min(310px, 84%);
+  width: clamp(220px, 30vw, 310px);
+  max-width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 16px;
@@ -325,6 +326,13 @@ footer {
 @media (max-width: 920px) {
   .hero { grid-template-columns: 1fr; }
   .card { grid-column: span 12; }
+  .photo {
+    min-height: 0;
+    align-items: center;
+  }
+  .hero-photo {
+    width: min(280px, 72vw);
+  }
 }
 
 
