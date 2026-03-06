@@ -214,6 +214,14 @@ h1 {
   justify-content: center;
 }
 
+.hero-photo {
+  width: clamp(220px, 30vw, 310px);
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
 .photo-slot {
   width: min(310px, 84%);
   aspect-ratio: 3 / 4;
@@ -275,6 +283,12 @@ h1 {
   animation: shine 6s linear infinite;
 }
 
+
+.card.no-shine::after {
+  content: none;
+  animation: none;
+}
+
 .card h3 { margin: 0.1rem 0 0.45rem; }
 .card p { margin: 0; color: var(--muted); line-height: 1.6; }
 
@@ -318,6 +332,13 @@ footer {
 @media (max-width: 920px) {
   .hero { grid-template-columns: 1fr; }
   .card { grid-column: span 12; }
+  .photo {
+    min-height: 0;
+    align-items: center;
+  }
+  .hero-photo {
+    width: min(280px, 72vw);
+  }
 }
 
 
