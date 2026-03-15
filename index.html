@@ -4,79 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vlad Sedykh | Video Producer & Editor | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  
+
   :root {
-    --bg: #0a0a0a;
-    --bg2: #111111;
-    --bg3: #1a1a1a;
-    --surface: #1e1e1e;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #f0ede8;
-    --text2: #8a8680;
-    --text3: #5a5752;
-    --accent: #d4a853;
-    --accent2: #b8923f;
-    --glow-gold: rgba(212,168,83,0.13);
-    --glow-blue: rgba(80,110,200,0.09);
+    --bg:      #F7F7F5;
+    --bg2:     #FFFFFF;
+    --bg3:     #F0F0EE;
+    --surface: #FFFFFF;
+    --border:  #E5E5E5;
+    --border2: #D0D0D0;
+    --text:    #111111;
+    --text2:   #6B6B6B;
+    --text3:   #9B9B9B;
+    --accent:  #3B5BDB;
+    --accent2: #2d46b8;
+    --node-above-h: 220px;
   }
 
   html { scroll-behavior: smooth; }
-  
+
   body {
-    font-family: 'Figtree', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     background: var(--bg);
     color: var(--text);
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
   }
 
-  /* NAV */
+  /* ── NAV ────────────────────────────────────────────── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px; height: 60px;
-    border-bottom: 0.5px solid var(--border);
-    background: rgba(10,10,10,0.9);
+    border-bottom: 1px solid var(--border);
+    background: rgba(247,247,245,0.93);
     backdrop-filter: blur(12px);
   }
   .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--accent);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.06em;
+    color: var(--text);
     text-decoration: none;
   }
   .nav-links {
     display: flex; gap: 32px; list-style: none;
   }
   .nav-links a {
-    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--text2);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover { color: var(--accent); }
 
   /* WORK DROPDOWN */
   .nav-dropdown { position: relative; }
   .nav-dropdown-menu {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
+    position: absolute; top: 100%; left: 50%;
     transform: translateX(-50%);
-    background: rgba(10,10,10,0.97);
-    border: 0.5px solid var(--border2);
-    backdrop-filter: blur(12px);
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     min-width: 180px;
     padding: 8px 0 6px;
     z-index: 200;
@@ -86,34 +82,32 @@
   .nav-dropdown-menu a {
     display: block;
     padding: 9px 18px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
     color: var(--text2);
     text-decoration: none;
     transition: color 0.15s, background 0.15s;
     white-space: nowrap;
   }
   .nav-dropdown-menu a:hover {
-    color: var(--text);
-    background: rgba(255,255,255,0.04);
+    color: var(--accent);
+    background: rgba(59,91,219,0.04);
   }
   .nav-cta {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
     background: var(--accent);
     padding: 8px 20px;
-    border-radius: 2px;
+    border-radius: 4px;
     text-decoration: none;
     transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--accent2); }
 
-  /* HERO */
+  /* ── HERO ───────────────────────────────────────────── */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -127,39 +121,36 @@
     flex-direction: column;
     justify-content: center;
     padding: 80px 60px 80px 80px;
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
+    will-change: transform;
   }
   .hero-eyebrow {
     display: flex; align-items: center; gap: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
   .eyebrow-line {
-    width: 32px; height: 1px;
+    width: 32px; height: 2px;
     background: var(--accent);
   }
   .eyebrow-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
   }
   h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(52px, 6vw, 88px);
-    line-height: 1.0;
-    letter-spacing: -0.01em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: 0.93;
+    letter-spacing: 0.04em;
     color: var(--text);
-    margin-bottom: 8px;
-  }
-  h1 em {
-    font-style: italic;
-    color: var(--text2);
+    font-weight: 400;
+    margin-bottom: 0;
   }
   .hero-subtitle {
-    font-size: 17px;
-    font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; font-weight: 300;
     color: var(--text2);
     max-width: 420px;
     margin-top: 24px;
@@ -171,46 +162,43 @@
   }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
     background: var(--accent);
     padding: 14px 28px;
-    border-radius: 2px;
+    border-radius: 4px;
     text-decoration: none;
+    border: none;
     transition: background 0.2s, transform 0.2s;
   }
   .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
   .btn-ghost {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text);
     padding: 14px 28px;
-    border: 0.5px solid var(--border2);
-    border-radius: 2px;
+    border: 1px solid var(--text);
+    border-radius: 4px;
     text-decoration: none;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
-  .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); background: rgba(59,91,219,0.04); }
+
   .hero-right {
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
+    will-change: transform;
   }
   .hero-img-wrap {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
+    position: absolute; inset: 0; overflow: hidden;
   }
   .hero-img-wrap img {
     width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    filter: grayscale(20%) contrast(1.05);
+    object-fit: cover; object-position: top center;
+    filter: grayscale(10%) contrast(1.02);
   }
   .hero-img-overlay {
     position: absolute; inset: 0;
@@ -225,107 +213,86 @@
   }
   .stat {
     padding: 0 32px;
-    border-right: 0.5px solid var(--border2);
+    border-right: 1px solid var(--border);
   }
   .stat:first-child { padding-left: 0; }
   .stat:last-child { border-right: none; }
   .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px;
-    line-height: 1;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; line-height: 1;
     color: var(--text);
     display: block;
+    letter-spacing: 0.06em;
   }
   .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text3);
     display: block;
     margin-top: 4px;
   }
 
-  /* SECTIONS */
+  /* ── SECTIONS ───────────────────────────────────────── */
   section {
     padding: 100px 80px;
-    border-top: 0.5px solid var(--border);
+    border-top: 1px solid var(--border);
   }
   .section-label {
     display: flex; align-items: center; gap: 12px;
     margin-bottom: 60px;
   }
   .section-label span {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text3);
   }
   .section-label::after {
-    content: '';
-    flex: 1;
-    height: 0.5px;
+    content: ''; flex: 1;
+    height: 1px;
     background: var(--border);
   }
   h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 4vw, 56px);
-    line-height: 1.1;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.05;
     color: var(--text);
     font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+  h2 em {
+    font-style: normal;
+    color: var(--accent);
   }
 
-  /* REEL */
+  /* ── REEL ───────────────────────────────────────────── */
   .reel-section {
     padding: 0;
-    border-top: 0.5px solid var(--border);
+    border-top: 1px solid var(--border);
   }
   .reel-wrapper {
     aspect-ratio: 16/9;
-    background: var(--bg2);
-    position: relative;
-    overflow: hidden;
+    background: #111;
+    position: relative; overflow: hidden;
   }
   .reel-wrapper iframe {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
     border: none;
   }
-  .reel-placeholder {
-    display: flex; flex-direction: column; align-items: center; gap: 20px;
-  }
-  .play-btn {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    border: 1.5px solid var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .play-btn:hover { background: var(--accent); transform: scale(1.05); }
-  .play-btn svg { width: 28px; height: 28px; fill: var(--accent); margin-left: 4px; }
-  .play-btn:hover svg { fill: var(--bg); }
-  .reel-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text3);
-  }
   .reel-scanline {
     position: absolute; inset: 0;
     background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.05) 2px,
-      rgba(0,0,0,0.05) 4px
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px
     );
     pointer-events: none;
   }
 
-  /* BIO */
+  /* ── BIO ────────────────────────────────────────────── */
   .bio-grid {
     display: grid;
     grid-template-columns: 1fr 1.6fr;
@@ -340,247 +307,271 @@
   .credit-item {
     display: flex; align-items: center;
     padding: 14px 0;
-    border-bottom: 0.5px solid var(--border);
+    border-bottom: 1px solid var(--border);
     gap: 16px;
   }
   .credit-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
   }
   .credit-name {
-    font-size: 14px;
-    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
     color: var(--text);
   }
   .credit-role {
-    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
     color: var(--text3);
     margin-left: auto;
-    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
   }
   .bio-text {
-    font-size: 18px;
-    font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; font-weight: 300;
     line-height: 1.8;
     color: var(--text2);
   }
   .bio-text strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* TIMELINE */
-  .timeline {
-    display: flex; flex-direction: column;
-    gap: 0;
-    margin-top: 60px;
-  }
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 180px 1px 1fr;
-    gap: 0 40px;
-    padding: 40px 0;
-    border-bottom: 0.5px solid var(--border);
-    position: relative;
-  }
-  .timeline-item:last-child { border-bottom: none; }
-  .timeline-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--text3);
-    padding-top: 4px;
-    text-align: right;
-  }
-  .timeline-line {
-    background: var(--border2);
-    position: relative;
-  }
-  .timeline-dot {
-    position: absolute;
-    top: 4px; left: 50%;
-    transform: translateX(-50%);
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  .timeline-content h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 26px;
-    color: var(--text);
-    margin-bottom: 12px;
-    font-weight: 400;
-  }
-  .timeline-content p {
-    font-size: 15px;
-    color: var(--text2);
-    line-height: 1.7;
-  }
-
-  /* TIMELINE IMAGE */
-  .timeline-img {
-    margin-top: 16px;
-    width: 100%;
-    max-width: 480px;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border: 0.5px solid var(--border);
-  }
-
-  /* TIMELINE BULLETS */
-  .timeline-bullets {
-    list-style: none;
-    margin-top: 10px;
-    display: flex; flex-direction: column; gap: 6px;
-  }
-  .timeline-bullets li {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.6;
-    padding-left: 16px;
-    position: relative;
-  }
-  .timeline-bullets li::before {
-    content: '—';
-    position: absolute; left: 0;
-    color: var(--text3);
-  }
-
-  /* SKILLS */
-  .skills-wrap {
-    margin-top: 48px;
-    display: flex; flex-wrap: wrap; gap: 10px;
-  }
-  .skill-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text2);
-    border: 0.5px solid var(--border2);
-    padding: 8px 16px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .skill-tag:hover { color: var(--accent); border-color: var(--accent); }
-
-  /* WORK GRID */
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 60px;
-  }
-  .work-card {
-    background: var(--bg);
-    padding: 48px;
-    text-decoration: none;
-    transition: background 0.2s;
-    display: flex; flex-direction: column;
-    gap: 16px;
-    position: relative;
-    overflow: hidden;
-  }
-  .work-card:hover { background: var(--bg3); }
-  .work-card-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--text3);
-  }
-  .work-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    color: var(--text);
-    font-weight: 400;
-  }
-  .work-card p {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.7;
-    max-width: 320px;
-  }
-  .work-card-arrow {
-    margin-top: auto;
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text3);
-    transition: color 0.2s, gap 0.2s;
-  }
-  .work-card:hover .work-card-arrow {
-    color: var(--accent);
-    gap: 12px;
-  }
-
-  /* CTA */
-  .cta-section {
-    text-align: center;
-    padding: 120px 80px;
-    background: var(--bg2);
-    border-top: 0.5px solid var(--border);
-  }
-  .cta-section h2 { margin-bottom: 20px; }
-  .cta-section p {
-    font-size: 18px;
-    color: var(--text2);
-    font-weight: 300;
-    margin-bottom: 48px;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .cta-actions {
-    display: flex; justify-content: center; gap: 16px;
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 32px 80px;
-    border-top: 0.5px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-copy {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text3);
-    letter-spacing: 0.08em;
+    color: var(--text); font-weight: 500;
   }
 
   /* BIO COLOR PIECES */
   #bio { position: relative; overflow: hidden; }
-  .bio-piece {
-    position: absolute; pointer-events: none; z-index: 0;
-  }
+  .bio-piece { position: absolute; pointer-events: none; z-index: 0; }
   .bio-piece-1 {
-    /* amber/warm orange — top right */
     width: 360px; height: 280px;
-    background: rgba(196, 92, 10, 0.22);
+    background: rgba(59,91,219,0.05);
     top: 0; right: 0;
   }
   .bio-piece-2 {
-    /* teal — bottom left */
     width: 280px; height: 220px;
-    background: rgba(10, 118, 118, 0.18);
+    background: rgba(180,90,40,0.04);
     bottom: 0; left: 0;
   }
   .bio-piece-3 {
-    /* gold — mid right, vertically centered */
     width: 160px; height: 320px;
-    background: rgba(180, 138, 18, 0.13);
+    background: rgba(0,120,100,0.04);
     top: 50%; right: 18%;
     transform: translateY(-50%);
   }
   #bio .section-label,
   #bio .bio-grid { position: relative; z-index: 1; }
 
-  /* ANIMATIONS */
+  /* ── TIMELINE V2 ────────────────────────────────────── */
+  .timeline-v2-wrap { margin-top: 60px; }
+
+  /* Desktop: horizontal 3-column grid */
+  .timeline-v2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+  }
+  /* Horizontal connecting line through circle centers */
+  .timeline-v2::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: calc(var(--node-above-h) + 12px); /* 220px + half of 24px */
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+
+  .timeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Fixed-height slot above the line */
+  .node-spacer {
+    height: var(--node-above-h);
+    flex-shrink: 0;
+  }
+  /* Content slot (above or below the line) */
+  .node-content {
+    height: var(--node-above-h);
+    display: flex; flex-direction: column;
+    flex-shrink: 0;
+    padding: 0 24px;
+    overflow: visible;
+  }
+  .timeline-node.above .node-content {
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    text-align: center;
+    align-items: center;
+  }
+  .timeline-node.below .node-content {
+    justify-content: flex-start;
+    padding-top: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Circle marker: 24px, #3B5BDB fill, 3px white border, 3px outer ring */
+  .node-circle {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 0 0 3px var(--accent);
+    flex-shrink: 0;
+    position: relative; z-index: 2;
+  }
+
+  .node-company {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .node-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .node-dates {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .node-bullets {
+    list-style: none;
+    text-align: left;
+    width: 100%;
+  }
+  .node-bullets li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .node-bullets li::before {
+    content: '–';
+    position: absolute; left: 0;
+    color: var(--accent);
+  }
+
+  /* ── SKILLS ─────────────────────────────────────────── */
+  .skills-wrap {
+    margin-top: 48px;
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .skill-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text2);
+    border: 1px solid var(--border2);
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .skill-tag:hover { color: var(--accent); border-color: var(--accent); background: rgba(59,91,219,0.04); }
+
+  /* ── WORK CARDS GRID ────────────────────────────────── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+  }
+  .card-thumb {
+    height: 200px; overflow: hidden; flex-shrink: 0;
+  }
+  .card-thumb svg {
+    width: 100%; height: 100%; display: block;
+  }
+  .card-body {
+    padding: 20px 24px 24px;
+    display: flex; flex-direction: column; flex: 1;
+  }
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 16px;
+  }
+  .card-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 4px;
+    transition: gap 0.2s;
+  }
+  .card:hover .card-link { gap: 8px; }
+
+  /* ── CTA ────────────────────────────────────────────── */
+  .cta-section {
+    text-align: center;
+    padding: 120px 80px;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+  }
+  .cta-section h2 { margin-bottom: 20px; }
+  .cta-section p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    color: var(--text2);
+    font-weight: 300;
+    margin-bottom: 48px;
+    max-width: 480px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+  }
+  .cta-actions { display: flex; justify-content: center; gap: 16px; }
+
+  /* ── FOOTER ─────────────────────────────────────────── */
+  footer {
+    padding: 32px 80px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg);
+  }
+  .footer-copy {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── HERO ENTRY ANIMATIONS ───────────────────────────── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -590,16 +581,16 @@
   .hero-subtitle { animation: fadeUp 0.6s 0.2s ease both; }
   .hero-actions  { animation: fadeUp 0.6s 0.3s ease both; }
 
-  /* ORBS */
+  /* ── ORB / GRAIN ─────────────────────────────────────── */
   @keyframes orbDrift1 {
-    0%, 100% { transform: translate(0,0) scale(1); }
-    40%      { transform: translate(50px,-40px) scale(1.15); }
-    70%      { transform: translate(-20px,30px) scale(0.88); }
+    0%,100% { transform:translate(0,0) scale(1); }
+    40%     { transform:translate(50px,-40px) scale(1.15); }
+    70%     { transform:translate(-20px,30px) scale(0.88); }
   }
   @keyframes orbDrift2 {
-    0%, 100% { transform: translate(0,0) scale(1); }
-    35%      { transform: translate(-40px,50px) scale(0.85); }
-    65%      { transform: translate(30px,-20px) scale(1.12); }
+    0%,100% { transform:translate(0,0) scale(1); }
+    35%     { transform:translate(-40px,50px) scale(0.85); }
+    65%     { transform:translate(30px,-20px) scale(1.12); }
   }
   .hero-orb {
     position: absolute; border-radius: 50%;
@@ -607,93 +598,120 @@
   }
   .hero-orb-1 {
     width: 720px; height: 720px;
-    background: radial-gradient(circle, var(--glow-gold) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(59,91,219,0.07) 0%, transparent 70%);
     bottom: -320px; left: -160px;
     animation: orbDrift1 16s ease-in-out infinite;
   }
   .hero-orb-2 {
     width: 480px; height: 480px;
-    background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(59,91,219,0.04) 0%, transparent 70%);
     top: -80px; right: 0;
     animation: orbDrift2 20s ease-in-out infinite;
   }
-
-  /* GRAIN */
   @keyframes grainAnim {
-    0%  { transform: translate(0,0); }
-    10% { transform: translate(-2%,-3%); }
-    20% { transform: translate(-4%,1%); }
-    30% { transform: translate(2%,-4%); }
-    40% { transform: translate(-1%,4%); }
-    50% { transform: translate(-3%,2%); }
-    60% { transform: translate(4%,0); }
-    70% { transform: translate(0,3%); }
-    80% { transform: translate(1%,5%); }
-    90% { transform: translate(-3%,2%); }
+    0%  {transform:translate(0,0)}   10% {transform:translate(-2%,-3%)}
+    20% {transform:translate(-4%,1%)} 30% {transform:translate(2%,-4%)}
+    40% {transform:translate(-1%,4%)} 50% {transform:translate(-3%,2%)}
+    60% {transform:translate(4%,0)}   70% {transform:translate(0,3%)}
+    80% {transform:translate(1%,5%)}  90% {transform:translate(-3%,2%)}
   }
   .hero-grain {
     position: absolute; inset: -50%; width: 200%; height: 200%;
-    pointer-events: none; z-index: 1; opacity: 0.028;
+    pointer-events: none; z-index: 1; opacity: 0.015;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 200px 200px;
     animation: grainAnim 0.4s steps(1) infinite;
   }
 
-  /* SCROLL REVEAL */
-  .reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  /* ── SCROLL REVEAL ───────────────────────────────────── */
+  .js-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .js-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-  .reveal-stagger > * {
-    opacity: 0; transform: translateY(22px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
+  /* ── PREFERS-REDUCED-MOTION ──────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .js-reveal { opacity: 1; transform: none; transition: none; }
+    .hero-eyebrow, h1, .hero-subtitle, .hero-actions { animation: none; }
+    .hero-orb-1, .hero-orb-2 { animation: none; }
+    .hero-grain { animation: none; }
   }
-  .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
-  .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.1s; }
-  .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.2s; }
-  .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.3s; }
 
-  /* TIMELINE PULSE */
-  @keyframes dotPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,83,0.55); }
-    60%       { box-shadow: 0 0 0 10px rgba(212,168,83,0); }
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  .timeline-dot { animation: dotPulse 2.8s ease-in-out infinite; }
 
-  /* WORK CARD MOTION */
-  .work-card::before {
-    content: ''; position: absolute;
-    bottom: 0; left: 0; right: 0; height: 2px;
-    background: var(--accent);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  .work-card:hover::before { transform: scaleX(1); }
-  .work-card::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(212,168,83,0.05) 0%, transparent 55%);
-    opacity: 0; transition: opacity 0.4s; pointer-events: none;
-  }
-  .work-card:hover::after { opacity: 1; }
-
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
+
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 60px 24px 40px; }
     .hero-right { height: 60vw; }
     .hero-stats { bottom: 24px; left: 24px; }
     .stat { padding: 0 16px; }
+
     section { padding: 60px 24px; }
     .bio-grid { grid-template-columns: 1fr; gap: 40px; }
-    .timeline-item { grid-template-columns: 80px 1px 1fr; gap: 0 20px; }
-    .work-grid { grid-template-columns: 1fr; }
-    .work-card { padding: 32px 24px; }
+
+    .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+
     .cta-section { padding: 80px 24px; }
     footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+
+    /* Timeline: vertical on mobile */
+    .timeline-v2 {
+      display: flex;
+      flex-direction: column;
+      padding-left: 40px;
+      position: relative;
+    }
+    /* Vertical line on the left */
+    .timeline-v2::before {
+      top: 12px; bottom: 12px; left: 11px;
+      width: 2px; height: auto; right: auto;
+    }
+    .timeline-node {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+      gap: 20px;
+      padding-bottom: 40px;
+      margin-left: -40px;
+    }
+    .timeline-node:last-child { padding-bottom: 0; }
+    /* Hide the spacer divs on mobile */
+    .node-spacer { display: none; }
+    /* Reset content height and alignment */
+    .node-content {
+      height: auto;
+      padding: 0;
+      flex: 1;
+    }
+    .timeline-node.above .node-content,
+    .timeline-node.below .node-content {
+      text-align: left;
+      align-items: flex-start;
+      padding: 0;
+      justify-content: flex-start;
+    }
+    /* For "above" nodes: HTML order is content→circle→spacer.
+       On mobile we need circle first. */
+    .timeline-node.above .node-circle { order: -1; margin-top: 3px; }
+    .timeline-node.above .node-content { order: 0; }
+    /* For "below" nodes: HTML order is spacer→circle→content — already correct */
+    .timeline-node.below .node-circle { flex-shrink: 0; margin-top: 3px; }
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 48px; }
+    .hero-stats { display: none; }
   }
 </style>
 </head>
@@ -701,7 +719,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">VS — Portfolio</a>
+  <a class="nav-logo" href="#">Vlad Sedykh</a>
   <ul class="nav-links">
     <li><a href="#reel">Reel</a></li>
     <li><a href="#bio">About</a></li>
@@ -724,12 +742,12 @@
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="hero-grain"></div>
-  <div class="hero-left">
+  <div class="hero-left" id="hero-left">
     <div class="hero-eyebrow">
       <div class="eyebrow-line"></div>
       <span class="eyebrow-text">Multimedia Producer · Editor</span>
     </div>
-    <h1>Vlad<br><em>Sedykh</em></h1>
+    <h1>Video Producer<br>&amp; Editor</h1>
     <p class="hero-subtitle">
       I take video projects from concept to final delivery — shaping them for the audience and the platform so the story works in the format it's meant for.
     </p>
@@ -741,7 +759,7 @@
       <a class="btn-ghost" href="#work">Browse Work →</a>
     </div>
   </div>
-  <div class="hero-right">
+  <div class="hero-right" id="hero-right">
     <div class="hero-img-wrap">
       <img src="Vlad.jpg" alt="Vlad Sedykh" />
       <div class="hero-img-overlay"></div>
@@ -777,14 +795,14 @@
   <div class="bio-piece bio-piece-2"></div>
   <div class="bio-piece bio-piece-3"></div>
   <div class="section-label"><span>01 — About</span></div>
-  <div class="bio-grid reveal">
+  <div class="bio-grid js-reveal">
     <div class="bio-left">
       <h2>The story<br><em>behind the cut</em></h2>
-      <div class="bio-credits">
+      <div class="bio-credits worked-with">
         <div class="credit-item">
           <div class="credit-dot"></div>
           <span class="credit-name">Saturday Night Live</span>
-          <span class="credit-role">Production & Post</span>
+          <span class="credit-role">Production &amp; Post</span>
         </div>
         <div class="credit-item">
           <div class="credit-dot"></div>
@@ -809,85 +827,64 @@
 <!-- TIMELINE -->
 <section id="timeline">
   <div class="section-label"><span>02 — Career</span></div>
-  <h2 class="reveal">Where I've<br><em>shipped work</em></h2>
-  <div class="timeline reveal-stagger">
+  <h2>Where I've<br><em>shipped work</em></h2>
+  <div class="timeline-v2-wrap">
+    <div class="timeline-v2">
 
-    <div class="timeline-item">
-      <div class="timeline-date">May 2018 – Present</div>
-      <div class="timeline-line"><div class="timeline-dot"></div></div>
-      <div class="timeline-content">
-        <h3>Freelance Videographer, Editor & Director</h3>
-        <ul class="timeline-bullets">
-          <li>Directing, shooting, and editing video content for clients across commercial, real estate, and social media verticals</li>
-          <li>End-to-end production from pre-production planning through final delivery</li>
-          <li>Managing client relationships, creative briefs, and project timelines independently</li>
-        </ul>
+      <!-- Node 1: Saturday Night Live — content ABOVE line -->
+      <div class="timeline-node above">
+        <div class="node-content">
+          <div class="node-company">Saturday Night Live</div>
+          <div class="node-role">Post-Production Assistant → Production Coordinator</div>
+          <div class="node-dates">Sep 2019 – Dec 2023</div>
+          <ul class="node-bullets">
+            <li>Cut and prepped video assets under tight weekly deadlines across 3 broadcast seasons</li>
+            <li>Coordinated cross-department production logistics for SNL's 49th season as Production Coordinator</li>
+          </ul>
+        </div>
+        <div class="node-circle"></div>
+        <div class="node-spacer"></div>
       </div>
-    </div>
 
-    <div class="timeline-item">
-      <div class="timeline-date">Sep 2019 – May 2022</div>
-      <div class="timeline-line"><div class="timeline-dot"></div></div>
-      <div class="timeline-content">
-        <h3>NBCUniversal — Saturday Night Live <em style="font-size:14px; color:var(--text3);">Post-Production Assistant</em></h3>
-        <ul class="timeline-bullets">
-          <li>Supported post-production workflow for a weekly live television broadcast</li>
-          <li>Cut and prepped video assets under tight weekly deadlines across 3 seasons</li>
-          <li>Coordinated with writers, producers, and edit teams to ensure on-time delivery</li>
-        </ul>
-        <img src="SNL1.jpeg" alt="Saturday Night Live" class="timeline-img">
+      <!-- Node 2: Spotify + WSJ — content BELOW line -->
+      <div class="timeline-node below">
+        <div class="node-spacer"></div>
+        <div class="node-circle"></div>
+        <div class="node-content">
+          <div class="node-company">Spotify + WSJ</div>
+          <div class="node-role">Podcast Production Intern — The Journal</div>
+          <div class="node-dates">Jul 2022 – Dec 2022</div>
+          <ul class="node-bullets">
+            <li>Managed audio edits and clip assembly for one of the world's top-ranked daily news podcasts</li>
+            <li>Maintained editorial consistency and speed across a high-volume daily publishing schedule</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="timeline-item">
-      <div class="timeline-date">Jul 2022 – Dec 2022</div>
-      <div class="timeline-line"><div class="timeline-dot"></div></div>
-      <div class="timeline-content">
-        <h3>Spotify / Wall Street Journal — The Journal <em style="font-size:14px; color:var(--text3);">Podcast Production Intern</em></h3>
-        <ul class="timeline-bullets">
-          <li>Contributed to daily production of The Journal, one of the top-ranked news podcasts</li>
-          <li>Managed audio edits, clip assembly, and delivery for daily episodes</li>
-          <li>Maintained editorial consistency and speed across a high-volume publishing schedule</li>
-        </ul>
+      <!-- Node 3: Homes.com — content ABOVE line -->
+      <div class="timeline-node above">
+        <div class="node-content">
+          <div class="node-company">Homes.com</div>
+          <div class="node-role">Video Editor &amp; Producer — CoStar Group</div>
+          <div class="node-dates">Jan 2024 – Mar 2026</div>
+          <ul class="node-bullets">
+            <li>Delivered 15+ finished videos monthly across promotional and educational channels</li>
+            <li>Managed end-to-end post-production for branded content across social, web, and marketing</li>
+          </ul>
+        </div>
+        <div class="node-circle"></div>
+        <div class="node-spacer"></div>
       </div>
-    </div>
 
-    <div class="timeline-item">
-      <div class="timeline-date">Jan 2023 – Dec 2023</div>
-      <div class="timeline-line"><div class="timeline-dot"></div></div>
-      <div class="timeline-content">
-        <h3>NBCUniversal — Saturday Night Live <em style="font-size:14px; color:var(--text3);">Production Coordinator</em></h3>
-        <ul class="timeline-bullets">
-          <li>Coordinated production logistics and cross-department communication for SNL's 49th season</li>
-          <li>Managed scheduling, asset tracking, and vendor coordination across weekly live shows</li>
-          <li>Served as primary operational liaison between production, post, talent, and network</li>
-        </ul>
-      </div>
     </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">Jan 2024 – Mar 2026</div>
-      <div class="timeline-line"><div class="timeline-dot"></div></div>
-      <div class="timeline-content">
-        <h3>CoStar Group — Homes.com <em style="font-size:14px; color:var(--text3);">Video Editor & Producer</em></h3>
-        <ul class="timeline-bullets">
-          <li>Delivered 15+ finished videos monthly across promotional and educational channels</li>
-          <li>Managed 10–15 simultaneous projects through all stages of post-production</li>
-          <li>Oversaw end-to-end post-production from ingest to final delivery</li>
-          <li>Edited and produced branded content optimized for social, web, and marketing</li>
-          <li>Repackaged long-form footage into platform-ready cuts across multiple channels</li>
-        </ul>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-label"><span>03 — Skills</span></div>
-  <h2 class="reveal">Tools &amp;<br><em>workflow</em></h2>
-  <div class="skills-wrap reveal">
+  <h2>Tools &amp;<br><em>workflow</em></h2>
+  <div class="skills-wrap">
     <span class="skill-tag">Adobe Premiere Pro</span>
     <span class="skill-tag">After Effects</span>
     <span class="skill-tag">DaVinci Resolve</span>
@@ -902,31 +899,228 @@
 <section id="work">
   <div class="section-label"><span>04 — Work</span></div>
   <h2>Selected<br><em>projects</em></h2>
-  <div class="work-grid reveal-stagger">
-    <a class="work-card" href="ai-video-editing.html">
-      <span class="work-card-num">01</span>
-      <h3>AI Video Editing</h3>
-      <p>Transcript-based editing, faster rough cuts, and human finishing to deliver quality work on tighter timelines.</p>
-      <span class="work-card-arrow">View Project →</span>
+  <div class="cards-grid">
+
+    <!-- Card 1: AI Video Editing -->
+    <a class="card" href="ai-video-editing.html">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#1A1A1A"/>
+          <!-- Subtle vertical grid lines -->
+          <line x1="100" y1="0" x2="100" y2="200" stroke="#242424" stroke-width="0.5"/>
+          <line x1="200" y1="0" x2="200" y2="200" stroke="#242424" stroke-width="0.5"/>
+          <line x1="300" y1="0" x2="300" y2="200" stroke="#242424" stroke-width="0.5"/>
+          <!-- Track backgrounds -->
+          <rect x="24" y="38" width="352" height="26" rx="3" fill="#222222"/>
+          <rect x="24" y="74" width="352" height="26" rx="3" fill="#222222"/>
+          <rect x="24" y="110" width="352" height="26" rx="3" fill="#222222"/>
+          <rect x="24" y="146" width="352" height="26" rx="3" fill="#222222"/>
+          <!-- Clip fills — row 1 -->
+          <rect x="24" y="38" width="88" height="26" rx="3" fill="#3B5BDB"/>
+          <rect x="120" y="38" width="118" height="26" rx="3" fill="#3B5BDB" opacity="0.6"/>
+          <rect x="248" y="38" width="80" height="26" rx="3" fill="#3B5BDB" opacity="0.4"/>
+          <!-- Clip fills — row 2 -->
+          <rect x="24" y="74" width="148" height="26" rx="3" fill="#3B5BDB" opacity="0.5"/>
+          <rect x="180" y="74" width="72" height="26" rx="3" fill="#3B5BDB" opacity="0.85"/>
+          <rect x="264" y="74" width="56" height="26" rx="3" fill="#3B5BDB" opacity="0.35"/>
+          <!-- Clip fills — row 3 (audio waveform style) -->
+          <rect x="24" y="110" width="200" height="26" rx="3" fill="#2A3F8A"/>
+          <polyline points="24,123 32,115 40,127 48,112 56,124 64,116 72,126 80,113 88,123 96,117 104,127 112,113 120,123 128,116 136,125 144,113 152,123 160,117 168,127 176,113 184,123 192,117 200,123 208,116 216,126 224,112"
+            fill="none" stroke="#3B5BDB" stroke-width="1.5" stroke-linejoin="round" opacity="0.9"/>
+          <rect x="232" y="110" width="90" height="26" rx="3" fill="#2A3F8A" opacity="0.7"/>
+          <polyline points="232,123 240,116 248,125 256,112 264,123 272,115 280,124 288,113 292,121 296,116 300,123 308,115 316,124 320,123"
+            fill="none" stroke="#3B5BDB" stroke-width="1.5" stroke-linejoin="round" opacity="0.8"/>
+          <!-- Clip fills — row 4 -->
+          <rect x="56" y="146" width="188" height="26" rx="3" fill="#3B5BDB" opacity="0.6"/>
+          <rect x="256" y="146" width="88" height="26" rx="3" fill="#3B5BDB" opacity="0.4"/>
+          <!-- Playhead -->
+          <line x1="196" y1="30" x2="196" y2="182" stroke="#3B5BDB" stroke-width="2"/>
+          <polygon points="191,30 201,30 196,37" fill="#3B5BDB"/>
+          <!-- Sparkle / AI icon — top right -->
+          <g transform="translate(364,22)">
+            <path d="M0,-11 2.6,-2.6 11,0 2.6,2.6 0,11 -2.6,2.6 -11,0 -2.6,-2.6Z" fill="#3B5BDB"/>
+          </g>
+          <g transform="translate(348,24)" opacity="0.45">
+            <path d="M0,-5 1.2,-1.2 5,0 1.2,1.2 0,5 -1.2,1.2 -5,0 -1.2,-1.2Z" fill="#3B5BDB"/>
+          </g>
+          <!-- Time ruler dots -->
+          <circle cx="100" cy="22" r="2" fill="#3B5BDB" opacity="0.5"/>
+          <circle cx="200" cy="22" r="2" fill="#3B5BDB" opacity="0.5"/>
+          <circle cx="300" cy="22" r="2" fill="#3B5BDB" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">AI Video Editing</div>
+        <p class="card-desc">Transcript-based editing, faster rough cuts, and human finishing to deliver quality work on tighter timelines.</p>
+        <span class="card-link">View →</span>
+      </div>
     </a>
-    <a class="work-card" href="homes-com.html">
-      <span class="work-card-num">02</span>
-      <h3>Homes.com</h3>
-      <p>Branded campaigns and educational pieces produced and edited for one of real estate's leading platforms.</p>
-      <span class="work-card-arrow">View Project →</span>
+
+    <!-- Card 2: Homes.com -->
+    <a class="card" href="homes-com.html">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#1A1A1A"/>
+          <!-- Ground line -->
+          <line x1="80" y1="178" x2="320" y2="178" stroke="#303030" stroke-width="1.5"/>
+          <!-- House walls -->
+          <path d="M130,178 L130,100 L200,52 L270,100 L270,178" fill="none" stroke="#3A3A3A" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Roof extended overhang -->
+          <line x1="115" y1="100" x2="285" y2="100" stroke="#3A3A3A" stroke-width="1.5"/>
+          <!-- Chimney -->
+          <path d="M232,62 L232,48 L248,48 L248,76" fill="none" stroke="#3A3A3A" stroke-width="1.5"/>
+          <!-- Left window -->
+          <rect x="142" y="110" width="26" height="20" rx="1" fill="none" stroke="#3B5BDB" stroke-width="1.5" opacity="0.7"/>
+          <line x1="155" y1="110" x2="155" y2="130" stroke="#3B5BDB" stroke-width="0.75" opacity="0.5"/>
+          <!-- Right window -->
+          <rect x="232" y="110" width="26" height="20" rx="1" fill="none" stroke="#3B5BDB" stroke-width="1.5" opacity="0.7"/>
+          <line x1="245" y1="110" x2="245" y2="130" stroke="#3B5BDB" stroke-width="0.75" opacity="0.5"/>
+          <!-- Door -->
+          <rect x="184" y="140" width="32" height="38" rx="1" fill="#222" stroke="#3A3A3A" stroke-width="1"/>
+          <!-- Play button — centered on facade -->
+          <circle cx="200" cy="118" r="24" fill="#3B5BDB" opacity="0.92"/>
+          <polygon points="194,110 194,126 214,118" fill="white"/>
+          <!-- Subtle glow -->
+          <circle cx="200" cy="118" r="34" fill="none" stroke="#3B5BDB" stroke-width="1" opacity="0.2"/>
+          <!-- Stars / accent dots -->
+          <circle cx="108" cy="38" r="1.5" fill="#3B5BDB" opacity="0.5"/>
+          <circle cx="300" cy="28" r="2" fill="#3B5BDB" opacity="0.35"/>
+          <circle cx="320" cy="52" r="1.5" fill="#3B5BDB" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Homes.com</div>
+        <p class="card-desc">Branded campaigns and educational pieces produced and edited for one of real estate's leading platforms.</p>
+        <span class="card-link">View →</span>
+      </div>
     </a>
-    <a class="work-card" href="real-estate.html">
-      <span class="work-card-num">03</span>
-      <h3>Real Estate</h3>
-      <p>Property and market-focused edits built to highlight listings clearly and move viewers toward action.</p>
-      <span class="work-card-arrow">View Project →</span>
+
+    <!-- Card 3: Real Estate -->
+    <a class="card" href="real-estate.html">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#1A1A1A"/>
+          <!-- Cityscape silhouettes -->
+          <rect x="0"   y="130" width="28"  height="70"  fill="#1F1F1F"/>
+          <rect x="30"  y="105" width="22"  height="95"  fill="#222222"/>
+          <rect x="55"  y="85"  width="32"  height="115" fill="#1F1F1F"/>
+          <rect x="90"  y="115" width="20"  height="85"  fill="#222222"/>
+          <rect x="114" y="75"  width="38"  height="125" fill="#1F1F1F"/>
+          <rect x="156" y="55"  width="28"  height="145" fill="#242424"/>
+          <rect x="188" y="85"  width="24"  height="115" fill="#1F1F1F"/>
+          <rect x="216" y="70"  width="34"  height="130" fill="#222222"/>
+          <rect x="254" y="90"  width="22"  height="110" fill="#1F1F1F"/>
+          <rect x="280" y="60"  width="38"  height="140" fill="#242424"/>
+          <rect x="322" y="100" width="26"  height="100" fill="#1F1F1F"/>
+          <rect x="352" y="120" width="48"  height="80"  fill="#222222"/>
+          <!-- Window lights -->
+          <rect x="8"   y="140" width="5" height="4" fill="#3B5BDB" opacity="0.7"/>
+          <rect x="8"   y="152" width="5" height="4" fill="#3B5BDB" opacity="0.4"/>
+          <rect x="61"  y="95"  width="5" height="4" fill="#3B5BDB" opacity="0.8"/>
+          <rect x="72"  y="106" width="5" height="4" fill="#3B5BDB" opacity="0.5"/>
+          <rect x="120" y="86"  width="5" height="4" fill="#3B5BDB" opacity="0.6"/>
+          <rect x="132" y="96"  width="5" height="4" fill="#3B5BDB" opacity="0.85"/>
+          <rect x="161" y="66"  width="5" height="4" fill="#3B5BDB" opacity="0.7"/>
+          <rect x="161" y="78"  width="5" height="4" fill="#3B5BDB" opacity="0.5"/>
+          <rect x="172" y="72"  width="5" height="4" fill="#3B5BDB" opacity="0.4"/>
+          <rect x="221" y="80"  width="5" height="4" fill="#3B5BDB" opacity="0.75"/>
+          <rect x="286" y="72"  width="5" height="4" fill="#3B5BDB" opacity="0.6"/>
+          <rect x="297" y="82"  width="5" height="4" fill="#3B5BDB" opacity="0.45"/>
+          <!-- Camera frame overlay -->
+          <rect x="100" y="22" width="200" height="136" rx="3" fill="none" stroke="#4A4A4A" stroke-width="1.5"/>
+          <!-- L-corner brackets in blue -->
+          <path d="M100,42 L100,22 L120,22" fill="none" stroke="#3B5BDB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M280,22 L300,22 L300,42" fill="none" stroke="#3B5BDB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M100,138 L100,158 L120,158" fill="none" stroke="#3B5BDB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M280,158 L300,158 L300,138" fill="none" stroke="#3B5BDB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Center crosshair -->
+          <circle cx="200" cy="90" r="3" fill="#3B5BDB"/>
+          <line x1="188" y1="90" x2="194" y2="90" stroke="#3B5BDB" stroke-width="1" opacity="0.7"/>
+          <line x1="206" y1="90" x2="212" y2="90" stroke="#3B5BDB" stroke-width="1" opacity="0.7"/>
+          <line x1="200" y1="78"  x2="200" y2="84"  stroke="#3B5BDB" stroke-width="1" opacity="0.7"/>
+          <line x1="200" y1="96"  x2="200" y2="102" stroke="#3B5BDB" stroke-width="1" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Real Estate</div>
+        <p class="card-desc">Property and market-focused edits built to highlight listings clearly and move viewers toward action.</p>
+        <span class="card-link">View →</span>
+      </div>
     </a>
-    <a class="work-card" href="social-media.html">
-      <span class="work-card-num">04</span>
-      <h3>Social Media</h3>
-      <p>Platform-native packages designed for retention, clarity, and repeatable content velocity.</p>
-      <span class="work-card-arrow">View Project →</span>
+
+    <!-- Card 4: Social Media Videos -->
+    <a class="card" href="social-media.html">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#1A1A1A"/>
+          <!-- Phone 1 — top left -->
+          <rect x="52"  y="14" width="88" height="78" rx="10" fill="#222" stroke="#2E2E2E" stroke-width="1.5"/>
+          <rect x="82"  y="20" width="28" height="3"  rx="1.5" fill="#2E2E2E"/>
+          <circle cx="96"  cy="53" r="20" fill="#3B5BDB" opacity="0.9"/>
+          <polygon points="89,44 89,62 109,53" fill="white"/>
+          <!-- Phone 2 — top right -->
+          <rect x="260" y="14" width="88" height="78" rx="10" fill="#222" stroke="#2E2E2E" stroke-width="1.5"/>
+          <rect x="290" y="20" width="28" height="3"  rx="1.5" fill="#2E2E2E"/>
+          <circle cx="304" cy="53" r="20" fill="#3B5BDB" opacity="0.65"/>
+          <polygon points="297,44 297,62 317,53" fill="white"/>
+          <!-- Phone 3 — bottom left -->
+          <rect x="52"  y="108" width="88" height="78" rx="10" fill="#222" stroke="#2E2E2E" stroke-width="1.5"/>
+          <rect x="82"  y="114" width="28" height="3" rx="1.5" fill="#2E2E2E"/>
+          <circle cx="96"  cy="147" r="20" fill="#3B5BDB" opacity="0.5"/>
+          <polygon points="89,138 89,156 109,147" fill="white"/>
+          <!-- Phone 4 — bottom right -->
+          <rect x="260" y="108" width="88" height="78" rx="10" fill="#222" stroke="#2E2E2E" stroke-width="1.5"/>
+          <rect x="290" y="114" width="28" height="3" rx="1.5" fill="#2E2E2E"/>
+          <circle cx="304" cy="147" r="20" fill="#3B5BDB" opacity="0.8"/>
+          <polygon points="297,138 297,156 317,147" fill="white"/>
+          <!-- Central large play ring -->
+          <circle cx="200" cy="100" r="44" fill="none" stroke="#3B5BDB" stroke-width="1" opacity="0.25"/>
+          <circle cx="200" cy="100" r="30" fill="rgba(59,91,219,0.08)" stroke="#3B5BDB" stroke-width="1.5" opacity="0.5"/>
+          <polygon points="193,91 193,109 215,100" fill="#3B5BDB" opacity="0.75"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Social Media Videos</div>
+        <p class="card-desc">Platform-native packages designed for retention, clarity, and repeatable content velocity.</p>
+        <span class="card-link">View →</span>
+      </div>
     </a>
+
+    <!-- Card 5: Contact -->
+    <a class="card" href="contact.html">
+      <div class="card-thumb">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#1A1A1A"/>
+          <!-- Envelope body -->
+          <rect x="108" y="72" width="184" height="110" rx="6" fill="#222" stroke="#333" stroke-width="1.5"/>
+          <!-- Envelope flap (V-shape, open/sent) -->
+          <path d="M108,72 L200,132 L292,72" fill="none" stroke="#3B5BDB" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Envelope fold lines -->
+          <path d="M108,182 L162,130" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+          <path d="M292,182 L238,130" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+          <!-- Speech bubble — top right of envelope -->
+          <path d="M252,22 Q288,22 288,46 Q288,70 252,70 L242,70 L236,82 L240,70 L232,70 Q196,70 196,46 Q196,22 232,22 Z"
+            fill="none" stroke="#3B5BDB" stroke-width="1.5"/>
+          <!-- Three dots in bubble -->
+          <circle cx="232" cy="46" r="3.5" fill="#3B5BDB"/>
+          <circle cx="244" cy="46" r="3.5" fill="#3B5BDB"/>
+          <circle cx="256" cy="46" r="3.5" fill="#3B5BDB"/>
+          <!-- Decorative small dots -->
+          <circle cx="128" cy="44" r="2"   fill="#3B5BDB" opacity="0.4"/>
+          <circle cx="110" cy="58" r="1.5" fill="#3B5BDB" opacity="0.3"/>
+          <circle cx="158" cy="30" r="1.5" fill="#3B5BDB" opacity="0.35"/>
+          <circle cx="180" cy="48" r="1.5" fill="#3B5BDB" opacity="0.25"/>
+          <!-- At-sign hint -->
+          <text x="200" y="160" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#3B5BDB" opacity="0.35" letter-spacing="0.08em">GET IN TOUCH</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Contact</div>
+        <p class="card-desc">Available for freelance, contract, and full-time opportunities across video production and editing.</p>
+        <span class="card-link">View →</span>
+      </div>
+    </a>
+
   </div>
 </section>
 
@@ -944,20 +1138,84 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-copy">© 2026 Vlad Sedykh — Proudly vibecoded</span>
-  <span class="footer-copy" style="color: var(--accent);">Video Producer & Editor</span>
+  <span class="footer-copy" style="color: var(--accent);">Video Producer &amp; Editor</span>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
+(function() {
+  'use strict';
 
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+  /* ── PREFERS-REDUCED-MOTION CHECK ─────────────────── */
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── INTERSECTION OBSERVER (scroll reveal) ─────────── */
+  if (!prefersReduced) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('is-visible');
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.12 });
+
+    /* Targets: h2, .card, .timeline-node, #bio .bio-grid, .worked-with */
+    const singleTargets = [
+      ...document.querySelectorAll('h2'),
+      ...document.querySelectorAll('.bio-grid'),
+      ...document.querySelectorAll('.worked-with'),
+      ...document.querySelectorAll('.skills-wrap'),
+    ];
+    singleTargets.forEach(el => {
+      el.classList.add('js-reveal');
+      revealObserver.observe(el);
+    });
+
+    /* Staggered siblings: cards and timeline nodes */
+    const staggerGroups = [
+      document.querySelectorAll('.cards-grid .card'),
+      document.querySelectorAll('.timeline-v2 .timeline-node'),
+    ];
+    staggerGroups.forEach(group => {
+      group.forEach((el, i) => {
+        el.classList.add('js-reveal');
+        el.style.transitionDelay = (i * 80) + 'ms';
+        revealObserver.observe(el);
+      });
+    });
+  }
+
+  /* ── PARALLAX (hero) ──────────────────────────────── */
+  if (!prefersReduced) {
+    const heroLeft  = document.getElementById('hero-left');
+    const heroRight = document.getElementById('hero-right');
+    const hero      = heroLeft ? heroLeft.closest('.hero') : null;
+    let ticking = false;
+
+    function applyParallax() {
+      if (!hero) return;
+      const scrollY = window.scrollY;
+      const heroH   = hero.offsetHeight;
+      /* Only apply while hero is in view */
+      if (scrollY < heroH) {
+        const offset = scrollY * 0.4;
+        if (heroLeft)  heroLeft.style.transform  = 'translateY(' + offset + 'px)';
+        if (heroRight) heroRight.style.transform = 'translateY(' + offset + 'px)';
+      } else {
+        if (heroLeft)  heroLeft.style.transform  = '';
+        if (heroRight) heroRight.style.transform = '';
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(applyParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+})();
 </script>
 
 </body>
