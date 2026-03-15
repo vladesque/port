@@ -12,8 +12,6 @@
     --bg: #0a0a0a;
     --bg2: #111111;
     --bg3: #1a1a1a;
-    --bg-warm: #0e0c09;
-    --bg-cool: #09090e;
     --surface: #1e1e1e;
     --border: rgba(255,255,255,0.08);
     --border2: rgba(255,255,255,0.14);
@@ -473,19 +471,32 @@
     letter-spacing: 0.08em;
   }
 
-  /* SECTION COLORS */
-  #bio { background: var(--bg-warm); }
-  #timeline { background: var(--bg-cool); }
-  .cta-section {
-    background: radial-gradient(ellipse 90% 70% at 50% 50%, #17130a 0%, #111111 65%);
+  /* BIO COLOR PIECES */
+  #bio { position: relative; overflow: hidden; }
+  .bio-piece {
+    position: absolute; pointer-events: none; z-index: 0;
   }
-  #work {
-    background-color: var(--bg);
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 64px 64px;
+  .bio-piece-1 {
+    /* amber/warm orange — top right */
+    width: 360px; height: 280px;
+    background: rgba(196, 92, 10, 0.22);
+    top: 0; right: 0;
   }
+  .bio-piece-2 {
+    /* teal — bottom left */
+    width: 280px; height: 220px;
+    background: rgba(10, 118, 118, 0.18);
+    bottom: 0; left: 0;
+  }
+  .bio-piece-3 {
+    /* gold — mid right, vertically centered */
+    width: 160px; height: 320px;
+    background: rgba(180, 138, 18, 0.13);
+    top: 50%; right: 18%;
+    transform: translateY(-50%);
+  }
+  #bio .section-label,
+  #bio .bio-grid { position: relative; z-index: 1; }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
@@ -672,6 +683,9 @@
 
 <!-- BIO -->
 <section id="bio">
+  <div class="bio-piece bio-piece-1"></div>
+  <div class="bio-piece bio-piece-2"></div>
+  <div class="bio-piece bio-piece-3"></div>
   <div class="section-label"><span>01 — About</span></div>
   <div class="bio-grid reveal">
     <div class="bio-left">
