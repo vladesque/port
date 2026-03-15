@@ -418,6 +418,42 @@
     line-height: 1.7;
   }
 
+  /* TIMELINE BULLETS */
+  .timeline-bullets {
+    list-style: none;
+    margin-top: 10px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .timeline-bullets li {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+  .timeline-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--text3);
+  }
+
+  /* SKILLS */
+  .skills-wrap {
+    margin-top: 48px;
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text2);
+    border: 0.5px solid var(--border2);
+    padding: 8px 16px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .skill-tag:hover { color: var(--accent); border-color: var(--accent); }
+
   /* WORK GRID */
   .work-grid {
     display: grid;
@@ -665,6 +701,7 @@
         <a href="social-media.html">Social Media</a>
       </div>
     </li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -749,9 +786,11 @@
       </div>
     </div>
     <div class="bio-text">
-      <p>I'm Vlad — a multimedia producer and editor focused on <strong>social-first, branded, and real estate content</strong>. My background spans broadcast comedy at Saturday Night Live, daily news podcasting with Spotify and The Wall Street Journal, and multi-channel video production at Homes.com.</p>
+      <p>I'm Vlad — a multimedia producer and editor focused on <strong>social-first, branded, and real estate content</strong>. My background spans broadcast comedy at Saturday Night Live — where I worked as both Post-Production Assistant and <strong>Production Coordinator</strong> — daily news podcasting with Spotify and The Wall Street Journal, and multi-channel video production at Homes.com.</p>
       <br>
       <p>I work hands-on from planning to final cut, with a <strong>direct, collaborative approach</strong> built for fast-moving teams. AI-assisted workflows let me move faster without sacrificing the human craft that makes stories land.</p>
+      <br>
+      <p style="font-size:15px; color:var(--text3);">B.A. Film Production &amp; Marketing — CUNY Brooklyn College, Magna Cum Laude (GPA 3.76)</p>
     </div>
   </div>
 </section>
@@ -761,36 +800,104 @@
   <div class="section-label"><span>02 — Career</span></div>
   <h2 class="reveal">Where I've<br><em>shipped work</em></h2>
   <div class="timeline reveal-stagger">
+
     <div class="timeline-item">
-      <div class="timeline-date">Live TV · NYC</div>
+      <div class="timeline-date">May 2018 – Present</div>
       <div class="timeline-line"><div class="timeline-dot"></div></div>
       <div class="timeline-content">
-        <h3>Saturday Night Live</h3>
-        <p>Supported production and post in a fast-turnaround comedy environment. Cut and prepped assets under tight deadlines while maintaining editorial polish.</p>
+        <h3>Freelance Videographer, Editor & Director</h3>
+        <ul class="timeline-bullets">
+          <li>Directing, shooting, and editing video content for clients across commercial, real estate, and social media verticals</li>
+          <li>End-to-end production from pre-production planning through final delivery</li>
+          <li>Managing client relationships, creative briefs, and project timelines independently</li>
+        </ul>
       </div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-date">Daily Podcast</div>
+      <div class="timeline-date">Sep 2019 – May 2022</div>
       <div class="timeline-line"><div class="timeline-dot"></div></div>
       <div class="timeline-content">
-        <h3>Spotify + WSJ</h3>
-        <p>Contributed to a daily news podcast workflow co-produced with The Wall Street Journal. Managed edits and delivery requiring consistency, speed, and journalistic care.</p>
+        <h3>NBCUniversal — Saturday Night Live <em style="font-size:14px; color:var(--text3);">Post-Production Assistant</em></h3>
+        <ul class="timeline-bullets">
+          <li>Supported post-production workflow for a weekly live television broadcast</li>
+          <li>Cut and prepped video assets under tight weekly deadlines across 3 seasons</li>
+          <li>Coordinated with writers, producers, and edit teams to ensure on-time delivery</li>
+        </ul>
       </div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-date">Now · Remote</div>
+      <div class="timeline-date">Jul 2022 – Dec 2022</div>
       <div class="timeline-line"><div class="timeline-dot"></div></div>
       <div class="timeline-content">
-        <h3>Homes.com</h3>
-        <p>Producing and editing promotional and educational video for multiple channels. Repackaging footage into platform-ready versions for social and marketing use.</p>
+        <h3>Spotify / Wall Street Journal — The Journal <em style="font-size:14px; color:var(--text3);">Podcast Production Intern</em></h3>
+        <ul class="timeline-bullets">
+          <li>Contributed to daily production of The Journal, one of the top-ranked news podcasts</li>
+          <li>Managed audio edits, clip assembly, and delivery for daily episodes</li>
+          <li>Maintained editorial consistency and speed across a high-volume publishing schedule</li>
+        </ul>
       </div>
     </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Jan 2023 – Dec 2023</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <h3>NBCUniversal — Saturday Night Live <em style="font-size:14px; color:var(--text3);">Production Coordinator</em></h3>
+        <ul class="timeline-bullets">
+          <li>Coordinated production logistics and cross-department communication for SNL's 49th season</li>
+          <li>Managed scheduling, asset tracking, and vendor coordination across weekly live shows</li>
+          <li>Served as primary operational liaison between production, post, talent, and network</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Jan 2024 – Mar 2026</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <h3>CoStar Group — Homes.com <em style="font-size:14px; color:var(--text3);">Video Editor & Producer</em></h3>
+        <ul class="timeline-bullets">
+          <li>Delivered 15+ finished videos monthly across promotional and educational channels</li>
+          <li>Managed 10–15 simultaneous projects through all stages of post-production</li>
+          <li>Oversaw end-to-end post-production from ingest to final delivery</li>
+          <li>Edited and produced branded content optimized for social, web, and marketing</li>
+          <li>Repackaged long-form footage into platform-ready cuts across multiple channels</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label"><span>03 — Skills</span></div>
+  <h2 class="reveal">Tools &amp;<br><em>workflow</em></h2>
+  <div class="skills-wrap reveal">
+    <span class="skill-tag">Adobe Premiere Pro</span>
+    <span class="skill-tag">After Effects</span>
+    <span class="skill-tag">DaVinci Resolve</span>
+    <span class="skill-tag">Pro Tools</span>
+    <span class="skill-tag">CapCut</span>
+    <span class="skill-tag">Photoshop</span>
+    <span class="skill-tag">Figma</span>
+    <span class="skill-tag">LucidLink</span>
+    <span class="skill-tag">Frame.io</span>
+    <span class="skill-tag">Airtable</span>
+    <span class="skill-tag">Asana</span>
+    <span class="skill-tag">Monday</span>
+    <span class="skill-tag">Microsoft Office Suite</span>
+    <span class="skill-tag">Generative AI &amp; Prompt Engineering</span>
+    <span class="skill-tag">Digital Asset Management</span>
+    <span class="skill-tag">SEO Optimization</span>
   </div>
 </section>
 
 <!-- WORK -->
 <section id="work">
-  <div class="section-label"><span>03 — Work</span></div>
+  <div class="section-label"><span>04 — Work</span></div>
   <h2>Selected<br><em>projects</em></h2>
   <div class="work-grid reveal-stagger">
     <a class="work-card" href="ai-video-editing.html">
@@ -822,7 +929,7 @@
 
 <!-- CTA -->
 <div class="cta-section" id="contact">
-  <div class="section-label" style="justify-content:center; margin-bottom:48px;"><span>04 — Contact</span></div>
+  <div class="section-label" style="justify-content:center; margin-bottom:48px;"><span>05 — Contact</span></div>
   <h2>Let's build<br><em>the next cut</em></h2>
   <p>Available for freelance, contract, and full-time opportunities across video production and editing.</p>
   <div class="cta-actions">
