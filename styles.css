@@ -183,6 +183,14 @@ h1 {
   line-height: 1.7;
 }
 
+.hero-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
 .actions {
   display: flex;
   gap: 10px;
