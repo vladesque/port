@@ -71,17 +71,18 @@
   .nav-dropdown-menu {
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(10,10,10,0.97);
     border: 0.5px solid var(--border2);
     backdrop-filter: blur(12px);
     min-width: 180px;
-    padding: 6px 0;
+    padding: 8px 0 6px;
     z-index: 200;
   }
-  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown-menu:hover { display: block; }
   .nav-dropdown-menu a {
     display: block;
     padding: 9px 18px;
