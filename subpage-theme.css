@@ -81,7 +81,42 @@ a { color: inherit; }
   background: var(--bg2);
   padding: 36px;
   margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
 }
+
+/* COLOR PIECES */
+.piece {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.page-hero > *:not(.piece) { position: relative; z-index: 1; }
+
+/* AI — blue / cyan / purple */
+.piece-ai-1 { width: 320px; height: 220px; background: rgba(30,80,200,0.20); top: 0; left: 0; }
+.piece-ai-2 { width: 240px; height: 180px; background: rgba(0,170,170,0.15); bottom: 0; right: 0; }
+.piece-ai-3 { width: 160px; height: 260px; background: rgba(110,50,200,0.12); top: 50%; right: 22%; transform: translateY(-50%); }
+
+/* Homes.com — forest green / amber */
+.piece-homes-1 { width: 300px; height: 200px; background: rgba(20,120,70,0.20); top: 0; right: 0; }
+.piece-homes-2 { width: 220px; height: 180px; background: rgba(180,120,20,0.17); bottom: 0; left: 0; }
+.piece-homes-3 { width: 140px; height: 240px; background: rgba(30,100,55,0.12); top: 50%; left: 22%; transform: translateY(-50%); }
+
+/* Real Estate — terracotta / warm brown */
+.piece-re-1 { width: 340px; height: 200px; background: rgba(190,75,25,0.20); top: 0; right: 0; }
+.piece-re-2 { width: 220px; height: 200px; background: rgba(110,55,10,0.18); bottom: 0; left: 0; }
+.piece-re-3 { width: 150px; height: 280px; background: rgba(210,130,30,0.12); top: 50%; right: 18%; transform: translateY(-50%); }
+
+/* Social Media — hot pink / electric blue */
+.piece-sm-1 { width: 300px; height: 200px; background: rgba(200,25,95,0.18); top: 0; right: 0; }
+.piece-sm-2 { width: 240px; height: 180px; background: rgba(25,95,200,0.16); bottom: 0; left: 0; }
+.piece-sm-3 { width: 150px; height: 260px; background: rgba(170,0,155,0.11); top: 50%; right: 20%; transform: translateY(-50%); }
+
+/* Contact — indigo / teal */
+.piece-contact-1 { width: 320px; height: 220px; background: rgba(90,90,160,0.20); top: 0; left: 0; }
+.piece-contact-2 { width: 240px; height: 180px; background: rgba(15,105,120,0.16); bottom: 0; right: 0; }
+.piece-contact-3 { width: 150px; height: 260px; background: rgba(70,70,130,0.12); top: 50%; left: 25%; transform: translateY(-50%); }
 
 .page-kicker {
   font-family: 'DM Mono', monospace;
