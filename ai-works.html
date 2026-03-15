@@ -4,72 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>AI Video Editing + Social Media — Vlad Sedykh</title>
-  <style>
-    :root{
-      --bg:#160d08;
-      --text:#ffe6c3;
-      --muted:#d8b889;
-      --orange:#ff8d3f;
-      --line:rgba(255,197,136,.25);
-      --panel:rgba(45,27,16,.78);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui;background:radial-gradient(circle at 20% 0%, #3c2313 0%, #1a1009 45%, #0f0906 100%);color:var(--text)}
-    .wrap{max-width:1000px;margin:0 auto;padding:22px 18px 64px}
-    .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 0 20px;border-bottom:1px solid var(--line)}
-    a{color:inherit}
-    .btn{padding:9px 13px;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:rgba(255,167,93,.12)}
-    h1{font-size:clamp(34px,6vw,56px);line-height:1.05;margin:18px 0 10px}
-    .sub{color:var(--muted);max-width:70ch}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}
-    .card{grid-column:span 6;border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px}
-    .card h3{margin:.2rem 0 .5rem}
-    .card p{margin:0;color:var(--muted)}
-    .social{margin-top:32px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
-    ul{margin:10px 0 0;padding-left:18px}
-    li{margin:7px 0}
-    @media (max-width:860px){.card{grid-column:span 12}}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="subpage-theme.css" />
 </head>
 <body>
-  <main class="wrap">
-    <div class="top">
-      <strong>Vlad Sedykh — AI Video Editing + Social</strong>
-      <a class="btn" href="index.html">← Back to Portfolio</a>
-    </div>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">VS — Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ai-video-editing.html" aria-current="page">AI Video Editing</a></li>
+      <li><a href="homes-com.html">Homes.com</a></li>
+      <li><a href="real-estate.html">Real Estate</a></li>
+      <li><a href="social-media.html">Social Media Videos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-    <h1>AI Video Editing Works & Social Media</h1>
-    <p class="sub">This page highlights your AI-assisted editing pipeline, content experiments, and social presence separate from your real estate portfolio.</p>
-
-    <div class="grid">
-      <article class="card">
-        <h3>AI Cutdown Engine</h3>
-        <p>Used AI tools for transcript-based selects, automatic scene grouping, and first-pass rough cuts before finishing in Premiere/After Effects.</p>
-      </article>
-      <article class="card">
-        <h3>Voice + Visual Sync Experiments</h3>
-        <p>Built AI-assisted sequences that lock motion graphics to narration beats for stronger retention and a trailer-like feel.</p>
-      </article>
-      <article class="card">
-        <h3>Generative Concept Boards</h3>
-        <p>Rapid mood-board generation for pitches, references, and shot planning before production days.</p>
-      </article>
-      <article class="card">
-        <h3>Automation + Versioning</h3>
-        <p>Created a high-volume output flow for TikTok/Reels/Shorts variants with platform-native captions and hooks.</p>
-      </article>
-    </div>
-
-    <section class="social">
-      <h2 style="margin-top:0">Social Media</h2>
-      <p style="color:var(--muted)">Add your profile links and follower metrics here.</p>
-      <ul>
-        <li>Instagram: <a href="#">@yourhandle</a></li>
-        <li>TikTok: <a href="#">@yourhandle</a></li>
-        <li>YouTube: <a href="#">youtube.com/@yourchannel</a></li>
-        <li>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></li>
-      </ul>
+  <main class="page-wrap">
+    <section class="page-hero">
+      <div class="page-kicker">Extended AI notes</div>
+      <h1>AI Video Editing + Social</h1>
+      <p>This page highlights AI-assisted editing experiments, social packaging, and multi-output pipeline workflows.</p>
     </section>
+
+    <section class="section-block">
+      <div class="section-head"><h2>Workflow Modules</h2><p>R&D</p></div>
+      <div class="card-grid">
+        <article class="info-card"><h3>AI Cutdown Engine</h3><p>Transcript-based selects, automatic scene grouping, and first-pass rough cuts before finishing.</p></article>
+        <article class="info-card"><h3>Voice + Visual Sync</h3><p>AI-assisted sequences that lock motion graphics to narration beats for stronger retention.</p></article>
+        <article class="info-card"><h3>Generative Concept Boards</h3><p>Rapid mood-board generation for pitches, references, and shot planning before production.</p></article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head"><h2>Social Accounts</h2><p>Placeholder links</p></div>
+      <div class="contact-list">
+        <p>Instagram: <a href="#">@yourhandle</a></p>
+        <p>TikTok: <a href="#">@yourhandle</a></p>
+        <p>YouTube: <a href="#">youtube.com/@yourchannel</a></p>
+        <p>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>© 2026 Vlad Sedykh — Proudly vibecoded</span>
+      <span>Video Producer & Editor</span>
+    </footer>
   </main>
 </body>
 </html>
