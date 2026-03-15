@@ -65,6 +65,39 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--text); }
+
+  /* WORK DROPDOWN */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,10,10,0.97);
+    border: 0.5px solid var(--border2);
+    backdrop-filter: blur(12px);
+    min-width: 180px;
+    padding: 6px 0;
+    z-index: 200;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 9px 18px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+  }
   .nav-cta {
     font-size: 12px;
     font-weight: 500;
@@ -623,10 +656,17 @@
   <ul class="nav-links">
     <li><a href="#reel">Reel</a></li>
     <li><a href="#bio">About</a></li>
-    <li><a href="#work">Work</a></li>
+    <li class="nav-dropdown">
+      <a href="#work">Work</a>
+      <div class="nav-dropdown-menu">
+        <a href="ai-video-editing.html">AI Video Editing</a>
+        <a href="homes-com.html">Homes.com</a>
+        <a href="real-estate.html">Real Estate</a>
+        <a href="social-media.html">Social Media</a>
+      </div>
+    </li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="contact.html">Hire Me</a>
 </nav>
 
 <!-- HERO -->
