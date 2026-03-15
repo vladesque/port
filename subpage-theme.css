@@ -70,6 +70,40 @@ a { color: inherit; }
   color: var(--text);
 }
 
+.nav-dropdown { position: relative; }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,10,10,0.97);
+  border: 0.5px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  min-width: 180px;
+  padding: 8px 0 6px;
+  z-index: 200;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown-menu:hover { display: block; }
+.nav-dropdown-menu a {
+  display: block;
+  padding: 9px 18px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(138,134,128,1);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a[aria-current="page"] {
+  color: var(--text);
+  background: rgba(255,255,255,0.04);
+}
+
 .page-wrap {
   max-width: 1200px;
   margin: 0 auto;
