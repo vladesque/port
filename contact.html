@@ -4,44 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact — Vlad Sedykh</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="subpage-theme.css" />
 </head>
 <body>
-  <div class="motion"><i></i><i></i><i></i></div>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html"><span class="dot"></span><span>Vlad Sedykh</span></a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="ai-video-editing.html">AI Video Editing</a>
-        <a href="homes-com.html">Homes.com</a>
-        <a href="real-estate.html">Real Estate</a>
-        <a href="social-media.html">Social Media Videos</a>
-        <a href="contact.html" aria-current="page">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">VS — Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ai-video-editing.html">AI Video Editing</a></li>
+      <li><a href="homes-com.html">Homes.com</a></li>
+      <li><a href="real-estate.html">Real Estate</a></li>
+      <li><a href="social-media.html">Social Media Videos</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
 
-  <main class="container">
-    <section class="section panel section-panel">
-      <div class="section-title">
-        <h2>Contact</h2>
-        <p>Let’s build your next project</p>
-      </div>
-      <p class="subtitle">Reach out directly, connect on LinkedIn, or use the contact form below.</p>
+  <main class="page-wrap">
+    <section class="page-hero">
+      <div class="page-kicker">Freelance, contract, full-time</div>
+      <h1>Contact</h1>
+      <p>Reach out directly, connect on LinkedIn, or use the message form below.</p>
+    </section>
 
+    <section class="section-block">
+      <div class="section-head"><h2>Direct Contact</h2><p>Fastest way</p></div>
       <div class="contact-list">
         <p><strong>Email:</strong> <a href="mailto:vladislavsedykh@gmail.com">vladislavsedykh@gmail.com</a></p>
         <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vladsedykh/" target="_blank" rel="noopener noreferrer">linkedin.com/in/vladsedykh</a></p>
       </div>
     </section>
 
-    <section class="section panel section-panel">
-      <div class="section-title">
-        <h2>Send a Message</h2>
-        <p>Email form</p>
-      </div>
-
+    <section class="section-block">
+      <div class="section-head"><h2>Send a Message</h2><p>Email form</p></div>
       <form class="contact-form" action="mailto:vladislavsedykh@gmail.com" method="post" enctype="text/plain">
         <label for="name">Name</label>
         <input id="name" name="Name" type="text" required />
@@ -55,15 +50,15 @@
         <label for="message">Message</label>
         <textarea id="message" name="Message" rows="6" required></textarea>
 
-        <button class="btn primary" type="submit">Send Message</button>
+        <button class="btn-primary" type="submit">Send Message</button>
       </form>
-
-      <p class="form-note">This form uses your default email app to send the message to Vlad.</p>
+      <p class="muted" style="margin-top:12px; letter-spacing:0; text-transform:none; font-family:'Figtree',sans-serif;">This form opens your default email app with your message.</p>
     </section>
 
-    <footer>Proudly vibecoded by Vlad Sedykh © 2026</footer>
+    <footer class="page-footer">
+      <span>© 2026 Vlad Sedykh — Proudly vibecoded</span>
+      <span>Video Producer & Editor</span>
+    </footer>
   </main>
-
-  
 </body>
 </html>
