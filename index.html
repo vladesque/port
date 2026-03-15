@@ -419,16 +419,31 @@
     line-height: 1.7;
   }
 
-  /* TIMELINE IMAGE */
-  .timeline-img {
-    margin-top: 16px;
-    width: 100%;
-    max-width: 480px;
-    aspect-ratio: 16/9;
+  /* TIMELINE LAYOUT */
+  #timeline { padding: 0; overflow: hidden; }
+  .timeline-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+  }
+  .timeline-main {
+    padding: 100px 80px;
+  }
+  .timeline-side {
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+  }
+  .timeline-side img {
+    width: 100%; height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
-    border: 0.5px solid var(--border);
+  }
+  @media (max-width: 768px) {
+    .timeline-layout { grid-template-columns: 1fr; }
+    .timeline-side { display: none; }
+    .timeline-main { padding: 60px 24px; }
   }
 
   /* TIMELINE BULLETS */
@@ -808,6 +823,8 @@
 
 <!-- TIMELINE -->
 <section id="timeline">
+  <div class="timeline-layout">
+  <div class="timeline-main">
   <div class="section-label"><span>02 — Career</span></div>
   <h2 class="reveal">Where I've<br><em>shipped work</em></h2>
   <div class="timeline reveal-stagger">
@@ -835,7 +852,6 @@
           <li>Cut and prepped video assets under tight weekly deadlines across 3 seasons</li>
           <li>Coordinated with writers, producers, and edit teams to ensure on-time delivery</li>
         </ul>
-        <img src="SNL1.jpeg" alt="Saturday Night Live" class="timeline-img">
       </div>
     </div>
 
@@ -881,6 +897,11 @@
     </div>
 
   </div>
+  </div><!-- end timeline-main -->
+  <div class="timeline-side">
+    <img src="SNL1.jpeg" alt="Saturday Night Live">
+  </div>
+  </div><!-- end timeline-layout -->
 </section>
 
 <!-- SKILLS -->
