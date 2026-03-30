@@ -678,6 +678,81 @@
   }
   .work-card:hover::after { opacity: 1; }
 
+  /* BADGE */
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text2);
+    border: 0.5px solid var(--border2);
+    padding: 6px 14px;
+    white-space: nowrap;
+  }
+
+  /* REEL EMBED */
+  .reel-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+  .reel-embed iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  /* TIMELINE LABEL */
+  .timeline-label {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 3px 8px;
+    margin-bottom: 10px;
+  }
+
+  /* FOOTER CONTACT */
+  .footer-contact {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text3);
+  }
+  .footer-contact a {
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-contact a:hover { color: var(--text); }
+  .footer-contact .divider { color: var(--text3); }
+
+  /* SKILLS GROUP */
+  .skills-group { margin-bottom: 1.5rem; }
+  .skills-group h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .skills-group p {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .skills-note {
+    font-size: 13px;
+    color: var(--text3);
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
@@ -731,7 +806,7 @@
     </div>
     <h1>Vlad<br><em>Sedykh</em></h1>
     <p class="hero-subtitle">
-      I take video projects from concept to final delivery — shaping them for the audience and the platform so the story works in the format it's meant for.
+      Post-production credits at Saturday Night Live. 15+ videos a month at Homes.com. Available now for freelance, contract, and full-time work.
     </p>
     <div class="hero-actions">
       <a class="btn-primary" href="#reel">
@@ -743,30 +818,27 @@
   </div>
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <img src="Vlad.jpg" alt="Vlad Sedykh" />
+      <img src="./Vlad.jpg" alt="Vlad Sedykh" />
       <div class="hero-img-overlay"></div>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-num">SNL</span>
-      <span class="stat-label">Production Credit</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">Spotify x WSJ</span>
-      <span class="stat-label">Podcast Pipeline</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">Homes.com</span>
-      <span class="stat-label">Video Editor</span>
-    </div>
+    <span class="badge">SNL — 2 seasons</span>
+    <span class="badge">15+ videos/month</span>
+    <span class="badge">6+ years freelance</span>
   </div>
 </div>
 
 <!-- REEL -->
 <div class="reel-section" id="reel">
   <div class="reel-wrapper">
-    <iframe src="https://player.vimeo.com/video/1068709745?h=c94c87703e" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen title="Editing Reel"></iframe>
+    <iframe
+      src="https://player.vimeo.com/video/1068709745?autoplay=0&title=0&byline=0&portrait=0"
+      width="100%"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
     <div class="reel-scanline"></div>
   </div>
 </div>
@@ -780,23 +852,6 @@
   <div class="bio-grid reveal">
     <div class="bio-left">
       <h2>The story<br><em>behind the cut</em></h2>
-      <div class="bio-credits">
-        <div class="credit-item">
-          <div class="credit-dot"></div>
-          <span class="credit-name">Saturday Night Live</span>
-          <span class="credit-role">Production & Post</span>
-        </div>
-        <div class="credit-item">
-          <div class="credit-dot"></div>
-          <span class="credit-name">Spotify × WSJ</span>
-          <span class="credit-role">Daily Podcast</span>
-        </div>
-        <div class="credit-item">
-          <div class="credit-dot"></div>
-          <span class="credit-name">Homes.com</span>
-          <span class="credit-role">Multi-channel Video</span>
-        </div>
-      </div>
     </div>
     <div class="bio-text">
       <p>I'm Vlad — a multimedia producer and editor focused on <strong>social-first, branded, and real estate content</strong>. My background spans broadcast comedy at Saturday Night Live — where I worked as both Post-Production Assistant and <strong>Production Coordinator</strong> — daily news podcasting with Spotify and The Wall Street Journal, and multi-channel video production at Homes.com.</p>
@@ -811,19 +866,6 @@
   <div class="section-label"><span>02 — Career</span></div>
   <h2 class="reveal">Where I've<br><em>shipped work</em></h2>
   <div class="timeline reveal-stagger">
-
-    <div class="timeline-item">
-      <div class="timeline-date">May 2018 – Present</div>
-      <div class="timeline-line"><div class="timeline-dot"></div></div>
-      <div class="timeline-content">
-        <h3>Freelance Videographer, Editor & Director</h3>
-        <ul class="timeline-bullets">
-          <li>Directing, shooting, and editing video content for clients across commercial, real estate, and social media verticals</li>
-          <li>End-to-end production from pre-production planning through final delivery</li>
-          <li>Managing client relationships, creative briefs, and project timelines independently</li>
-        </ul>
-      </div>
-    </div>
 
     <div class="timeline-item">
       <div class="timeline-date">Sep 2019 – May 2022</div>
@@ -880,6 +922,21 @@
       </div>
     </div>
 
+
+    <div class="timeline-item">
+      <div class="timeline-date">May 2018 – Present</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <span class="timeline-label">Ongoing</span>
+        <h3>Freelance Videographer, Editor & Director</h3>
+        <ul class="timeline-bullets">
+          <li>Directing, shooting, and editing video content for clients across commercial, real estate, and social media verticals</li>
+          <li>End-to-end production from pre-production planning through final delivery</li>
+          <li>Managing client relationships, creative briefs, and project timelines independently</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -888,13 +945,23 @@
   <div class="section-label"><span>03 — Skills</span></div>
   <h2 class="reveal">Tools &amp;<br><em>workflow</em></h2>
   <div class="skills-wrap reveal">
-    <span class="skill-tag">Adobe Premiere Pro</span>
-    <span class="skill-tag">After Effects</span>
-    <span class="skill-tag">DaVinci Resolve</span>
-    <span class="skill-tag">Pro Tools</span>
-    <span class="skill-tag">CapCut</span>
-    <span class="skill-tag">Photoshop</span>
-    <span class="skill-tag">Figma</span>
+    <div class="skills-group">
+      <h4>Editing & Finishing</h4>
+      <p>Adobe Premiere Pro · DaVinci Resolve · CapCut</p>
+      <span class="skills-note">Primary NLEs across broadcast, branded, and social work</span>
+    </div>
+
+    <div class="skills-group">
+      <h4>Motion & Design</h4>
+      <p>After Effects · Photoshop · Figma</p>
+      <span class="skills-note">Titles, graphics, and layout for video and web</span>
+    </div>
+
+    <div class="skills-group">
+      <h4>Audio</h4>
+      <p>Pro Tools</p>
+      <span class="skills-note">Used in daily podcast production at Spotify / WSJ</span>
+    </div>
   </div>
 </section>
 
@@ -943,7 +1010,12 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-copy">© 2026 Vlad Sedykh — Proudly vibecoded</span>
+  <div class="footer-contact">
+    <a href="mailto:vladislavsedykh@gmail.com">vladislavsedykh@gmail.com</a>
+    <span class="divider">·</span>
+    <a href="https://linkedin.com/in/vladsedykh" target="_blank">LinkedIn</a>
+  </div>
+  <span class="footer-copy">© 2026 Vlad Sedykh</span>
   <span class="footer-copy" style="color: var(--accent);">Video Producer & Editor</span>
 </footer>
 
