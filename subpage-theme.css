@@ -328,6 +328,13 @@ a { color: inherit; }
   gap: 10px;
 }
 
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
 @media (max-width: 900px) {
   .site-nav { padding: 0 16px; }
   .nav-links { display: none; }
