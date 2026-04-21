@@ -1,58 +1,62 @@
 (function () {
-  const r = (x, y, w, h, f) =>
-    '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="' + f + '"/>';
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  function cur(content, hx, hy) {
-    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">' + content + '</svg>';
-    return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '") ' + hx + ' ' + hy + ', auto';
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.body.classList.add('custom-cursor-active');
+
+  let mx = window.innerWidth / 2;
+  let my = window.innerHeight / 2;
+  let rx = mx;
+  let ry = my;
+  const magnetTargets = new Map();
+
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+  }, { passive: true });
+
+  const hoverSelector = 'a, button, .work-card';
+  document.querySelectorAll(hoverSelector).forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      ring.classList.add('is-hover');
+      if (el.matches('.work-card, .btn-primary')) magnetTargets.set(el, { x: 0, y: 0 });
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.classList.remove('is-hover');
+      if (magnetTargets.has(el)) {
+        magnetTargets.delete(el);
+        el.style.transform = '';
+      }
+    });
+  });
+
+  function frame() {
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+
+    magnetTargets.forEach((state, el) => {
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (mx - cx) * 0.15;
+      const dy = (my - cy) * 0.15;
+      const maxPull = 8;
+      const tx = Math.max(-maxPull, Math.min(maxPull, dx));
+      const ty = Math.max(-maxPull, Math.min(maxPull, dy));
+      state.x += (tx - state.x) * 0.2;
+      state.y += (ty - state.y) * 0.2;
+      el.style.transform = `translate(${state.x.toFixed(2)}px, ${state.y.toFixed(2)}px)`;
+    });
+
+    requestAnimationFrame(frame);
   }
-
-  // 8-bit Camera
-  const camera = cur(
-    r(4,4,4,6,'#fff')  + r(14,4,4,6,'#fff') +   // viewfinder bumps
-    r(2,8,22,16,'#fff') +                          // body outline
-    r(4,10,18,12,'#1a1a1a') +                      // body interior
-    r(8,12,12,8,'#333') +                          // lens outer
-    r(10,14,8,4,'#555') +                          // lens inner
-    r(12,16,4,2,'#999') +                          // lens highlight
-    r(20,10,2,2,'#d4a853'),                        // flash (gold)
-    0, 0
-  );
-
-  // 8-bit Scissors
-  const s = '#ddd';
-  const scissors = cur(
-    // blade \ (top-left to bottom-right)
-    r(0,0,4,4,s)   + r(4,4,4,4,s)   + r(8,8,4,4,s) +
-    r(20,20,4,4,s) + r(24,24,4,4,s) + r(28,28,4,4,s) +
-    // blade / (top-right to bottom-left)
-    r(28,0,4,4,s)  + r(24,4,4,4,s)  + r(20,8,4,4,s) +
-    r(8,20,4,4,s)  + r(4,24,4,4,s)  + r(0,28,4,4,s) +
-    // pivot
-    r(12,12,8,8,'#fff') + r(14,14,4,4,'#777'),
-    16, 16
-  );
-
-  // 8-bit Pen (diagonal, tip at bottom-left)
-  const pen = cur(
-    r(24,0,4,4,'#e8d090') +                       // cap
-    r(22,2,4,4,'#d4a853') + r(20,4,4,4,'#d4a853') +
-    r(18,6,4,4,'#d4a853') + r(16,8,4,4,'#d4a853') +
-    r(14,10,4,4,'#d4a853') + r(12,12,4,4,'#d4a853') +
-    r(10,14,4,4,'#d4a853') + r(8,16,4,4,'#c89640') + // body
-    r(6,18,4,4,'#aaa')  + r(4,20,4,4,'#888') +    // nib
-    r(2,22,4,4,'#555')  + r(0,24,2,6,'#222'),      // tip
-    0, 28
-  );
-
-  const list = [camera, scissors, pen];
-  let i = 0;
-
-  function step() {
-    document.body.style.cursor = list[i];
-    i = (i + 1) % list.length;
-  }
-
-  step();
-  setInterval(step, 5000);
+  requestAnimationFrame(frame);
 })();
