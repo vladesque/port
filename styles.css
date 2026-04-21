@@ -13,7 +13,6 @@
   --accent: #f0b637;
   --accent2: #c99826;
   --accent-cool: #3a5bd4;
-  --accent-warm: #e07a2b;
   --cta-bg: #2a1a34;
   --glow-gold: rgba(240,182,55,0.14);
   --glow-blue: rgba(58,91,212,0.12);
@@ -150,7 +149,7 @@ h1 {
 }
 h1 em {
   font-style: italic;
-  color: var(--accent-warm);
+  color: var(--accent-cool);
 }
 .hero-subtitle {
   font-size: 17px;
@@ -548,111 +547,29 @@ footer {
   letter-spacing: 0.08em;
 }
 
-/* COLOR PIECES (cubes) */
-.piece {
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
+/* BIO COLOR PIECES */
+#bio { position: relative; overflow: hidden; }
+.bio-piece {
+  position: absolute; pointer-events: none; z-index: 0;
 }
-
-#bio, #timeline, #skills, #work { position: relative; overflow: hidden; }
-#bio > *:not(.piece),
-#timeline > *:not(.piece),
-#skills > *:not(.piece),
-#work > *:not(.piece) { position: relative; z-index: 1; }
-.hero > .hero-left,
-.hero > .hero-right,
-.hero > .hero-stats,
-.hero > .hero-vertical-label { position: relative; z-index: 2; }
-
-/* Hero — behind "Vlad Sedykh" */
-.piece-hero-1 {
-  width: 400px; height: 280px;
-  background: rgba(196, 92, 10, 0.22);
-  top: 22%; left: 3%;
-}
-.piece-hero-2 {
-  width: 300px; height: 200px;
-  background: rgba(10, 118, 118, 0.18);
-  top: 52%; left: 22%;
-}
-.piece-hero-3 {
-  width: 140px; height: 320px;
-  background: rgba(180, 138, 18, 0.14);
-  top: 24%; left: 40%;
-}
-
-/* Bio */
-.piece-bio-1 {
+.bio-piece-1 {
   width: 360px; height: 280px;
   background: rgba(196, 92, 10, 0.22);
   top: 0; right: 0;
 }
-.piece-bio-2 {
+.bio-piece-2 {
   width: 280px; height: 220px;
   background: rgba(10, 118, 118, 0.18);
   bottom: 0; left: 0;
 }
-.piece-bio-3 {
+.bio-piece-3 {
   width: 160px; height: 320px;
   background: rgba(180, 138, 18, 0.13);
   top: 50%; right: 18%;
   transform: translateY(-50%);
 }
-
-/* Timeline — Where I've shipped work */
-.piece-timeline-1 {
-  width: 340px; height: 260px;
-  background: rgba(196, 92, 10, 0.18);
-  top: 0; right: 0;
-}
-.piece-timeline-2 {
-  width: 260px; height: 220px;
-  background: rgba(10, 118, 118, 0.15);
-  bottom: 0; left: 0;
-}
-.piece-timeline-3 {
-  width: 150px; height: 320px;
-  background: rgba(180, 138, 18, 0.11);
-  top: 40%; right: 22%;
-  transform: translateY(-50%);
-}
-
-/* Skills — Tools & workflow */
-.piece-skills-1 {
-  width: 320px; height: 240px;
-  background: rgba(10, 118, 118, 0.17);
-  top: 0; left: 0;
-}
-.piece-skills-2 {
-  width: 260px; height: 200px;
-  background: rgba(196, 92, 10, 0.19);
-  bottom: 0; right: 0;
-}
-.piece-skills-3 {
-  width: 140px; height: 260px;
-  background: rgba(180, 138, 18, 0.12);
-  top: 50%; left: 48%;
-  transform: translateY(-50%);
-}
-
-/* Work — Selected projects */
-.piece-work-1 {
-  width: 380px; height: 280px;
-  background: rgba(180, 138, 18, 0.14);
-  top: 0; right: 0;
-}
-.piece-work-2 {
-  width: 300px; height: 220px;
-  background: rgba(196, 92, 10, 0.19);
-  bottom: 0; left: 0;
-}
-.piece-work-3 {
-  width: 160px; height: 320px;
-  background: rgba(10, 118, 118, 0.14);
-  top: 50%; left: 44%;
-  transform: translateY(-50%);
-}
+#bio .section-label,
+#bio .bio-grid { position: relative; z-index: 1; }
 
 /* ANIMATIONS */
 @keyframes fadeUp {
@@ -857,6 +774,46 @@ h1             { animation: fadeUp 0.6s 0.1s ease both; }
   margin: 0 auto 12px;
 }
 
+/* MARQUEE */
+.marquee {
+  overflow: hidden;
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  background: var(--bg);
+  padding: 28px 0;
+  position: relative;
+}
+.marquee-track {
+  display: flex;
+  gap: 56px;
+  white-space: nowrap;
+  width: max-content;
+  animation: marqueeScroll 42s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track span {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(40px, 6vw, 80px);
+  color: var(--text);
+  line-height: 1;
+}
+.marquee-track .marquee-dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  align-self: center;
+}
+.marquee-track .marquee-accent {
+  color: var(--accent-cool);
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 /* CUSTOM CURSOR */
 .cursor-dot,
 .cursor-ring {
@@ -921,6 +878,7 @@ body.custom-cursor-active .work-card { cursor: none; }
   .hero-eyebrow, h1, .hero-subtitle, .hero-actions { animation: none; }
   .hero-orb, .hero-grain { animation: none; }
   .timeline-dot.pulsing { animation: none; }
+  .marquee-track { animation: none; transform: none; }
   .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
   .cursor-dot, .cursor-ring { display: none !important; }
   body.custom-cursor-active { cursor: auto; }
