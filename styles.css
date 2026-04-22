@@ -625,10 +625,12 @@ footer {
   z-index: 0;
 }
 #bio, #timeline, #skills, #work { position: relative; overflow: hidden; }
+.reel-section { overflow: hidden; }
 #bio > *:not(.piece),
 #timeline > *:not(.piece),
 #skills > *:not(.piece),
-#work > *:not(.piece) { position: relative; z-index: 1; }
+#work > *:not(.piece),
+.reel-section > *:not(.piece) { position: relative; z-index: 1; }
 .hero > .hero-left,
 .hero > .hero-right { position: relative; z-index: 2; }
 .hero > .hero-stats { z-index: 3; }
@@ -669,21 +671,39 @@ footer {
   transform: translateY(-50%);
 }
 
-/* Timeline — Where I've shipped work */
+/* Timeline — Where I've shipped work (emerald / coral / violet) */
 .piece-timeline-1 {
   width: 340px; height: 260px;
-  background: rgba(76, 111, 229, 0.22);
+  background: rgba(40, 170, 110, 0.24);
   top: 0; right: 0;
 }
 .piece-timeline-2 {
   width: 260px; height: 220px;
-  background: rgba(224, 122, 43, 0.20);
+  background: rgba(230, 95, 110, 0.22);
   bottom: 0; left: 0;
 }
 .piece-timeline-3 {
   width: 150px; height: 320px;
-  background: rgba(200, 160, 30, 0.15);
+  background: rgba(140, 95, 220, 0.18);
   top: 40%; right: 22%;
+  transform: translateY(-50%);
+}
+
+/* Reel — cinematic magenta / amber / teal */
+.piece-reel-1 {
+  width: 360px; height: 240px;
+  background: rgba(215, 55, 135, 0.22);
+  top: 0; left: 0;
+}
+.piece-reel-2 {
+  width: 280px; height: 220px;
+  background: rgba(250, 170, 45, 0.20);
+  bottom: 0; right: 0;
+}
+.piece-reel-3 {
+  width: 160px; height: 300px;
+  background: rgba(30, 170, 200, 0.17);
+  top: 50%; left: 8%;
   transform: translateY(-50%);
 }
 
