@@ -181,7 +181,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 60px 80px 80px;
+  padding: 80px 60px 180px 80px;
   position: relative;
   z-index: 2;
 }
@@ -278,9 +278,12 @@ h1 em {
 }
 .hero-stats {
   position: absolute;
-  bottom: 48px; left: 40px;
+  bottom: 48px; left: 80px;
   display: flex; gap: 0;
   z-index: 3;
+  max-width: calc(50% - 120px);
+  flex-wrap: wrap;
+  row-gap: 16px;
 }
 .stat {
   padding: 0 32px;
@@ -337,7 +340,7 @@ h2 {
 
 /* REEL */
 .reel-section {
-  padding: 0;
+  padding: 80px 80px;
   border-top: 0.5px solid var(--border);
 }
 .reel-wrapper {
@@ -345,6 +348,9 @@ h2 {
   background: var(--bg2);
   position: relative;
   overflow: hidden;
+  max-width: 960px;
+  margin: 0 auto;
+  border: 0.5px solid var(--border);
 }
 .reel-wrapper iframe {
   position: absolute; inset: 0;
@@ -1000,9 +1006,15 @@ body.custom-cursor-active .work-card { cursor: none; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 60px 24px 40px; }
   .hero-right { aspect-ratio: 4/5; height: auto; }
-  .hero-stats { bottom: 24px; left: 24px; }
+  .hero-stats {
+    bottom: 24px;
+    left: 24px;
+    max-width: calc(100% - 48px);
+    row-gap: 12px;
+  }
   .stat { padding: 0 16px; }
   section { padding: 60px 24px; }
+  .reel-section { padding: 40px 24px; }
   .bio-grid { grid-template-columns: 1fr; gap: 40px; }
   .timeline-item { grid-template-columns: 80px 1px 1fr; gap: 0 20px; }
   .work-grid { grid-template-columns: 1fr; }
