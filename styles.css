@@ -1084,6 +1084,7 @@ body.custom-cursor-active .work-card { cursor: none; }
   .hero-orb, .hero-grain { animation: none; }
   .ambient-shape { animation: none !important; }
   .timeline-dot.pulsing { animation: none; }
+  .reel-rec { animation: none; }
   .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
   .cursor-dot, .cursor-ring { display: none !important; }
   body.custom-cursor-active { cursor: auto; }
