@@ -24,6 +24,7 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Figtree', sans-serif;
   background:
+    radial-gradient(135% 120% at 50% 32%, transparent 52%, rgba(0,0,0,0.5) 100%),
     radial-gradient(60% 50% at 12% 8%, rgba(242,187,61,0.09) 0%, transparent 60%),
     radial-gradient(55% 45% at 92% 30%, rgba(76,111,229,0.09) 0%, transparent 60%),
     radial-gradient(65% 55% at 20% 78%, rgba(224,122,43,0.08) 0%, transparent 60%),
@@ -618,11 +619,14 @@ footer {
   letter-spacing: 0.08em;
 }
 
-/* COLOR PIECES (cubes) */
+/* COLOR PIECES — soft cinematic light, not hard blocks */
 .piece {
   position: absolute;
   pointer-events: none;
   z-index: 0;
+  filter: blur(72px);
+  border-radius: 48%;
+  mix-blend-mode: screen;
 }
 #bio, #timeline, #skills, #work { position: relative; overflow: hidden; }
 .reel-section { overflow: hidden; }
