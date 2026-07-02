@@ -263,28 +263,56 @@
   <h2>Selected<br><em>projects</em></h2>
   <div class="work-grid reveal-stagger">
     <a class="work-card" href="ai-video-editing.html" data-transition="ai-video-editing">
-      <span class="work-card-num">01</span>
-      <h3>AI Video Editing</h3>
-      <p>Spec ads and generative work made with Runway, Veo, and Sora. Includes Fizz Dreamberry, a comedic fantasy ad I submitted to a competition and documented on YouTube.</p>
-      <span class="work-card-arrow">View Project →</span>
+      <div class="work-card-media">
+        <img class="work-card-poster" src="assets/work/ai-video-editing/poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <video class="work-card-loop" data-src="assets/work/ai-video-editing/loop.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <div class="work-card-scrim" aria-hidden="true"></div>
+        <span class="work-card-num" aria-hidden="true">01</span>
+        <span class="work-card-view" aria-hidden="true">View project →</span>
+        <div class="work-card-overlay">
+          <h3>AI Video Editing</h3>
+          <span class="work-card-role">Generative spec ads · Runway · Veo · Sora</span>
+        </div>
+      </div>
     </a>
     <a class="work-card" href="homes-com.html" data-transition="homes-com">
-      <span class="work-card-num">02</span>
-      <h3>Homes.com</h3>
-      <p>Around fifteen videos a month for CoStar Group's marketing team: agent interviews, market explainers, branded campaigns, and social cutdowns, handled from ingest to delivery.</p>
-      <span class="work-card-arrow">View Project →</span>
+      <div class="work-card-media">
+        <img class="work-card-poster" src="assets/work/homes-com/poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <video class="work-card-loop" data-src="assets/work/homes-com/loop.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <div class="work-card-scrim" aria-hidden="true"></div>
+        <span class="work-card-num" aria-hidden="true">02</span>
+        <span class="work-card-view" aria-hidden="true">View project →</span>
+        <div class="work-card-overlay">
+          <h3>Homes.com</h3>
+          <span class="work-card-role">Editor &amp; Producer · CoStar Group</span>
+        </div>
+      </div>
     </a>
     <a class="work-card" href="real-estate.html" data-transition="real-estate">
-      <span class="work-card-num">03</span>
-      <h3>Real Estate</h3>
-      <p>Property tours, market recaps, and listing videos, shot and edited for agents and brokerages around New York.</p>
-      <span class="work-card-arrow">View Project →</span>
+      <div class="work-card-media">
+        <img class="work-card-poster" src="assets/work/real-estate/poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <video class="work-card-loop" data-src="assets/work/real-estate/loop.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <div class="work-card-scrim" aria-hidden="true"></div>
+        <span class="work-card-num" aria-hidden="true">03</span>
+        <span class="work-card-view" aria-hidden="true">View project →</span>
+        <div class="work-card-overlay">
+          <h3>Real Estate</h3>
+          <span class="work-card-role">Property films · New York</span>
+        </div>
+      </div>
     </a>
     <a class="work-card" href="social-media.html" data-transition="social-media">
-      <span class="work-card-num">04</span>
-      <h3>Social Media</h3>
-      <p>Vertical cuts for Instagram, TikTok, and YouTube Shorts, often recut from longer footage into short-form.</p>
-      <span class="work-card-arrow">View Project →</span>
+      <div class="work-card-media">
+        <img class="work-card-poster" src="assets/work/social-media/poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <video class="work-card-loop" data-src="assets/work/social-media/loop.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <div class="work-card-scrim" aria-hidden="true"></div>
+        <span class="work-card-num" aria-hidden="true">04</span>
+        <span class="work-card-view" aria-hidden="true">View project →</span>
+        <div class="work-card-overlay">
+          <h3>Social Media</h3>
+          <span class="work-card-role">Vertical cuts · Instagram · TikTok · Shorts</span>
+        </div>
+      </div>
     </a>
   </div>
 </section>
@@ -330,6 +358,7 @@
   }, { threshold: 0.25 });
   document.querySelectorAll('.timeline-dot').forEach(el => pulseObserver.observe(el));
 </script>
+<script src="work-grid.js" defer></script>
 <script src="cursor.js" defer></script>
 <script src="transitions.js" defer></script>
 

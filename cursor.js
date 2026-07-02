@@ -26,7 +26,7 @@
   document.querySelectorAll(hoverSelector).forEach((el) => {
     el.addEventListener('mouseenter', () => {
       ring.classList.add('is-hover');
-      if (el.matches('.work-card, .btn-primary')) magnetTargets.set(el, { x: 0, y: 0 });
+      if (el.matches('.btn-primary')) magnetTargets.set(el, { x: 0, y: 0 });
     });
     el.addEventListener('mouseleave', () => {
       ring.classList.remove('is-hover');
