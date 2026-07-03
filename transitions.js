@@ -16,6 +16,7 @@
   }
 
   document.addEventListener('click', (e) => {
+    if (e.defaultPrevented) return;
     const link = e.target.closest('a');
     if (!link) return;
     if (!link.matches(selector)) return;
