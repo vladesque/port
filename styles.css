@@ -944,6 +944,7 @@ h1             { animation: fadeUp 0.6s 0.1s ease both; }
 .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.1s; }
 .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.2s; }
 .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.3s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.4s; }
 
 /* TIMELINE PULSE */
 @keyframes dotPulse {
@@ -1106,6 +1107,7 @@ body.custom-cursor-active .work-card { cursor: none; }
 .work-card[data-transition="homes-com"] h3 { view-transition-name: card-title-homes; }
 .work-card[data-transition="real-estate"] h3 { view-transition-name: card-title-re; }
 .work-card[data-transition="social-media"] h3 { view-transition-name: card-title-sm; }
+.work-card[data-transition="social-pitch-deck"] h3 { view-transition-name: card-title-deck; }
 
 ::view-transition-group(*),
 ::view-transition-old(*),

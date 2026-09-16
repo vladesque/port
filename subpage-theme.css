@@ -580,6 +580,7 @@ body[data-page="ai-video-editing"] .page-hero h1 { view-transition-name: card-ti
 body[data-page="homes-com"] .page-hero h1 { view-transition-name: card-title-homes; }
 body[data-page="real-estate"] .page-hero h1 { view-transition-name: card-title-re; }
 body[data-page="social-media"] .page-hero h1 { view-transition-name: card-title-sm; }
+body[data-page="social-pitch-deck"] .page-hero h1 { view-transition-name: card-title-deck; }
 
 ::view-transition-group(*),
 ::view-transition-old(*),
