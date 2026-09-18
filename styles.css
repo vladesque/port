@@ -394,6 +394,9 @@ h2 {
   margin-top: 16px;
   width: 100%;
   max-width: 480px;
+  /* height:auto lets aspect-ratio win over the img's height attribute
+     (a presentational hint), which would otherwise force the full 4:3 box. */
+  height: auto;
   aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center;
