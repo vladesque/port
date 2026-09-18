@@ -389,18 +389,6 @@ h2 {
   line-height: 1.7;
 }
 
-/* TIMELINE IMAGE */
-.timeline-img {
-  margin-top: 16px;
-  width: 100%;
-  max-width: 480px;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border: 0.5px solid var(--border);
-}
-
 /* TIMELINE BULLETS */
 .timeline-bullets {
   list-style: none;
