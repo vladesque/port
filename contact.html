@@ -12,20 +12,35 @@
   <meta property="og:image" content="https://vladesque.github.io/port/og-image.jpg">
   <meta property="og:url" content="https://vladesque.github.io/port/contact.html">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://vladesque.github.io/port/contact.html">
+  <meta property="og:site_name" content="Vlad Sedykh — Portfolio">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vlad Sedykh — Multimedia Producer &amp; Editor">
+  <meta name="twitter:image" content="https://vladesque.github.io/port/og-image.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css" />
   <link rel="stylesheet" href="subpage-theme.css" />
 </head>
 <body data-page="contact">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-shape ambient-shape-1"></div>
     <div class="ambient-shape ambient-shape-2"></div>
     <div class="ambient-shape ambient-shape-3"></div>
   </div>
   <div class="ambient-grain" aria-hidden="true"></div>
-  <nav class="site-nav">
+  <nav class="site-nav" aria-label="Primary">
     <a class="nav-logo" href="index.html">VS — Portfolio</a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
       <li><a href="index.html#reel">Reel</a></li>
       <li><a href="index.html#bio">About</a></li>
       <li class="nav-dropdown">
@@ -43,9 +58,12 @@
     </ul>
   </nav>
 
-  <main class="page-wrap">
-    <div style="width:100%; max-height:520px; overflow:hidden; margin-bottom:20px;">
-      <img src="vlad-headshot-alt.jpg" alt="Vlad Sedykh standing in a desert landscape with Joshua trees and distant mountains at golden hour" style="width:100%; height:520px; object-fit:cover; object-position:center 30%; display:block;">
+  <main id="main" class="page-wrap">
+    <div class="page-banner">
+      <picture>
+        <source srcset="assets/img/vlad-desert.webp" type="image/webp">
+        <img src="assets/img/vlad-desert.jpg" width="2000" height="1333" fetchpriority="high" decoding="async" alt="Vlad Sedykh standing in a desert landscape with Joshua trees and distant mountains at golden hour">
+      </picture>
     </div>
     <section class="page-hero">
       <div class="piece piece-contact-1"></div>
@@ -64,6 +82,12 @@
       <div class="contact-list">
         <p><strong>Email:</strong> <a href="mailto:vladislavsedykh@gmail.com">vladislavsedykh@gmail.com</a></p>
         <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vladsedykh/" target="_blank" rel="noopener noreferrer">linkedin.com/in/vladsedykh</a></p>
+        <p><strong>Résumé:</strong> <a href="vlad-sedykh-resume.pdf" download="Vlad Sedykh — Resume.pdf">vlad-sedykh-resume.pdf</a></p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn-primary" href="mailto:vladislavsedykh@gmail.com?subject=Video%20project">Email Me</a>
+        <button class="btn-ghost" type="button" id="copy-email" data-email="vladislavsedykh@gmail.com">Copy Email</button>
+        <a class="btn-ghost" href="vlad-sedykh-resume.pdf" download="Vlad Sedykh — Resume.pdf">Download Résumé ↓</a>
       </div>
     </section>
 
@@ -72,7 +96,7 @@
       <div class="piece piece-sec-a-2"></div>
       <div class="piece piece-sec-a-3"></div>
       <div class="section-head"><h2>Send a Message</h2><p>Email form</p></div>
-      <form class="contact-form" action="mailto:vladislavsedykh@gmail.com" method="post" enctype="text/plain">
+      <form class="contact-form" id="contact-form" action="mailto:vladislavsedykh@gmail.com" method="get">
         <label for="name">Name</label>
         <input id="name" name="Name" type="text" required />
 
@@ -87,7 +111,7 @@
 
         <button class="btn-primary" type="submit">Send Message</button>
       </form>
-      <p class="muted" style="margin-top:12px; letter-spacing:0; text-transform:none; font-family:'Figtree',sans-serif;">This form opens your default email app with your message.</p>
+      <p class="form-note">Sending opens a pre-filled draft in your email app; the message is not stored anywhere on this site.</p>
     </section>
 
     <footer class="page-footer">
@@ -96,6 +120,31 @@
     </footer>
   </main>
 
+  <script>
+    // Build a mailto: draft from the form fields; mailto with method="post" silently fails in most browsers.
+    (function () {
+      var form = document.getElementById('contact-form');
+      var to = 'vladislavsedykh@gmail.com';
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var f = form.elements;
+        var subject = f.subject.value.trim() || 'Video project';
+        var body = f.message.value.trim() + '\n\n— ' + f.name.value.trim() + ' <' + f.email.value.trim() + '>';
+        var link = document.createElement('a');
+        link.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        link.click();
+      });
+
+      var copy = document.getElementById('copy-email');
+      copy.addEventListener('click', function () {
+        var email = copy.dataset.email;
+        var done = function () { copy.textContent = 'Copied!'; setTimeout(function () { copy.textContent = 'Copy Email'; }, 1800); };
+        if (navigator.clipboard) navigator.clipboard.writeText(email).then(done, function () { window.prompt('Copy this address:', email); });
+        else window.prompt('Copy this address:', email);
+      });
+    })();
+  </script>
+  <script src="nav.js" defer></script>
   <script src="cursor.js" defer></script>
   <script src="transitions.js" defer></script>
 </body>

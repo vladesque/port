@@ -10,13 +10,25 @@
 <meta property="og:title" content="Vlad Sedykh | Video Producer & Editor">
 <meta property="og:description" content="Video producer and editor. Post-production credits at Saturday Night Live, Spotify/WSJ, and Homes.com. Available for freelance, contract, and full-time work.">
 <meta property="og:image" content="https://vladesque.github.io/port/og-image.jpg">
-<meta property="og:url" content="https://vladesque.github.io/port/index.html">
+<meta property="og:url" content="https://vladesque.github.io/port/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://vladesque.github.io/port/">
+<meta property="og:site_name" content="Vlad Sedykh — Portfolio">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vlad Sedykh — Multimedia Producer &amp; Editor">
+<meta name="twitter:image" content="https://vladesque.github.io/port/og-image.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="home">
+<a class="skip-link" href="#main">Skip to content</a>
 
 <div class="ambient" aria-hidden="true">
   <div class="ambient-shape ambient-shape-1"></div>
@@ -26,9 +38,12 @@
 <div class="ambient-grain" aria-hidden="true"></div>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">VS — Portfolio</a>
-  <ul class="nav-links">
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-logo" href="index.html">VS — Portfolio</a>
+  <button class="nav-toggle" type="button" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="#reel">Reel</a></li>
     <li><a href="#bio">About</a></li>
     <li class="nav-dropdown">
@@ -46,6 +61,7 @@
   </ul>
 </nav>
 
+<main id="main">
 <!-- HERO -->
 <div class="hero">
   <div class="hero-orb hero-orb-1"></div>
@@ -57,6 +73,7 @@
   <div class="hero-grain"></div>
   <div class="hero-vertical-label" aria-hidden="true">EST. 2018 · NYC</div>
   <div class="hero-left">
+    <span class="hero-status"><span class="hero-status-dot" aria-hidden="true"></span>Available now · Freelance, contract, full-time · NYC</span>
     <div class="hero-eyebrow">
       <div class="eyebrow-line"></div>
       <span class="eyebrow-text">Multimedia Producer · Editor</span>
@@ -75,22 +92,25 @@
   </div>
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <img src="./Vlad.jpg" alt="Black-and-white portrait of Vlad Sedykh wearing a cap and sunglasses, photographed outside a modern building" />
+      <picture>
+        <source srcset="assets/img/vlad-hero.webp" type="image/webp">
+        <img src="assets/img/vlad-hero.jpg" width="1400" height="1867" fetchpriority="high" decoding="async" alt="Black-and-white portrait of Vlad Sedykh wearing a cap and sunglasses, photographed outside a modern building">
+      </picture>
       <div class="hero-img-overlay"></div>
     </div>
   </div>
   <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">8+</span>
+      <span class="stat-label">Years in Production</span>
+    </div>
     <div class="stat">
       <span class="stat-num">3</span>
       <span class="stat-label">SNL Seasons</span>
     </div>
     <div class="stat">
       <span class="stat-num">15+</span>
-      <span class="stat-label">Videos per Month</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">49th</span>
-      <span class="stat-label">Season Coordinated</span>
+      <span class="stat-label">Videos a Month</span>
     </div>
   </div>
 </div>
@@ -111,7 +131,8 @@
       <span class="reel-bar-meta">2025 · 16:9 · ~01:30</span>
     </div>
     <div class="reel-wrapper">
-      <iframe
+      <iframe loading="lazy"
+        title="Vlad Sedykh — 2025 showreel"
         src="https://player.vimeo.com/video/1068709745?autoplay=0&title=0&byline=0&portrait=0"
         width="100%"
         frameborder="0"
@@ -139,6 +160,7 @@
     </div>
     <div class="bio-text">
       <p>I'm Vlad, a multimedia producer and editor. I've worked in post-production on <strong>Saturday Night Live</strong>, first as a Post-Production Assistant and later as a <strong>Production Coordinator</strong>. Before that I produced the daily episode of <em>The Journal</em> podcast from The Wall Street Journal and Spotify, and more recently I've produced branded and editorial video at Homes.com.</p>
+      <p>Most of my work lives in <strong>Premiere Pro</strong> and <strong>DaVinci Resolve</strong>. I'm used to running ten to fifteen projects at once and delivering on daily and weekly deadlines, whether that's a live broadcast, a daily news podcast, or a batch of branded cuts. I start with the story, use transcript-led assembly to get to a first cut fast, then finish by hand: pacing, sound, graphics, and a version for every channel the piece needs to live on.</p>
     </div>
   </div>
 </section>
@@ -156,13 +178,16 @@
       <div class="timeline-date">Sep 2019 – May 2022</div>
       <div class="timeline-line"><div class="timeline-dot"></div></div>
       <div class="timeline-content">
-        <h3>NBCUniversal — Saturday Night Live <em style="font-size:14px; color:var(--text3);">Post-Production Assistant</em></h3>
+        <h3>NBCUniversal — Saturday Night Live<span class="timeline-role">Post-Production Assistant</span></h3>
         <ul class="timeline-bullets">
           <li>Supported post-production workflow for a weekly live television broadcast</li>
           <li>Cut and prepped video assets under tight weekly deadlines across 3 seasons</li>
           <li>Coordinated with writers, producers, and edit teams to ensure on-time delivery</li>
         </ul>
-        <img src="SNL1.jpeg" alt="Saturday Night Live studio floor during a live broadcast, overhead lighting rig above camera and audio crew" class="timeline-img">
+        <picture>
+          <source srcset="assets/img/snl-studio.webp" type="image/webp">
+          <img src="assets/img/snl-studio.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Saturday Night Live studio floor during a live broadcast, overhead lighting rig above camera and audio crew" class="timeline-img">
+        </picture>
       </div>
     </div>
 
@@ -170,7 +195,7 @@
       <div class="timeline-date">Jul 2022 – Dec 2022</div>
       <div class="timeline-line"><div class="timeline-dot"></div></div>
       <div class="timeline-content">
-        <h3>Spotify / Wall Street Journal — The Journal <em style="font-size:14px; color:var(--text3);">Podcast Production Intern</em></h3>
+        <h3>Spotify / Wall Street Journal — The Journal<span class="timeline-role">Podcast Production Intern</span></h3>
         <ul class="timeline-bullets">
           <li>Worked on the daily production of The Journal, one of the most-listened-to news podcasts</li>
           <li>Handled audio edits, clip assembly, and delivery for daily episodes</li>
@@ -183,7 +208,7 @@
       <div class="timeline-date">Jan 2023 – Dec 2023</div>
       <div class="timeline-line"><div class="timeline-dot"></div></div>
       <div class="timeline-content">
-        <h3>NBCUniversal — Saturday Night Live <em style="font-size:14px; color:var(--text3);">Production Coordinator</em></h3>
+        <h3>NBCUniversal — Saturday Night Live<span class="timeline-role">Production Coordinator</span></h3>
         <ul class="timeline-bullets">
           <li>Coordinated production logistics and cross-department communication for SNL's 49th season</li>
           <li>Managed scheduling, asset tracking, and vendor coordination across weekly live shows</li>
@@ -196,7 +221,7 @@
       <div class="timeline-date">Jan 2024 – Mar 2026</div>
       <div class="timeline-line"><div class="timeline-dot"></div></div>
       <div class="timeline-content">
-        <h3>CoStar Group — Homes.com <em style="font-size:14px; color:var(--text3);">Video Editor & Producer</em></h3>
+        <h3>CoStar Group — Homes.com<span class="timeline-role">Video Editor & Producer</span></h3>
         <ul class="timeline-bullets">
           <li>Delivered around 15 finished videos a month across promotional and educational work</li>
           <li>Ran 10 to 15 projects at once through every stage of post-production</li>
@@ -335,16 +360,19 @@
   <p>Open to freelance, contract, and full-time work in video production and editing.</p>
   <div class="cta-actions">
     <a class="btn-primary" href="contact.html">Get in Touch</a>
-    <a class="btn-ghost" href="#reel">Watch the Reel</a>
+    <a class="btn-ghost" href="vlad-sedykh-resume.pdf" download="Vlad Sedykh — Resume.pdf">Download Résumé ↓</a>
   </div>
 </div>
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-contact">
     <a href="mailto:vladislavsedykh@gmail.com">vladislavsedykh@gmail.com</a>
     <span class="divider">·</span>
-    <a href="https://linkedin.com/in/vladsedykh" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/vladsedykh/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <span class="divider">·</span>
+    <a href="vlad-sedykh-resume.pdf" download="Vlad Sedykh — Resume.pdf">Résumé</a>
   </div>
   <span class="footer-copy">© 2026 Vlad Sedykh</span>
   <span class="footer-copy" style="color: var(--accent);">Video Producer & Editor</span>
@@ -369,7 +397,26 @@
   }, { threshold: 0.25 });
   document.querySelectorAll('.timeline-dot').forEach(el => pulseObserver.observe(el));
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vlad Sedykh",
+  "alternateName": "Vladislav Sedykh",
+  "jobTitle": "Multimedia Producer & Video Editor",
+  "description": "Video producer and editor with post-production credits at Saturday Night Live, The Journal (WSJ / Spotify), and Homes.com.",
+  "url": "https://vladesque.github.io/port/",
+  "image": "https://vladesque.github.io/port/og-image.jpg",
+  "email": "mailto:vladislavsedykh@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "New York", "addressRegion": "NY", "addressCountry": "US" },
+  "sameAs": ["https://www.linkedin.com/in/vladsedykh/"],
+  "knowsAbout": ["Video editing", "Post-production", "Adobe Premiere Pro", "DaVinci Resolve", "After Effects", "Pro Tools", "Podcast production"],
+  "alumniOf": [],
+  "worksFor": { "@type": "Organization", "name": "Freelance" }
+}
+</script>
 <script src="work-grid.js" defer></script>
+<script src="nav.js" defer></script>
 <script src="cursor.js" defer></script>
 <script src="transitions.js" defer></script>
 
