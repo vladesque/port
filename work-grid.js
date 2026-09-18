@@ -1,8 +1,7 @@
 /* Hover-play work grid.
-   Loops are fetched only when a card nears the viewport, play on
-   hover/focus (tap-to-preview on touch), and fall back to the static
-   poster when a clip is missing, playback fails, or the user prefers
-   reduced motion. */
+   Loops are fetched the first time a card is hovered, focused, or tapped
+   (never on scroll alone), and fall back to the static poster when a clip
+   is missing, playback fails, or the user prefers reduced motion. */
 (function () {
   const cards = Array.from(document.querySelectorAll('.work-card'));
   if (!cards.length) return;
@@ -49,10 +48,11 @@
     if (rewind) v.currentTime = 0;
   }
 
+  // Loops are only fetched on hover/focus/tap (see play()); the observer just
+  // rewinds a card that has scrolled away so it doesn't keep decoding off-screen.
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
-      if (e.isIntersecting) load(e.target);
-      else stop(e.target, true);
+      if (!e.isIntersecting) stop(e.target, true);
     });
   }, { rootMargin: '200px 0px' });
   cards.forEach((card) => io.observe(card));
